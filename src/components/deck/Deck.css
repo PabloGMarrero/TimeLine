@@ -1,0 +1,157 @@
+.deck-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.deck-container section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    transition: all ease-in-out; 
+}
+
+.deck .first {
+    order: 0;
+    z-index: 19;
+    transform: translateX(0px);
+}
+
+.deck .second {
+    order: 1;
+    z-index: 18;
+    transform: translateX(-79px);
+}
+
+.deck .third {
+    order: 2;
+    z-index: 17;
+    transform: translateX(-158px);
+}
+
+.deck .fourth {
+    order: 3;
+    z-index: 16;
+    transform: translateX(-237px);
+}
+
+.deck .fifth {
+    order: 4;
+    z-index: 15;
+    transform: translateX(-316px);
+}
+
+.deck .sixth {
+    order: 5;
+    z-index: 14;
+    transform: translateX(-395px);
+}
+
+.deck .seventh {
+    order: 6;
+    z-index: 13;
+    transform: translateX(-474px);
+}
+
+.deck .eighth {
+    order: 7;
+    z-index: 12;
+    transform: translateX(-553px);
+}
+
+.deck .ninth {
+    order: 8;
+    z-index: 11;
+    transform: translateX(-632px);
+}
+
+.deck .tenth {
+    order: 9;
+    z-index: 10;
+    transform: translateX(-711px);
+}
+
+.deck .eleventh {
+    order: 10;
+    z-index: 9;
+    transform: translateX(-790px);
+}
+
+.deck .twelfth {
+    order: 11;
+    z-index: 8;
+    transform: translateX(-869px);
+}
+
+.deck .thirteenth {
+    order: 12;
+    z-index: 7;
+    transform: translateX(-948px);
+}
+
+.deck .fourteenth {
+    order: 13;
+    z-index: 6;
+    transform: translateX(-1027px);
+}
+
+.deck .fifteenth {
+    order: 14;
+    z-index: 5;
+    transform: translateX(-1106px);
+}
+
+.deck .sixteenth {
+    order: 15;
+    z-index: 4;
+    transform: translateX(-1185px);
+}
+
+.deck .seventeenth {
+    order: 16;
+    z-index: 3;
+    transform: translateX(-1264px);
+}
+
+.deck .eighteenth {
+    order: 17;
+    z-index: 2;
+    transform: translateX(-1343px);
+}
+
+.deck .nineteenth {
+    order: 18;
+    z-index: 1;
+    transform: translateX(-1422px);
+}
+
+.deck .twentieth {
+    order: 19;
+    z-index: 0;
+    transform: translateX(-1501px);
+}
+
+.draw {
+    animation-name: draw-animation;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes draw-animation {
+    0%    {transform: translateY(10px)}
+    10%   {transform: translateY(20px);}
+    20%   {transform: translateY(30px);}
+    30%   {transform: translateY(40px);}
+    40%   {transform: translateY(50px);}
+    50%   {transform: translateY(60px);}
+    60%   {transform: translateY(70px);}
+    70%   {transform: translateY(80px);}
+    80%   {transform: translateY(90px);}
+    90%   {transform: translateY(100px);}
+    100%  {transform: translateY(110px);}
+}

@@ -1,0 +1,153 @@
+.hand-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.hand-container section {
+    position: inherit;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    justify-content: center;
+    transition: all ease-in-out;
+    margin-left: 5%;
+    /* align-self: center;  */
+}
+
+
+.hand .first {
+    order: 0;
+    z-index: 4;
+    transform: translateX(100px) translateY(90px) rotateZ(15deg);
+}
+
+.hand .second {
+    order: 1;
+    z-index: 3;
+    transform: translateX(60px) translateY(70px) rotateZ(10deg);
+}
+
+.hand .third {
+    order: 2;
+    z-index: 2;
+    transform: translateX(0px) translateY(70px) rotateZ(0deg);
+}
+
+.hand .fourth {
+    order: 3;
+    z-index: 1;
+    transform: translateX(-60px) translateY(100px) rotateZ(-10deg);
+}
+
+.hand .fifth {
+    order: 4;
+    z-index: 0;
+    transform: translateX(-100px) translateY(140px) rotateZ(-15deg);
+}
+
+
+.hand .first > :hover {
+    animation-name: first-hover-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes first-hover-animation {
+    0%    {top:0px;}
+    10%   {top:-5px;}
+    20%   {top:-10px;}
+    30%   {top:-15px;}
+    40%   {top:-20px;}
+    50%   {top:-25px;}
+    60%   {top:-30px;}
+    70%   {top:-35px;}
+    80%   {top:-40px;}
+    90%   {top:-45px;}
+    100%  {top:-50px;}
+}
+
+.hand .second > :hover {
+    animation-name: second-hover-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes second-hover-animation {
+    0%    {top:0px;}
+    10%   {top:-5px;}
+    20%   {top:-10px;}
+    30%   {top:-15px;}
+    40%   {top:-20px;}
+    50%   {top:-25px;}
+    60%   {top:-30px;}
+    70%   {top:-35px;}
+    80%   {top:-40px;}
+    90%   {top:-45px;}
+    100%  {top:-50px;}
+}
+
+.hand .third > :hover {
+    animation-name: third-hover-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes third-hover-animation {
+    0%    {top:0px;}
+    10%   {top:-5px;}
+    20%   {top:-10px;}
+    30%   {top:-15px;}
+    40%   {top:-20px;}
+    50%   {top:-25px;}
+    60%   {top:-30px;}
+    70%   {top:-35px;}
+    80%   {top:-40px;}
+    90%   {top:-45px;}
+    100%  {top:-50px;}
+}
+
+.hand .fourth > :hover {
+    animation-name: fourth-hover-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fourth-hover-animation {
+    0%    {top:0px;}
+    10%   {top:-5px;}
+    20%   {top:-10px;}
+    30%   {top:-15px;}
+    40%   {top:-20px;}
+    50%   {top:-25px;}
+    60%   {top:-30px;}
+    70%   {top:-35px;}
+    80%   {top:-40px;}
+    90%   {top:-45px;}
+    100%  {top:-50px;}
+}
+
+.hand .fifth > :hover {
+    animation-name: fifth-hover-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fifth-hover-animation {
+    0%    {top:0px;}
+    10%   {top:-5px;}
+    20%   {top:-10px;}
+    30%   {top:-15px;}
+    40%   {top:-20px;}
+    50%   {top:-25px;}
+    60%   {top:-30px;}
+    70%   {top:-35px;}
+    80%   {top:-40px;}
+    90%   {top:-45px;}
+    100%  {top:-50px;}
+}
