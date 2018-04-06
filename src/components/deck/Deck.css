@@ -13,7 +13,6 @@
     flex-wrap: nowrap;
     justify-content: flex-end;
     transition: all ease-in-out;
-    cursor: pointer; 
 }
 
 .draw {

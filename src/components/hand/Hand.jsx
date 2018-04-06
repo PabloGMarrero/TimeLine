@@ -10,13 +10,7 @@ export class Hand extends Component {
         this.state = {
             cards: props.cards,
             owner: props.owner,
-            picking: false,
         }
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-        this.setState({ picking: !this.state.picking });
     }
 
     firstCard = () => (
@@ -49,16 +43,27 @@ export class Hand extends Component {
             <figure className="enemy-fifth"><CardSleeve></CardSleeve></figure>
     )
 
+    hand = () => (
+        <section className="hand">
+            {this.firstCard()}
+            {this.secondCard()}
+            {this.thirdCard()}
+            {this.fourthCard()}
+            {this.fifthCard()}
+        </section>
+    )
+
     render = () => (
         <div>
             <div className="hand-container">
-                <section className="hand">
+                {/* <section className="hand">
                     {this.firstCard()}
                     {this.secondCard()}
                     {this.thirdCard()}
                     {this.fourthCard()}
                     {this.fifthCard()}
-                </section>
+                </section> */}
+                {this.hand()}
             </div>
         </div>
     )

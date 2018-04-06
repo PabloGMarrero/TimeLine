@@ -10,21 +10,14 @@ export class Deck extends Component {
         this.state = {
             cards: props.cards,
             cardsSize: props.cards.length,
-            shuffle: false,
         }
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick() {
-        this.setState({ shuffle: !this.state.shuffle });
-    }
 
     deck = () => (
         this.state.cards.map((card =>
             <div style={{
-                order: this.state.index,
-                zIndex: this.state.index,
-                transform: `translateX(${(this.state.cardsSize--) * 1}px)`
+                transform: `translateX(${(this.state.cardsSize--)}px)`
             }}>
                 <CardSleeve></CardSleeve>
             </div>

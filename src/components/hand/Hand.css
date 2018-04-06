@@ -7,7 +7,7 @@
 .hand-container section {
     position: inherit;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: center;
     flex-wrap: nowrap;
     transition: all ease-in-out;
@@ -17,44 +17,44 @@
 
 .hand .first {
     order: 0;
-    z-index: 4;
-    transform: translateX(100px) translateY(90px) rotateZ(15deg);
+    z-index: 0;
+    transform: translateX(-100px) translateY(70px) rotateZ(-15deg);
 }
 
 .hand .second {
     order: 1;
-    z-index: 3;
-    transform: translateX(60px) translateY(70px) rotateZ(10deg);
+    z-index: 1;
+    transform: translateX(-60px) translateY(30px) rotateZ(-10deg);
 }
 
 .hand .third {
     order: 2;
     z-index: 2;
-    transform: translateX(0px) translateY(70px) rotateZ(0deg);
+    transform: translateX(0px) translateY(0px) rotateZ(0deg);
 }
 
 .hand .fourth {
     order: 3;
-    z-index: 1;
-    transform: translateX(-60px) translateY(100px) rotateZ(-10deg);
+    z-index: 3;
+    transform: translateX(60px) translateY(0px) rotateZ(10deg);
 }
 
 .hand .fifth {
     order: 4;
-    z-index: 0;
-    transform: translateX(-100px) translateY(140px) rotateZ(-15deg);
+    z-index: 4;
+    transform: translateX(100px) translateY(20px) rotateZ(15deg);
 }
 
 .hand .enemy-first {
     order: 0;
-    z-index: 4;
-    transform: translateX(240px);
+    z-index: 0;
+    transform: translateX(-240px);
 }
 
 .hand .enemy-second {
     order: 1;
-    z-index: 3;
-    transform: translateX(120px);
+    z-index: 1;
+    transform: translateX(-120px);
 }
 
 .hand .enemy-third {
@@ -65,14 +65,14 @@
 
 .hand .enemy-fourth {
     order: 3;
-    z-index: 1;
-    transform: translateX(-120px);
+    z-index: 3;
+    transform: translateX(120px);
 }
 
 .hand .enemy-fifth {
     order: 4;
-    z-index: 0;
-    transform: translateX(-240px);
+    z-index: 4;
+    transform: translateX(240px);
 }
 
 
