@@ -268,12 +268,8 @@ const television =
         description = {'Television'}
         image ={'../assets/images/cards/tv.jpg'}
         year = {1926}
-        
         flipped={false}
-        onDeck={false}
-        onHand={false}
-        onBoard={false}
-        onEnemyPossession={false}>
+        showcaseMode = {true}>
     </Card>
 
 const cardsOnDeck = [
