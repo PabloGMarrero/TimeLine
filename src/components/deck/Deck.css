@@ -12,7 +12,8 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    transition: all ease-in-out; 
+    transition: all ease-in-out;
+    cursor: pointer; 
 }
 
 .deck .first {

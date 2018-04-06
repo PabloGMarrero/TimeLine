@@ -11,7 +11,8 @@ export class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            playerHand: props.hand,
+            playerHand: props.playerHand,
+            enemyHand: props.enemyHand,
             deck: props.deck,
         }
     }
@@ -19,6 +20,11 @@ export class Board extends Component {
     render = () => (
         <div className="game-board">
             <div className="game-perspective">
+                <div className='enemy-hand-container'>
+                    <figure className='enemy-hand'>
+                        <Hand cards={this.state.enemyHand} owner={false}></Hand>
+                    </figure>
+                </div>
                 <div className="container">
                     <div className="board">
                         <section className="cards">
@@ -44,7 +50,7 @@ export class Board extends Component {
                 </div>
             </div>
             <figure className='player-hand'>
-                <Hand cards={this.state.playerHand}></Hand>
+                <Hand cards={this.state.playerHand} owner={true}></Hand>
             </figure>
             <div className="face">
                 <div className="bottom-face"></div>

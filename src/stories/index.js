@@ -80,7 +80,7 @@ const telephone =
         onEnemyPossession={false}>
     </Card>
 
-const cardsOnHand = [
+const playerHand = [
     <Card
         category={'♫'}
         description={'Ludwig van Beethoven'}
@@ -140,6 +140,69 @@ const cardsOnHand = [
         onHand={true}
         onBoard={false}
         onEnemyPossession={false}>
+    </Card>,
+]
+
+const enemyHand = [
+    <Card
+        category={'♫'}
+        description={'Ludwig van Beethoven'}
+        image={'../assets/images/cards/beethoven.jpg'}
+        year={1770}
+        canBeFlipped={false}
+        flipped={false}
+        onDeck={false}
+        onHand={true}
+        onBoard={false}
+        onEnemyPossession={true}>
+    </Card>,
+    <Card
+        category={'A'}
+        description={'Mona Lisa'}
+        image={'../assets/images/cards/mona-lisa.jpg'}
+        year={1503}
+        canBeFlipped={false}
+        flipped={false}
+        onDeck={false}
+        onHand={true}
+        onBoard={false}
+        onEnemyPossession={true}>
+    </Card>,
+    <Card
+        category={'M'}
+        description={'Statue of Liberty'}
+        image={'../assets/images/cards/The-Statue-Of-Liberty.jpg'}
+        year={1886}
+        canBeFlipped={false}
+        flipped={false}
+        onDeck={false}
+        onHand={true}
+        onBoard={false}
+        onEnemyPossession={true}>
+    </Card>,
+    <Card
+        category={'H'}
+        description={'Discovery of America'}
+        image={'../assets/images/cards/columbus-discovers-america.jpg'}
+        year={1492}
+        canBeFlipped={false}
+        flipped={false}
+        onDeck={false}
+        onHand={true}
+        onBoard={false}
+        onEnemyPossession={true}>
+    </Card>,
+    <Card
+        category={'I'}
+        description={'Telephone'}
+        image={'../assets/images/cards/Telephone-invention.JPG'}
+        year={1876}
+        canBeFlipped={false}
+        flipped={false}
+        onDeck={false}
+        onHand={true}
+        onBoard={false}
+        onEnemyPossession={true}>
     </Card>,
 ]
 
@@ -219,8 +282,10 @@ storiesOf('Card', module).add('Invention event category', () => telephone);
 
 storiesOf('Card Sleeve', module).add('Sleeve', () => (<CardSleeve></CardSleeve>));
 
-storiesOf('Hand', module).add('Five cards in hand', () => (<Hand cards={cardsOnHand}></Hand>));
+storiesOf('Hand', module).add('Complete Player hand', () => (<Hand cards={playerHand} owner={true}></Hand>));
+
+storiesOf('Hand', module).add('Complete Enemy hand', () => (<Hand cards={enemyHand} owner={false}></Hand>));
 
 storiesOf('Deck', module).add('Draw a card from deck', () => (<Deck cards={cardsOnDeck}></Deck>));
 
-storiesOf('Board', module).add('Game board', () => (<Board hand={cardsOnHand} deck={cardsOnDeck}></Board>));
+storiesOf('Board', module).add('Game board', () => (<Board playerHand={playerHand}  enemyHand={enemyHand} deck={cardsOnDeck}></Board>));

@@ -8,11 +8,10 @@
     position: inherit;
     display: flex;
     flex-direction: row-reverse;
-    flex-wrap: nowrap;
     justify-content: center;
+    flex-wrap: nowrap;
     transition: all ease-in-out;
-    margin-left: 5%;
-    /* align-self: center;  */
+    margin-left: 20%;
 }
 
 
@@ -45,6 +44,37 @@
     z-index: 0;
     transform: translateX(-100px) translateY(140px) rotateZ(-15deg);
 }
+
+.hand .enemy-first {
+    order: 0;
+    z-index: 4;
+    transform: translateX(240px);
+}
+
+.hand .enemy-second {
+    order: 1;
+    z-index: 3;
+    transform: translateX(120px);
+}
+
+.hand .enemy-third {
+    order: 2;
+    z-index: 2;
+    transform: translateX(0px);
+}
+
+.hand .enemy-fourth {
+    order: 3;
+    z-index: 1;
+    transform: translateX(-120px);
+}
+
+.hand .enemy-fifth {
+    order: 4;
+    z-index: 0;
+    transform: translateX(-240px);
+}
+
 
 
 .hand .first > :hover {

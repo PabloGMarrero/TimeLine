@@ -8,6 +8,7 @@ export class Hand extends Component {
         super(props);
         this.state = {
             cards: props.cards,
+            owner: props.owner,
             picking: false,
         }
         this.handleClick = this.handleClick.bind(this);
@@ -21,11 +22,11 @@ export class Hand extends Component {
         <div>
             <div className="hand-container">
                 <section className="hand">
-                    <figure className="first">{this.state.cards[0]}</figure>
-                    <figure className="second">{this.state.cards[1]}</figure>
-                    <figure className="third">{this.state.cards[2]}</figure>
-                    <figure className="fourth">{this.state.cards[3]}</figure>
-                    <figure className="fifth">{this.state.cards[4]}</figure>
+                    <figure className={`${this.state.owner ? 'first' : 'enemy-first'}`}>{this.state.cards[0]}</figure>
+                    <figure className={`${this.state.owner ? 'second' : 'enemy-second'}`}>{this.state.cards[1]}</figure>
+                    <figure className={`${this.state.owner ? 'third' : 'enemy-third'}`}>{this.state.cards[2]}</figure>
+                    <figure className={`${this.state.owner ? 'fourth' : 'enemy-fourth'}`}>{this.state.cards[3]}</figure>
+                    <figure className={`${this.state.owner ? 'fifth' : 'enemy-fifth'}`}>{this.state.cards[4]}</figure>
                 </section>
             </div>
         </div>
