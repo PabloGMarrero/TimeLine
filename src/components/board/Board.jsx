@@ -11,9 +11,10 @@ export class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            deck: props.deck,
+            cardsOnPlay: [],
             playerHand: props.playerHand,
             enemyHand: props.enemyHand,
-            deck: props.deck,
         }
     }
 

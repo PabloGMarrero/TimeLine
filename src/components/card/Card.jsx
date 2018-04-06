@@ -12,7 +12,6 @@ export class Card extends Component {
             description: props.description,
             image: props.image,
             year: props.year,
-            canBeFlipped: props.canBeFlipped,
             flipped: props.flipped,
             onDeck: props.onDeck,
             onHand: props.onHand,
@@ -23,7 +22,7 @@ export class Card extends Component {
     }
 
     handleClick() {
-        if (this.state.canBeFlipped) {
+        if (!this.state.onBoard) {
             this.setState({ flipped: !this.state.flipped });
         }
     }
