@@ -26,6 +26,7 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
+    transform-style: preserve-3d;
     border: 5px solid goldenrod;
     border-style: outset;
     border-radius: 10px;
@@ -37,4 +38,5 @@
     width: 80%;
     height: 30%;
     align-self: center;
+    transform-style: preserve-3d;
 }

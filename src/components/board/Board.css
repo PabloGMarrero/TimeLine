@@ -15,7 +15,7 @@
 
 
 .enemy-hand-container {
-    transform: rotate3d(10,0,0,0deg);
+    transform: rotate3d(10,0,0,0deg) translateY(-1px);
 }
 
 .container {
@@ -62,7 +62,7 @@
 
 .enemy-hand {
     z-index: 2;
-    transform: scale(0.35) translateX(8px) translateY(-50px);
+    transform: scale(0.29) translateX(8px) translateY(-50px);
 }
 
 .face {
@@ -78,7 +78,6 @@
     background-image: url("../../../public/assets/images/table.jpg");
     background-repeat: repeat;
     background-size: cover;
-    transform-style: preserve-3d;
     transform: translateY(565px) translateX(489px) rotate3d(-10,0,0,30deg) scaleX(10.19);
     box-shadow: inset 0 0 0 1000px rgba(29, 12, 2, 0.74);
 }

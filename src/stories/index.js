@@ -9,6 +9,7 @@ import { Hand } from '../components/hand/Hand';
 import { Deck } from '../components/deck/Deck';
 import { CardSleeve } from '../components/card-sleeve/Card-Sleeve';
 import { Board } from '../components/board/Board';
+import { RockPaperScissors } from '../components/rock-paper-scissors/rock-paper-scissors';
 
 const beethoven =
     <Card
@@ -282,10 +283,12 @@ storiesOf('Card', module).add('Invention event category', () => telephone);
 
 storiesOf('Card Sleeve', module).add('Sleeve', () => (<CardSleeve></CardSleeve>));
 
+storiesOf('Rock-Paper-Scissors', module).add('Rock-paper-scissors selection', () => <RockPaperScissors> </RockPaperScissors>);
+
 storiesOf('Hand', module).add('Complete Player hand', () => (<Hand cards={playerHand} owner={true}></Hand>));
 
 storiesOf('Hand', module).add('Complete Enemy hand', () => (<Hand cards={enemyHand} owner={false}></Hand>));
 
 storiesOf('Deck', module).add('Draw a card from deck', () => (<Deck cards={cardsOnDeck}></Deck>));
 
-storiesOf('Board', module).add('Game board', () => (<Board playerHand={playerHand}  enemyHand={enemyHand} deck={cardsOnDeck}></Board>));
+storiesOf('Board', module).add('Game board', () => (<Board playerHand={playerHand} enemyHand={enemyHand} deck={cardsOnDeck}></Board>));
