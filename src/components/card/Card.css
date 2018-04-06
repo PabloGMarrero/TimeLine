@@ -95,10 +95,6 @@
     transform: rotateY(180deg);
 }
 
-.front {
-    margin: 0;
-}
-
 .back {
     transform: rotateY(180deg);
 }

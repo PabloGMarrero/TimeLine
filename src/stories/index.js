@@ -18,10 +18,7 @@ const beethoven =
         image={'../assets/images/cards/beethoven.jpg'}
         year={1770}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const monaLisa =
@@ -31,10 +28,7 @@ const monaLisa =
         image={'../assets/images/cards/mona-lisa.jpg'}
         year={1503}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const statueOfLiberty =
@@ -44,10 +38,7 @@ const statueOfLiberty =
         image={'../assets/images/cards/The-Statue-Of-Liberty.jpg'}
         year={1886}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const discoveryOfAmerica =
@@ -57,10 +48,7 @@ const discoveryOfAmerica =
         image={'../assets/images/cards/columbus-discovers-america.jpg'}
         year={1492}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const telephone =
@@ -70,10 +58,7 @@ const telephone =
         image={'../assets/images/cards/telephone.jpg'}
         year={1876}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const abrahamLincoln =
@@ -83,10 +68,7 @@ const abrahamLincoln =
         image={'../assets/images/cards/abraham-lincoln.jpg'}
         year={1809}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 
@@ -97,10 +79,7 @@ const adolfHitler =
         image={'../assets/images/cards/adolf-hitler.jpg'}
         year={1889}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const stephenHawking =
@@ -110,10 +89,7 @@ const stephenHawking =
         image={'../assets/images/cards/stephen-hawking-simon-kregar.jpg'}
         year={1942}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const jimiHendrix =
@@ -123,10 +99,7 @@ const jimiHendrix =
         image={'../assets/images/cards/jimi-hendrix.jpg'}
         year={1970}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const atari =
@@ -136,10 +109,7 @@ const atari =
         image={'../assets/images/cards/atari.jpg'}
         year={1972}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const cellularPhone =
@@ -149,10 +119,7 @@ const cellularPhone =
         image={'../assets/images/cards/cellular_phone.jpg'}
         year={1973}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const christTheRedeemer =
@@ -162,10 +129,7 @@ const christTheRedeemer =
         image={'../assets/images/cards/christ-the-redeemer.jpg'}
         year={1931}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const eiffelTower =
@@ -175,10 +139,7 @@ const eiffelTower =
         image={'../assets/images/cards/eiffel-tower.jpg'}
         year={1889}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const frenchRevolution =
@@ -188,10 +149,7 @@ const frenchRevolution =
         image={'../assets/images/cards/french-revolution.jpg'}
         year={1789}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const gramophone =
@@ -201,10 +159,7 @@ const gramophone =
         image={'../assets/images/cards/gramophone.jpg'}
         year={1887}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const obelisk =
@@ -214,10 +169,7 @@ const obelisk =
         image={'../assets/images/cards/obelisco.jpg'}
         year={1936}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const radio =
@@ -227,10 +179,7 @@ const radio =
         image={'../assets/images/cards/radio.jpg'}
         year={1897}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const tajMahal =
@@ -240,10 +189,7 @@ const tajMahal =
         image={'../assets/images/cards/taj-mahal.jpg'}
         year={1653}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const theExorcist =
@@ -253,10 +199,7 @@ const theExorcist =
         image={'../assets/images/cards/the_exorcist.jpg'}
         year={1973}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const theScream =
@@ -266,10 +209,7 @@ const theScream =
         image={'../assets/images/cards/the-scream.jpg'}
         year={1893}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const theThreeStooges =
@@ -279,10 +219,7 @@ const theThreeStooges =
         image={'../assets/images/cards/the-three_stooges.jpg'}
         year={1922}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const twinTowersAttack =
@@ -292,10 +229,7 @@ const twinTowersAttack =
         image={'../assets/images/cards/twin-towers-attack.jpg'}
         year={2001}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const worldWarTwo =
@@ -305,10 +239,7 @@ const worldWarTwo =
         image={'../assets/images/cards/world-war-II.jpg'}
         year={1939}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const zorro =
@@ -318,10 +249,7 @@ const zorro =
         image={'../assets/images/cards/zorro.jpg'}
         year={1957}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 const titanic =
@@ -331,10 +259,7 @@ const titanic =
         image={'../assets/images/cards/titanic.jpg'}
         year={1912}
         flipped={false}
-        onDeck={false}
-        onPlayerHand={false}
-        onBoard={true}
-        onEnemyHand={false}>
+        showcaseMode={true}>
     </Card>
 
 
