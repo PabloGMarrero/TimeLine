@@ -337,6 +337,19 @@ const titanic =
         onEnemyHand={false}>
     </Card>
 
+const television = 
+    <Card
+        category = {'I'}
+        description = {'Television'}
+        image ={'../assets/images/cards/tv.jpg'}
+        year = {1926}
+        
+        flipped={false}
+        onDeck={false}
+        onHand={false}
+        onBoard={false}
+        onEnemyPossession={false}>
+    </Card>
 
 const cardsOnDeck = [
     beethoven,
@@ -364,6 +377,7 @@ const cardsOnDeck = [
     worldWarTwo,
     zorro,
     titanic,
+    television,
 ]
 
 const playerHandExample = [
@@ -431,6 +445,8 @@ storiesOf('Cards', module).add('World War Two', () => worldWarTwo);
 storiesOf('Cards', module).add('Zorro', () => zorro);
 
 storiesOf('Cards', module).add('The sinking of the titanic', () => titanic);
+
+storiesOf('Cards', module).add('Television', () => television)
 
 storiesOf('Card Sleeve', module).add('Sleeve', () => (<CardSleeve></CardSleeve>));
 
