@@ -57,7 +57,7 @@
 
 .player-hand {
     z-index: 2;
-    transform: scale(0.75) translateX(8px) translateY(580px);
+    transform: scale(0.75) translateX(8px) translateY(660px);
 }
 
 .enemy-hand {
