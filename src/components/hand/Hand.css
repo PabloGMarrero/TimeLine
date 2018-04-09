@@ -14,6 +14,9 @@
     margin-left: 20%;
 }
 
+.hand .cursor {
+    cursor: pointer;
+}
 
 .hand .first {
     order: 0;
@@ -76,15 +79,7 @@
 }
 
 
-
-.hand .first > :hover {
-    animation-name: first-hover-animation;
-    animation-duration: 0.2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-}
-
-@keyframes first-hover-animation {
+@keyframes hover-animation {
     0%    {top:0px;}
     10%   {top:-5px;}
     20%   {top:-10px;}
@@ -98,86 +93,109 @@
     100%  {top:-50px;}
 }
 
-.hand .second > :hover {
-    animation-name: second-hover-animation;
+.hand .first-picking {
+    animation-name: first-picking-animation;
     animation-duration: 0.2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
 
-@keyframes second-hover-animation {
-    0%    {top:0px;}
-    10%   {top:-5px;}
-    20%   {top:-10px;}
-    30%   {top:-15px;}
-    40%   {top:-20px;}
-    50%   {top:-25px;}
-    60%   {top:-30px;}
-    70%   {top:-35px;}
-    80%   {top:-40px;}
-    90%   {top:-45px;}
-    100%  {top:-50px;}
+
+@keyframes first-picking-animation {
+    0%    {transform: translateX(0px) translateY(0px)}
+    10%   {transform: translateX(17px) translateY(-25px)}
+    20%   {transform: translateX(33px) translateY(-50px);}
+    30%   {transform: translateX(49px) translateY(-75px);}
+    40%   {transform: translateX(65px) translateY(-100px);}
+    50%   {transform: translateX(81px) translateY(-125px);}
+    60%   {transform: translateX(97px) translateY(-150px);}
+    70%   {transform: translateX(113px) translateY(-175px);}
+    80%   {transform: translateX(129px) translateY(-200px);}
+    90%   {transform: translateX(145px) translateY(-225px);}
+    100%  {transform: translateX(161px) translateY(-250px);}
 }
 
-.hand .third > :hover {
-    animation-name: third-hover-animation;
+.hand .second-picking {
+    animation-name: second-picking-animation;
     animation-duration: 0.2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
 
-@keyframes third-hover-animation {
-    0%    {top:0px;}
-    10%   {top:-5px;}
-    20%   {top:-10px;}
-    30%   {top:-15px;}
-    40%   {top:-20px;}
-    50%   {top:-25px;}
-    60%   {top:-30px;}
-    70%   {top:-35px;}
-    80%   {top:-40px;}
-    90%   {top:-45px;}
-    100%  {top:-50px;}
+@keyframes second-picking-animation {
+    0%    {transform: translateX(0px) translateY(0px)}
+    10%   {transform: translateX(9px) translateY(-25px)}
+    20%   {transform: translateX(17px) translateY(-50px);}
+    30%   {transform: translateX(25px) translateY(-75px);}
+    40%   {transform: translateX(33px) translateY(-100px);}
+    50%   {transform: translateX(41px) translateY(-125px);}
+    60%   {transform: translateX(47px) translateY(-150px);}
+    70%   {transform: translateX(57px) translateY(-175px);}
+    80%   {transform: translateX(65px) translateY(-200px);}
+    90%   {transform: translateX(73px) translateY(-225px);}
+    100%  {transform: translateX(81px) translateY(-250px);}
 }
 
-.hand .fourth > :hover {
-    animation-name: fourth-hover-animation;
+.hand .third-picking {
+    animation-name: third-picking-animation;
     animation-duration: 0.2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
 
-@keyframes fourth-hover-animation {
-    0%    {top:0px;}
-    10%   {top:-5px;}
-    20%   {top:-10px;}
-    30%   {top:-15px;}
-    40%   {top:-20px;}
-    50%   {top:-25px;}
-    60%   {top:-30px;}
-    70%   {top:-35px;}
-    80%   {top:-40px;}
-    90%   {top:-45px;}
-    100%  {top:-50px;}
+@keyframes third-picking-animation {
+    0%    {transform: translateX(0px) translateY(0px)}
+    10%   {transform: translateX(0px) translateY(-25px)}
+    20%   {transform: translateX(0px) translateY(-50px);}
+    30%   {transform: translateX(0px) translateY(-75px);}
+    40%   {transform: translateX(0px) translateY(-100px);}
+    50%   {transform: translateX(0px) translateY(-125px);}
+    60%   {transform: translateX(0px) translateY(-150px);}
+    70%   {transform: translateX(0px) translateY(-175px);}
+    80%   {transform: translateX(0px) translateY(-200px);}
+    90%   {transform: translateX(0px) translateY(-225px);}
+    100%  {transform: translateX(0px) translateY(-250px);}
 }
 
-.hand .fifth > :hover {
-    animation-name: fifth-hover-animation;
+.hand .fourth-picking {
+    animation-name: fourth-picking-animation;
     animation-duration: 0.2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
 
-@keyframes fifth-hover-animation {
-    0%    {top:0px;}
-    10%   {top:-5px;}
-    20%   {top:-10px;}
-    30%   {top:-15px;}
-    40%   {top:-20px;}
-    50%   {top:-25px;}
-    60%   {top:-30px;}
-    70%   {top:-35px;}
-    80%   {top:-40px;}
-    90%   {top:-45px;}
-    100%  {top:-50px;}
+@keyframes fourth-picking-animation {
+    0%    {transform: translateX(0px) translateY(0px)}
+    10%   {transform: translateX(-7px) translateY(-25px)}
+    20%   {transform: translateX(-15px) translateY(-50px);}
+    30%   {transform: translateX(-23px) translateY(-75px);}
+    40%   {transform: translateX(-31px) translateY(-100px);}
+    50%   {transform: translateX(-39px) translateY(-125px);}
+    60%   {transform: translateX(-47px) translateY(-150px);}
+    70%   {transform: translateX(-55px) translateY(-175px);}
+    80%   {transform: translateX(-63px) translateY(-200px);}
+    90%   {transform: translateX(-71px) translateY(-225px);}
+    100%  {transform: translateX(-79px) translateY(-250px);}
+}
+
+.hand .fifth-picking {
+    animation-name: fifth-picking-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes fifth-picking-animation {
+    0%    {transform: translateX(0px) translateY(0px)}
+    10%   {transform: translateX(-15px) translateY(-25px)}
+    20%   {transform: translateX(-31px) translateY(-50px);}
+    30%   {transform: translateX(-47px) translateY(-75px);}
+    40%   {transform: translateX(-63px) translateY(-100px);}
+    50%   {transform: translateX(-79px) translateY(-125px);}
+    60%   {transform: translateX(-95px) translateY(-150px);}
+    70%   {transform: translateX(-111px) translateY(-175px);}
+    80%   {transform: translateX(-127px) translateY(-200px);}
+    90%   {transform: translateX(-144px) translateY(-225px);}
+    100%  {transform: translateX(-159px) translateY(-250px);}
 }

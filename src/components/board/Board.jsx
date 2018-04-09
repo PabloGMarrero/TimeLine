@@ -4,7 +4,6 @@ import './Board.css';
 import { Card } from '../card/Card';
 import { Hand } from '../hand/Hand';
 import { Deck } from '../deck/Deck';
-import { Figure } from 'glamorous';
 
 export class Board extends Component {
 

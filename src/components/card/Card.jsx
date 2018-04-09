@@ -12,16 +12,25 @@ export class Card extends Component {
             description: props.description,
             image: props.image,
             year: props.year,
+            owner: props.owner,
             flipped: props.flipped,
-            showcaseMode: props.showcaseMode,
+            selected: props.selected
         }
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick() {
-        if (this.state.showcaseMode) {
-            this.setState({ flipped: !this.state.flipped });
-        }
+        // if (this.state.showcaseMode) {
+        //     this.setState({ flipped: !this.state.flipped });
+        // }
+    }
+
+    select = () => {
+        this.setState({ selected: true });
+    }
+
+    deselect = () => {
+        this.setState({ selected: false });
     }
 
     category = () => (
@@ -45,12 +54,12 @@ export class Card extends Component {
     render = () => (
         <div className="card-container">
             <div className={`card-view ${this.state.flipped ? 'flip' : ''}`} onClick={this.handleClick}>
-                <div className="card back" style={{ backgroundImage: 'url(' + this.state.image + ')' }}>
+                <div className={`card back ${this.state.selected && 'selected'}`} style={{ backgroundImage: 'url(' + this.state.image + ')' }}>
                     {this.category()}
                     {this.year()}
                     {this.description()}
                 </div>
-                <div className="card" style={{ backgroundImage: 'url(' + this.state.image + ')' }}>
+                <div className={`card ${this.state.selected && 'selected'}`} style={{ backgroundImage: 'url(' + this.state.image + ')' }}>
                     {this.category()}
                     {this.description()}
                 </div>
