@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import "./Card.css"
-import { CardSleeve } from '../card-sleeve/Card-Sleeve';
+import { CardSleeve } from '../card-sleeve/Card-Sleeve'
 
 export class Card extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             category: props.category,
             description: props.description,
@@ -16,21 +16,6 @@ export class Card extends Component {
             flipped: props.flipped,
             selected: props.selected
         }
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-        // if (this.state.showcaseMode) {
-        //     this.setState({ flipped: !this.state.flipped });
-        // }
-    }
-
-    select = () => {
-        this.setState({ selected: true });
-    }
-
-    deselect = () => {
-        this.setState({ selected: false });
     }
 
     category = () => (
@@ -53,7 +38,7 @@ export class Card extends Component {
 
     render = () => (
         <div className="card-container">
-            <div className={`card-view ${this.state.flipped ? 'flip' : ''}`} onClick={this.handleClick}>
+            <div className={`card-view ${this.state.flipped ? 'flip' : ''}`}>
                 <div className={`card back ${this.state.selected && 'selected'}`} style={{ backgroundImage: 'url(' + this.state.image + ')' }}>
                     {this.category()}
                     {this.year()}
@@ -65,6 +50,6 @@ export class Card extends Component {
                 </div>
             </div>
         </div>
-    );
+    )
 
 }

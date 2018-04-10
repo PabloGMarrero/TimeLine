@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import './Deck.css';
-import { CardSleeve } from '../card-sleeve/Card-Sleeve';
+import './Deck.css'
+import { CardSleeve } from '../card-sleeve/Card-Sleeve'
 
 export class Deck extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             cards: props.cards,
             cardsSize: props.cards.length,

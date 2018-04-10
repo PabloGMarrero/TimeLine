@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import './Card-Sleeve.css'
 
 export class CardSleeve extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
 
         }

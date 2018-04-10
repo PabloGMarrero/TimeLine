@@ -1,30 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import './Board.css';
-import { Card } from '../card/Card';
-import { Hand } from '../hand/Hand';
-import { Deck } from '../deck/Deck';
+import './Board.css'
+import { Card } from '../card/Card'
+import { Hand } from '../hand/Hand'
+import { Deck } from '../deck/Deck'
 
 export class Board extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             deck: props.deck,
             cardsOnPlay: [],
-            playerHand: props.playerHand,
-            enemyHand: props.enemyHand,
         }
     }
 
     render = () => (
         <div className="game-board">
             <div className="game-perspective">
-                <div className='enemy-hand-container'>
-                    <figure className='enemy-hand'>
-                        <Hand cards={this.state.enemyHand} owner={false}></Hand>
-                    </figure>
-                </div>
                 <div className="container">
                     <div className="board">
                         <section className="cards">
@@ -49,15 +42,9 @@ export class Board extends Component {
                     </div>
                 </div>
             </div>
-            <figure className='player-hand'>
-                <Hand cards={this.state.playerHand} owner={true}></Hand>
-            </figure>
             <div className="face">
                 <div className="bottom-face"></div>
             </div>
-            <audio controls autoPlay loop>
-                <source src="../assets/bgm/Background-Music.mp3" type="audio/ogg"></source>
-            </audio>
         </div>
     )
 

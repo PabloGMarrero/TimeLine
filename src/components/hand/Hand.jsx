@@ -1,38 +1,64 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import "./Hand.css"
-import { CardSleeve } from '../card-sleeve/Card-Sleeve';
+import { CardSleeve } from '../card-sleeve/Card-Sleeve'
+import { Card } from '../card/Card';
 
 export class Hand extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             cards: props.cards,
             owner: props.owner,
+            isZooming: false,
             firstCardIsSelected: false,
             secondCardIsSelected: false,
             thirdCardIsSelected: false,
             fourthCardIsSelected: false,
             fifthCardIsSelected: false,
         }
-        this.selectFirstCard = this.selectFirstCard.bind(this);
-        this.selectSecondCard = this.selectSecondCard.bind(this);
-        this.selectThirdCard = this.selectThirdCard.bind(this);
-        this.selectFourthCard = this.selectFourthCard.bind(this);
-        this.selectFifthCard = this.selectFifthCard.bind(this);
+        this.selectFirstCard = this.selectFirstCard.bind(this)
+        this.selectSecondCard = this.selectSecondCard.bind(this)
+        this.selectThirdCard = this.selectThirdCard.bind(this)
+        this.selectFourthCard = this.selectFourthCard.bind(this)
+        this.selectFifthCard = this.selectFifthCard.bind(this)
+        this.cancelCardSelection = this.cancelCardSelection.bind(this)
+        this.zoom = this.zoom.bind(this)
+    }
+
+    getFirstCard = () => this.state.cards[0]
+    getSecondCard = () => this.state.cards[1]
+    getThirdCard = () => this.state.cards[2]
+    getFourthCard = () => this.state.cards[3]
+    getFifthCard = () => this.state.cards[4]
+
+    zoom = () => this.setState({
+        isZooming: true
+    })
+
+    anyCardIsSelected = () => (this.state.firstCardIsSelected || this.state.secondCardIsSelected ||
+        this.state.thirdCardIsSelected || this.state.fourthCardIsSelected || this.state.fifthCardIsSelected)
+
+    cancelCardSelection() {
+        this.setState({
+            firstCardIsSelected: false,
+            secondCardIsSelected: false,
+            thirdCardIsSelected: false,
+            fourthCardIsSelected: false,
+            fifthCardIsSelected: false,
+        })
     }
 
     selectFirstCard() {
         if (this.state.owner) {
-
             this.setState({
                 firstCardIsSelected: true,
                 secondCardIsSelected: false,
                 thirdCardIsSelected: false,
                 fourthCardIsSelected: false,
                 fifthCardIsSelected: false,
-            });
+            })
         }
     }
 
@@ -44,7 +70,7 @@ export class Hand extends Component {
                 thirdCardIsSelected: false,
                 fourthCardIsSelected: false,
                 fifthCardIsSelected: false,
-            });
+            })
         }
     }
 
@@ -56,7 +82,7 @@ export class Hand extends Component {
                 thirdCardIsSelected: true,
                 fourthCardIsSelected: false,
                 fifthCardIsSelected: false,
-            });
+            })
         }
     }
 
@@ -68,7 +94,7 @@ export class Hand extends Component {
                 thirdCardIsSelected: false,
                 fourthCardIsSelected: true,
                 fifthCardIsSelected: false,
-            });
+            })
         }
     }
 
@@ -80,7 +106,7 @@ export class Hand extends Component {
                 thirdCardIsSelected: false,
                 fourthCardIsSelected: false,
                 fifthCardIsSelected: true,
-            });
+            })
         }
     }
 
@@ -108,12 +134,18 @@ export class Hand extends Component {
         <div>
             <div className="hand-container">
                 <section className="hand">
-                    <figure className={this.firstCard()} onClick={this.selectFirstCard}>{this.state.cards[0]}</figure>
-                    <figure className={this.secondCard()} onClick={this.selectSecondCard}>{this.state.cards[1]}</figure>
-                    <figure className={this.thirdCard()} onClick={this.selectThirdCard}>{this.state.cards[2]}</figure>
-                    <figure className={this.fourthCard()} onClick={this.selectFourthCard}>{this.state.cards[3]}</figure>
-                    <figure className={this.fifthCard()} onClick={this.selectFifthCard}>{this.state.cards[4]}</figure>
+                    <figure className={this.firstCard()} onClick={this.selectFirstCard}>{this.getFirstCard()}</figure>
+                    <figure className={this.secondCard()} onClick={this.selectSecondCard}>{this.getSecondCard()}</figure>
+                    <figure className={this.thirdCard()} onClick={this.selectThirdCard}>{this.getThirdCard()}</figure>
+                    <figure className={this.fourthCard()} onClick={this.selectFourthCard}>{this.getFourthCard()}</figure>
+                    <figure className={this.fifthCard()} onClick={this.selectFifthCard}>{this.getFifthCard()}</figure>
                 </section>
+                {this.anyCardIsSelected() &&
+                    (<section className="card-options">
+                        <figure className="play-card-option cursor"></figure>
+                        <figure className="look-card-option cursor" onClick={this.zoom}></figure>
+                        <figure className="cancel-option cursor" onClick={this.cancelCardSelection}></figure>
+                    </section>)}
             </div>
             <style>{`
                 .hand .first > :hover {

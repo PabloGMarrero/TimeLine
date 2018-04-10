@@ -1,15 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
+import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
+import { linkTo } from '@storybook/addon-links'
 
-import { Card } from '../components/card/Card';
-import { Hand } from '../components/hand/Hand';
-import { Deck } from '../components/deck/Deck';
-import { CardSleeve } from '../components/card-sleeve/Card-Sleeve';
-import { Board } from '../components/board/Board';
-import { RockPaperScissors } from '../components/rock-paper-scissors/rock-paper-scissors';
+import { Card } from '../components/card/Card'
+import { Hand } from '../components/hand/Hand'
+import { Deck } from '../components/deck/Deck'
+import { CardSleeve } from '../components/card-sleeve/Card-Sleeve'
+import { Board } from '../components/board/Board'
+import { RockPaperScissors } from '../components/rock-paper-scissors/rock-paper-scissors'
+import { Game } from '../components/game/Game'
 
 const beethoven =
     <Card
@@ -18,7 +19,7 @@ const beethoven =
         image={'../assets/images/cards/beethoven.jpg'}
         year={1770}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const monaLisa =
@@ -28,7 +29,7 @@ const monaLisa =
         image={'../assets/images/cards/mona-lisa.jpg'}
         year={1503}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const statueOfLiberty =
@@ -38,7 +39,7 @@ const statueOfLiberty =
         image={'../assets/images/cards/The-Statue-Of-Liberty.jpg'}
         year={1886}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const discoveryOfAmerica =
@@ -48,7 +49,7 @@ const discoveryOfAmerica =
         image={'../assets/images/cards/columbus-discovers-america.jpg'}
         year={1492}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const telephone =
@@ -58,7 +59,7 @@ const telephone =
         image={'../assets/images/cards/telephone.jpg'}
         year={1876}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const abrahamLincoln =
@@ -68,7 +69,7 @@ const abrahamLincoln =
         image={'../assets/images/cards/abraham-lincoln.jpg'}
         year={1809}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 
@@ -79,7 +80,7 @@ const adolfHitler =
         image={'../assets/images/cards/adolf-hitler.jpg'}
         year={1889}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const stephenHawking =
@@ -89,7 +90,7 @@ const stephenHawking =
         image={'../assets/images/cards/stephen-hawking-simon-kregar.jpg'}
         year={1942}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const jimiHendrix =
@@ -99,7 +100,7 @@ const jimiHendrix =
         image={'../assets/images/cards/jimi-hendrix.jpg'}
         year={1970}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const atari =
@@ -109,7 +110,7 @@ const atari =
         image={'../assets/images/cards/atari.jpg'}
         year={1972}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const cellularPhone =
@@ -119,7 +120,7 @@ const cellularPhone =
         image={'../assets/images/cards/cellular_phone.jpg'}
         year={1973}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const christTheRedeemer =
@@ -129,7 +130,7 @@ const christTheRedeemer =
         image={'../assets/images/cards/christ-the-redeemer.jpg'}
         year={1931}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const eiffelTower =
@@ -139,7 +140,7 @@ const eiffelTower =
         image={'../assets/images/cards/eiffel-tower.jpg'}
         year={1889}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const frenchRevolution =
@@ -149,7 +150,7 @@ const frenchRevolution =
         image={'../assets/images/cards/french-revolution.jpg'}
         year={1789}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const gramophone =
@@ -159,7 +160,7 @@ const gramophone =
         image={'../assets/images/cards/gramophone.jpg'}
         year={1887}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const obelisk =
@@ -169,7 +170,7 @@ const obelisk =
         image={'../assets/images/cards/obelisco.jpg'}
         year={1936}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const radio =
@@ -179,7 +180,7 @@ const radio =
         image={'../assets/images/cards/radio.jpg'}
         year={1897}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const tajMahal =
@@ -189,7 +190,7 @@ const tajMahal =
         image={'../assets/images/cards/taj-mahal.jpg'}
         year={1653}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const theExorcist =
@@ -199,7 +200,7 @@ const theExorcist =
         image={'../assets/images/cards/the_exorcist.jpg'}
         year={1973}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const theScream =
@@ -209,7 +210,7 @@ const theScream =
         image={'../assets/images/cards/the-scream.jpg'}
         year={1893}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const theThreeStooges =
@@ -219,7 +220,7 @@ const theThreeStooges =
         image={'../assets/images/cards/the-three_stooges.jpg'}
         year={1922}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const twinTowersAttack =
@@ -229,7 +230,7 @@ const twinTowersAttack =
         image={'../assets/images/cards/twin-towers-attack.jpg'}
         year={2001}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const worldWarTwo =
@@ -239,7 +240,7 @@ const worldWarTwo =
         image={'../assets/images/cards/world-war-II.jpg'}
         year={1939}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const zorro =
@@ -249,7 +250,7 @@ const zorro =
         image={'../assets/images/cards/zorro.jpg'}
         year={1957}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
 const titanic =
@@ -259,17 +260,17 @@ const titanic =
         image={'../assets/images/cards/titanic.jpg'}
         year={1912}
         flipped={false}
-        showcaseMode={true}>
+        selected={false}>
     </Card>
 
-const television = 
+const television =
     <Card
-        category = {'I'}
-        description = {'Television'}
-        image ={'../assets/images/cards/tv.jpg'}
-        year = {1926}
+        category={'I'}
+        description={'Television'}
+        image={'../assets/images/cards/tv.jpg'}
+        year={1926}
         flipped={false}
-        showcaseMode = {true}>
+        selected={false}>
     </Card>
 
 const cardsOnDeck = [
@@ -317,66 +318,68 @@ const enemyHandExample = [
     titanic,
 ]
 
-storiesOf('Cards', module).add('Ludwig van Beethoven', () => beethoven);
+storiesOf('Cards', module).add('Ludwig van Beethoven', () => beethoven)
 
-storiesOf('Cards', module).add('Mona Lisa', () => monaLisa);
+storiesOf('Cards', module).add('Mona Lisa', () => monaLisa)
 
-storiesOf('Cards', module).add('Statue of Liberty', () => statueOfLiberty);
+storiesOf('Cards', module).add('Statue of Liberty', () => statueOfLiberty)
 
-storiesOf('Cards', module).add('Discovery of America', () => discoveryOfAmerica);
+storiesOf('Cards', module).add('Discovery of America', () => discoveryOfAmerica)
 
-storiesOf('Cards', module).add('Telephone', () => telephone);
+storiesOf('Cards', module).add('Telephone', () => telephone)
 
-storiesOf('Cards', module).add('Abraham Lincoln', () => abrahamLincoln);
+storiesOf('Cards', module).add('Abraham Lincoln', () => abrahamLincoln)
 
-storiesOf('Cards', module).add('Adolf Hitler', () => adolfHitler);
+storiesOf('Cards', module).add('Adolf Hitler', () => adolfHitler)
 
-storiesOf('Cards', module).add('Stephen Hawking', () => stephenHawking);
+storiesOf('Cards', module).add('Stephen Hawking', () => stephenHawking)
 
-storiesOf('Cards', module).add('Jimi Hendrix', () => jimiHendrix);
+storiesOf('Cards', module).add('Jimi Hendrix', () => jimiHendrix)
 
-storiesOf('Cards', module).add('Atari', () => atari);
+storiesOf('Cards', module).add('Atari', () => atari)
 
-storiesOf('Cards', module).add('Cellular Phone', () => cellularPhone);
+storiesOf('Cards', module).add('Cellular Phone', () => cellularPhone)
 
-storiesOf('Cards', module).add('Christ The Redeemer', () => christTheRedeemer);
+storiesOf('Cards', module).add('Christ The Redeemer', () => christTheRedeemer)
 
-storiesOf('Cards', module).add('Eiffel Tower', () => eiffelTower);
+storiesOf('Cards', module).add('Eiffel Tower', () => eiffelTower)
 
-storiesOf('Cards', module).add('French Revolution', () => frenchRevolution);
+storiesOf('Cards', module).add('French Revolution', () => frenchRevolution)
 
-storiesOf('Cards', module).add('Gramophone', () => gramophone);
+storiesOf('Cards', module).add('Gramophone', () => gramophone)
 
-storiesOf('Cards', module).add('Obelisk, Argentine', () => obelisk);
+storiesOf('Cards', module).add('Obelisk, Argentine', () => obelisk)
 
-storiesOf('Cards', module).add('Commercial Radio', () => radio);
+storiesOf('Cards', module).add('Commercial Radio', () => radio)
 
-storiesOf('Cards', module).add('Taj Mahal', () => tajMahal);
+storiesOf('Cards', module).add('Taj Mahal', () => tajMahal)
 
-storiesOf('Cards', module).add('The Exorcist', () => theExorcist);
+storiesOf('Cards', module).add('The Exorcist', () => theExorcist)
 
-storiesOf('Cards', module).add('The Scream', () => theScream);
+storiesOf('Cards', module).add('The Scream', () => theScream)
 
-storiesOf('Cards', module).add('the Three Stooges', () => theThreeStooges);
+storiesOf('Cards', module).add('the Three Stooges', () => theThreeStooges)
 
-storiesOf('Cards', module).add('Twin Towers Attack', () => twinTowersAttack);
+storiesOf('Cards', module).add('Twin Towers Attack', () => twinTowersAttack)
 
-storiesOf('Cards', module).add('World War Two', () => worldWarTwo);
+storiesOf('Cards', module).add('World War Two', () => worldWarTwo)
 
-storiesOf('Cards', module).add('Zorro', () => zorro);
+storiesOf('Cards', module).add('Zorro', () => zorro)
 
-storiesOf('Cards', module).add('The sinking of the titanic', () => titanic);
+storiesOf('Cards', module).add('The sinking of the titanic', () => titanic)
 
 storiesOf('Cards', module).add('Television', () => television)
 
-storiesOf('Card Sleeve', module).add('Sleeve', () => (<CardSleeve></CardSleeve>));
+storiesOf('Card Sleeve', module).add('Sleeve', () => (<CardSleeve></CardSleeve>))
 
-storiesOf('Hand', module).add('Complete Player hand', () => (<Hand cards={playerHandExample} owner={true}></Hand>));
+storiesOf('Hand', module).add('Complete Player hand', () => (<Hand cards={playerHandExample} owner={true}></Hand>))
 
-storiesOf('Hand', module).add('Complete Enemy hand', () => (<Hand cards={enemyHandExample} owner={false}></Hand>));
+storiesOf('Hand', module).add('Complete Enemy hand', () => (<Hand cards={enemyHandExample} owner={false}></Hand>))
 
-storiesOf('Deck', module).add('Draw a card from deck', () => (<Deck cards={cardsOnDeck}></Deck>));
+storiesOf('Deck', module).add('Draw a card from deck', () => (<Deck cards={cardsOnDeck}></Deck>))
 
-storiesOf('Rock-Paper-Scissors', module).add('Rock-paper-scissors selection', () => <RockPaperScissors> </RockPaperScissors>);
+storiesOf('Rock-Paper-Scissors', module).add('Rock-paper-scissors selection', () => <RockPaperScissors> </RockPaperScissors>)
 
-storiesOf('Board', module).add('Game board', () => (<Board playerHand={playerHandExample} enemyHand={enemyHandExample} deck={cardsOnDeck}></Board>));
+storiesOf('Board', module).add('board', () => (<Board deck={cardsOnDeck}></Board>))
+
+storiesOf('Game', module).add('game board', () => <Game playerHand={playerHandExample} enemyHand={enemyHandExample} deck={cardsOnDeck}></Game>)

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import "./rock-paper-scissors.css"
 
 export class RockPaperScissors extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
         }
         this.handleClick = this.handleClick.bind(this);

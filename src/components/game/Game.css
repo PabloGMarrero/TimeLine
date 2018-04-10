@@ -1,0 +1,40 @@
+.game-container{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(40, 40, 40);
+}
+
+.game-body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    padding-left: 9%;
+    transform: scale(0.82)
+}
+
+.board-container {
+    transform: translateY(10px);
+}
+
+.bg-music {
+    display: none;
+}
+
+.player-hand {
+    position: absolute;
+    z-index: 2;
+    transform: scale(0.75) translateX(372px) translateY(715px);
+}
+
+.enemy-hand-container {
+    position: absolute;
+    transform: rotate3d(10,0,0,0deg) translateY(-1px);
+}
+
+.enemy-hand {
+    z-index: 2;
+    transform: scale(0.29) translateX(1426px) translateY(-50px);
+}

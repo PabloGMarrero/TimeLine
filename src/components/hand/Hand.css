@@ -11,10 +11,72 @@
     justify-content: center;
     flex-wrap: nowrap;
     transition: all ease-in-out;
+    user-select: none;
     margin-left: 20%;
 }
 
-.hand .cursor {
+.card-options {
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    user-select: none;
+    transform: translateY(-230px) translateX(420px) scale(0.9);
+}
+
+.play-card-option {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    background-image: url("../../../public/assets/images/play-card-icon.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid green;
+    border-style: outset;
+    border-radius: 3px;
+    transform: translateY(-50px);
+    user-select: none;
+    background-color: green;
+    box-shadow: 5px 7px 0px 0px rgba(0, 0, 0, 0.507);
+}
+
+.look-card-option {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    background-image: url("../../../public/assets/images/search-loop-icon.png");
+    background-repeat: no-repeat;
+    background-size: 80% 80%;
+    background-position: 5px;
+    border: 1px solid  rgb(184, 184, 0);
+    border-style: outset;
+    border-radius: 3px;
+    transform: translateY(0px);
+    user-select: none;
+    background-color: rgb(184, 184, 0);
+    box-shadow: 5px 7px 0px 0px rgba(0, 0, 0, 0.507);
+}
+
+.cancel-option {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    background-image: url("../../../public/assets/images/cancel-icon.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid rgb(201, 0, 0);
+    border-style: outset;
+    border-radius: 3px;
+    transform: translateY(50px);
+    background-color: rgb(201, 0, 0);
+    box-shadow: 5px 7px 0px 0px rgba(0, 0, 0, 0.507);
+}
+
+.hand-container .cursor {
     cursor: pointer;
 }
 
@@ -103,16 +165,16 @@
 
 @keyframes first-picking-animation {
     0%    {transform: translateX(0px) translateY(0px)}
-    10%   {transform: translateX(17px) translateY(-25px)}
-    20%   {transform: translateX(33px) translateY(-50px);}
-    30%   {transform: translateX(49px) translateY(-75px);}
-    40%   {transform: translateX(65px) translateY(-100px);}
-    50%   {transform: translateX(81px) translateY(-125px);}
-    60%   {transform: translateX(97px) translateY(-150px);}
-    70%   {transform: translateX(113px) translateY(-175px);}
-    80%   {transform: translateX(129px) translateY(-200px);}
-    90%   {transform: translateX(145px) translateY(-225px);}
-    100%  {transform: translateX(161px) translateY(-250px);}
+    10%   {transform: translateX(17px) translateY(-55px)}
+    20%   {transform: translateX(33px) translateY(-80px);}
+    30%   {transform: translateX(49px) translateY(-105px);}
+    40%   {transform: translateX(65px) translateY(-130px);}
+    50%   {transform: translateX(81px) translateY(-155px);}
+    60%   {transform: translateX(97px) translateY(-180px);}
+    70%   {transform: translateX(113px) translateY(-205px);}
+    80%   {transform: translateX(129px) translateY(-230px);}
+    90%   {transform: translateX(145px) translateY(-255px);}
+    100%  {transform: translateX(161px) translateY(-280px);}
 }
 
 .hand .second-picking {
@@ -124,16 +186,16 @@
 
 @keyframes second-picking-animation {
     0%    {transform: translateX(0px) translateY(0px)}
-    10%   {transform: translateX(9px) translateY(-25px)}
-    20%   {transform: translateX(17px) translateY(-50px);}
-    30%   {transform: translateX(25px) translateY(-75px);}
-    40%   {transform: translateX(33px) translateY(-100px);}
-    50%   {transform: translateX(41px) translateY(-125px);}
-    60%   {transform: translateX(47px) translateY(-150px);}
-    70%   {transform: translateX(57px) translateY(-175px);}
-    80%   {transform: translateX(65px) translateY(-200px);}
-    90%   {transform: translateX(73px) translateY(-225px);}
-    100%  {transform: translateX(81px) translateY(-250px);}
+    10%   {transform: translateX(9px) translateY(-55px)}
+    20%   {transform: translateX(17px) translateY(-80px);}
+    30%   {transform: translateX(25px) translateY(-105px);}
+    40%   {transform: translateX(33px) translateY(-130px);}
+    50%   {transform: translateX(41px) translateY(-155px);}
+    60%   {transform: translateX(47px) translateY(-180px);}
+    70%   {transform: translateX(57px) translateY(-205px);}
+    80%   {transform: translateX(65px) translateY(-230px);}
+    90%   {transform: translateX(73px) translateY(-255px);}
+    100%  {transform: translateX(81px) translateY(-280px);}
 }
 
 .hand .third-picking {
@@ -145,16 +207,16 @@
 
 @keyframes third-picking-animation {
     0%    {transform: translateX(0px) translateY(0px)}
-    10%   {transform: translateX(0px) translateY(-25px)}
-    20%   {transform: translateX(0px) translateY(-50px);}
-    30%   {transform: translateX(0px) translateY(-75px);}
-    40%   {transform: translateX(0px) translateY(-100px);}
-    50%   {transform: translateX(0px) translateY(-125px);}
-    60%   {transform: translateX(0px) translateY(-150px);}
-    70%   {transform: translateX(0px) translateY(-175px);}
-    80%   {transform: translateX(0px) translateY(-200px);}
-    90%   {transform: translateX(0px) translateY(-225px);}
-    100%  {transform: translateX(0px) translateY(-250px);}
+    10%   {transform: translateX(0px) translateY(-55px)}
+    20%   {transform: translateX(0px) translateY(-80px);}
+    30%   {transform: translateX(0px) translateY(-105px);}
+    40%   {transform: translateX(0px) translateY(-130px);}
+    50%   {transform: translateX(0px) translateY(-155px);}
+    60%   {transform: translateX(0px) translateY(-180px);}
+    70%   {transform: translateX(0px) translateY(-205px);}
+    80%   {transform: translateX(0px) translateY(-230px);}
+    90%   {transform: translateX(0px) translateY(-255px);}
+    100%  {transform: translateX(0px) translateY(-280px);}
 }
 
 .hand .fourth-picking {
@@ -166,16 +228,16 @@
 
 @keyframes fourth-picking-animation {
     0%    {transform: translateX(0px) translateY(0px)}
-    10%   {transform: translateX(-7px) translateY(-25px)}
-    20%   {transform: translateX(-15px) translateY(-50px);}
-    30%   {transform: translateX(-23px) translateY(-75px);}
-    40%   {transform: translateX(-31px) translateY(-100px);}
-    50%   {transform: translateX(-39px) translateY(-125px);}
-    60%   {transform: translateX(-47px) translateY(-150px);}
-    70%   {transform: translateX(-55px) translateY(-175px);}
-    80%   {transform: translateX(-63px) translateY(-200px);}
-    90%   {transform: translateX(-71px) translateY(-225px);}
-    100%  {transform: translateX(-79px) translateY(-250px);}
+    10%   {transform: translateX(-7px) translateY(-55px)}
+    20%   {transform: translateX(-15px) translateY(-80px);}
+    30%   {transform: translateX(-23px) translateY(-105px);}
+    40%   {transform: translateX(-31px) translateY(-130px);}
+    50%   {transform: translateX(-39px) translateY(-155px);}
+    60%   {transform: translateX(-47px) translateY(-180px);}
+    70%   {transform: translateX(-55px) translateY(-205px);}
+    80%   {transform: translateX(-63px) translateY(-230px);}
+    90%   {transform: translateX(-71px) translateY(-255px);}
+    100%  {transform: translateX(-79px) translateY(-280px);}
 }
 
 .hand .fifth-picking {
@@ -188,14 +250,14 @@
 
 @keyframes fifth-picking-animation {
     0%    {transform: translateX(0px) translateY(0px)}
-    10%   {transform: translateX(-15px) translateY(-25px)}
-    20%   {transform: translateX(-31px) translateY(-50px);}
-    30%   {transform: translateX(-47px) translateY(-75px);}
-    40%   {transform: translateX(-63px) translateY(-100px);}
-    50%   {transform: translateX(-79px) translateY(-125px);}
-    60%   {transform: translateX(-95px) translateY(-150px);}
-    70%   {transform: translateX(-111px) translateY(-175px);}
-    80%   {transform: translateX(-127px) translateY(-200px);}
-    90%   {transform: translateX(-144px) translateY(-225px);}
-    100%  {transform: translateX(-159px) translateY(-250px);}
+    10%   {transform: translateX(-15px) translateY(-55px)}
+    20%   {transform: translateX(-31px) translateY(-80px);}
+    30%   {transform: translateX(-47px) translateY(-105px);}
+    40%   {transform: translateX(-63px) translateY(-130px);}
+    50%   {transform: translateX(-79px) translateY(-155px);}
+    60%   {transform: translateX(-95px) translateY(-180px);}
+    70%   {transform: translateX(-111px) translateY(-205px);}
+    80%   {transform: translateX(-127px) translateY(-230px);}
+    90%   {transform: translateX(-144px) translateY(-255px);}
+    100%  {transform: translateX(-159px) translateY(-280px);}
 }
