@@ -23,6 +23,7 @@
     flex-wrap: nowrap;
     user-select: none;
     transform: translateY(-230px) translateX(420px) scale(0.9);
+    cursor: pointer;
 }
 
 .play-card-option {
@@ -76,38 +77,39 @@
     box-shadow: 5px 7px 0px 0px rgba(0, 0, 0, 0.507);
 }
 
-.hand-container .cursor {
-    cursor: pointer;
-}
-
 .hand .first {
     order: 0;
     z-index: 0;
     transform: translateX(-100px) translateY(70px) rotateZ(-15deg);
+    cursor: pointer;
 }
 
 .hand .second {
     order: 1;
     z-index: 1;
     transform: translateX(-60px) translateY(30px) rotateZ(-10deg);
+    cursor: pointer;
 }
 
 .hand .third {
     order: 2;
     z-index: 2;
     transform: translateX(0px) translateY(0px) rotateZ(0deg);
+    cursor: pointer;
 }
 
 .hand .fourth {
     order: 3;
     z-index: 3;
     transform: translateX(60px) translateY(0px) rotateZ(10deg);
+    cursor: pointer;
 }
 
 .hand .fifth {
     order: 4;
     z-index: 4;
     transform: translateX(100px) translateY(20px) rotateZ(15deg);
+    cursor: pointer;
 }
 
 .hand .enemy-first {
@@ -260,4 +262,18 @@
     80%   {transform: translateX(-127px) translateY(-230px);}
     90%   {transform: translateX(-144px) translateY(-255px);}
     100%  {transform: translateX(-159px) translateY(-280px);}
+}
+
+.hand .card-in-hand .pickable > :hover {
+    animation-name: hover-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.hand .card-in-hand :not(.pickable) > :hover {
+    animation-name: hover-animation;
+    animation-duration: 0s;
+    animation-iteration-count: 0;
+    animation-fill-mode: forwards;
 }

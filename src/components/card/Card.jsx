@@ -1,55 +1,36 @@
-import React, { Component } from 'react'
+import React from 'react'
+import classNames from 'classnames'
 
+import { CardSleeve } from '../card-sleeve/Card-Sleeve';
 import "./Card.css"
-import { CardSleeve } from '../card-sleeve/Card-Sleeve'
 
-export class Card extends Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            category: props.category,
-            description: props.description,
-            image: props.image,
-            year: props.year,
-            owner: props.owner,
-            flipped: props.flipped,
-            selected: props.selected
-        }
-    }
-
-    category = () => (
-        <div className="category">
-            <p>{this.state.category}</p>
-        </div>
-    )
-
-    year = () => (
-        <div className="year">
-            <p>{this.state.year}</p>
-        </div>
-    )
-
-    description = () => (
-        <div className="description">
-            <p>{this.state.description}</p>
-        </div>
-    )
-
-    render = () => (
-        <div className="card-container">
-            <div className={`card-view ${this.state.flipped ? 'flip' : ''}`}>
-                <div className={`card back ${this.state.selected && 'selected'}`} style={{ backgroundImage: 'url(' + this.state.image + ')' }}>
-                    {this.category()}
-                    {this.year()}
-                    {this.description()}
-                </div>
-                <div className={`card ${this.state.selected && 'selected'}`} style={{ backgroundImage: 'url(' + this.state.image + ')' }}>
-                    {this.category()}
-                    {this.description()}
-                </div>
-            </div>
-        </div>
-    )
-
+const view = {
+    front: false,
+    back: true
 }
+
+const side = (back, category, description, year, image, selected) =>
+    <div className={classNames('card', { back }, { selected })} style={{ backgroundImage: `url('${image}')` }}>
+        <div className="category">
+            <p>{category}</p>
+        </div>
+        {back &&
+            <div className="year">
+                <p>{year}</p>
+            </div>}
+        <div className="description">
+            <p>{description}</p>
+        </div>
+    </div>
+
+const card = ({ category, description, year, image, flipped, selected }) =>
+    <div className={classNames('card-view', { flipped })}>
+        {side(view.back, category, description, year, image, selected)}
+        {side(view.front, category, description, year, image, selected)}
+    </div>
+
+export const Card = (props) =>
+    <div className="card-container">
+        {props.visible ? card(props) : <CardSleeve></CardSleeve>}
+    </div>
+

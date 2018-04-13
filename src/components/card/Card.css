@@ -90,7 +90,7 @@
     font-family: 'Herr Von Muellerhoff', cursive;
 }
 
-.flip {
+.flipped {
     transform: rotateY(180deg);
 }
 

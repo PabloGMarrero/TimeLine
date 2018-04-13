@@ -11,7 +11,7 @@ export class Board extends Component {
         super(props)
         this.state = {
             deck: props.deck,
-            cardsOnPlay: [],
+            cardsOnPlay: props.cardsOnPlay,
         }
     }
 
@@ -22,7 +22,7 @@ export class Board extends Component {
                     <div className="board">
                         <section className="cards">
                             <figure className='in-game-card'>
-                                <Card
+                                {/* <Card
                                     category={'♫'}
                                     description={'Ludwig van Beethoven'}
                                     image={'../assets/images/cards/beethoven.jpg'}
@@ -33,7 +33,7 @@ export class Board extends Component {
                                     onHand={false}
                                     onBoard={false}
                                     onEnemyPossession={false}>
-                                </Card>
+                                </Card> */}
                             </figure>
                             <figure className='deck'>
                                 <Deck cards={this.state.deck}></Deck>
