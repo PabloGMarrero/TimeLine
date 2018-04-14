@@ -272,8 +272,5 @@
 }
 
 .hand .card-in-hand :not(.pickable) > :hover {
-    animation-name: hover-animation;
-    animation-duration: 0s;
-    animation-iteration-count: 0;
-    animation-fill-mode: forwards;
+    animation-name: hover-no;
 }

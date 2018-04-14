@@ -250,13 +250,10 @@ export const cards = () => [
     television,
 ]
 
-const loadStateOnCard = ({ category, description, image, year }) => (
-    {
+const loadStateOnCard = (props) => (
+    {   
         key: generateCardKey(),
-        category,
-        description,
-        image,
-        year,
+        ...props,
         flipped: false,
         selected: false,
         visible: true

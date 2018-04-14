@@ -15,9 +15,10 @@ export class Deck extends Component {
             <div className="deck-container">
                 <section className="deck">
                     {this.props.cards.map(card =>
-                        <div style={{ transform: `translateX(${(this.state.xOffset--)}px)` }}>
-                            <Card {...card} flipped={true} visible={false}></Card>
-                        </div>)}
+                        //<div style={{ transform: `translateX(${(this.state.xOffset--)}px)` }}>
+                          //  <Card {...card} flipped={true} visible={false}></Card>
+                        //</div>)}
+                        <Card {...card} flipped={true} visible={false}></Card>)}
                 </section>
             </div>
         </div>
