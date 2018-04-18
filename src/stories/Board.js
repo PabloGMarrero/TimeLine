@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { linkTo } from '@storybook/addon-links'
 
-import * as cardsModule from '../cards/cards'
+import * as cardsModule from '../model/cards/cards'
 import { Board } from '../components/board/Board';
 
 const cardsOnDeck = cardsModule.cards()

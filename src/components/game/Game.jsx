@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Game.css'
 
-import { loadDeck } from '../../cards/cards'
+import { loadDeck } from '../../model/cards/cards'
 import { Board } from '../board/Board'
 import { Hand } from '../hand/Hand'
 import { Card } from '../card/Card';
