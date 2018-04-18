@@ -14,7 +14,7 @@ export class Game extends Component {
         cardsOnPlay: [],
         cardsRemovedFromPlay: [],
         playerHand: [],
-        enemyHand: [],
+        enemyHand: [], 
         selectedCard: null,
     }
 
