@@ -32,7 +32,8 @@ const cardOnHand = (card, { playerHandClass, enemyHandClass, selectedClass }, se
     </figure>
 )
 
-export const Hand = ({ firstCard, secondCard, thirdCard, fourthCard, fifthCard, selectedCard, selectCardHandler, cancelSelectionHandler }) =>
+export const Hand = ({ firstCard, secondCard, thirdCard, fourthCard, fifthCard,
+    selectedCard, selectCardHandler, cancelSelectionHandler, showPlacesChoicesHandler }) =>
     <div className="hand-container">
         <section className="hand">
             {cardOnHand(firstCard, handProps().firstCardProps, selectedCard, selectCardHandler)}
@@ -43,8 +44,7 @@ export const Hand = ({ firstCard, secondCard, thirdCard, fourthCard, fifthCard, 
         </section>
         {selectedCard &&
             <section className="card-options">
-                <figure className="play-card-option"></figure>
-                <figure className="look-card-option"></figure>
+                <figure className="play-card-option" onClick={showPlacesChoicesHandler}></figure>
                 <figure className="cancel-option" onClick={() => cancelSelectionHandler(selectedCard)}></figure>
             </section>}
     </div>

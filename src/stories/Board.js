@@ -9,4 +9,15 @@ import { Board } from '../components/board/Board';
 
 const cardsOnDeck = cardsModule.cards()
 
-storiesOf('Board', module).add('board', () => (<Board deck={cardsOnDeck}></Board>))
+storiesOf('Board', module).add('Board view', () => (<Board
+    deck={cardsOnDeck}
+    cardsOnPlay={[
+        { card: cardsModule.abrahamLincoln, index: 0 },
+        { card: cardsModule.atari, index: 1 },
+        { card: cardsModule.christTheRedeemer, index: 2 },
+        { card: cardsModule.frenchRevolution, index: 3 },
+        { card: cardsModule.statueOfLiberty, index: 4 },
+        { card: cardsModule.telephone, index: 5 },
+    ]}
+    isShowingCardChoices={false}
+    placeCardHandler={(index) => console.log("handled")}></Board>))

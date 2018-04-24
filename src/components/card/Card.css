@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff');
 
 .card-container {
-    position: absolute;
+    position: fixed;
     height: 240px;
     width: 172px;
     perspective: 1000px;

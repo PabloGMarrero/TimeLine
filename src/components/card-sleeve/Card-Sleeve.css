@@ -1,5 +1,5 @@
 .sleeve-container {
-    position: absolute;
+    position: fixed;
     height: 240px;
     width: 172px;
     perspective: 1000px;

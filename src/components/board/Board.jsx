@@ -1,51 +1,34 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import './Board.css'
-import { Card } from '../card/Card'
-import { Hand } from '../hand/Hand'
 import { Deck } from '../deck/Deck'
+import { BoardSlot } from '../board-slot/Board-Slot';
+import * as cardsModule from '../../model/cards/cards'
 
-export class Board extends Component {
+const cardsOnBoard = (cardsOnPlay, isShowingCardChoices, placeCardHandler, selectedCard) =>
+    cardsOnPlay.map(cardSlot =>
+        <figure className={`board-slot-${cardSlot.index}`}>
+            <BoardSlot cardSlot={cardSlot} isShowingCardChoices={isShowingCardChoices}
+                placeCardHandler={placeCardHandler} selectedCard={selectedCard}></BoardSlot>
+        </figure>)
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            deck: props.deck,
-            cardsOnPlay: props.cardsOnPlay,
-        }
-    }
-
-    render = () => (
-        <div className="game-board">
-            <div className="game-perspective">
-                <div className="container">
-                    <div className="board">
-                        <section className="cards">
-                            <figure className='in-game-card'>
-                                {/* <Card
-                                    category={'♫'}
-                                    description={'Ludwig van Beethoven'}
-                                    image={'../assets/images/cards/beethoven.jpg'}
-                                    year={1770}
-                                    canBeFlipped={true}
-                                    flipped={false}
-                                    onDeck={false}
-                                    onHand={false}
-                                    onBoard={false}
-                                    onEnemyPossession={false}>
-                                </Card> */}
-                            </figure>
-                            <figure className='deck'>
-                                <Deck cards={this.state.deck}></Deck>
-                            </figure>
+export const Board = ({ deck, cardsOnPlay, isShowingCardChoices, placeCardHandler, selectedCard }) =>
+    <div className="game-board">
+        <div className="game-perspective">
+            <div className="container">
+                <div className="board">
+                    <div className="cards">
+                        <section className="in-game-cards">
+                            {cardsOnBoard(cardsOnPlay, isShowingCardChoices, placeCardHandler, selectedCard)}
                         </section>
+                        <div className='deck'>
+                            <Deck cards={deck}></Deck>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="face">
-                <div className="bottom-face"></div>
-            </div>
         </div>
-    )
-
-}
+        <div className="face">
+            <div className="bottom-face"></div>
+        </div>
+    </div>

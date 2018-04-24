@@ -6,4 +6,4 @@ import { linkTo } from '@storybook/addon-links'
 
 import { Game } from '../components/game/Game';
 
-storiesOf('Game', module).add('game board', () => <Game></Game>)
+storiesOf('Game', module).add('Gameplay', () => <Game></Game>)

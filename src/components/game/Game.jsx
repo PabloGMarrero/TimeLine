@@ -5,17 +5,32 @@ import { loadDeck } from '../../model/cards/cards'
 import { Board } from '../board/Board'
 import { Hand } from '../hand/Hand'
 import { Card } from '../card/Card';
-import * as shuffle from 'shuffle-array'
+import shuffle from 'shuffle-array'
+import { setTimeout } from 'core-js';
 
 export class Game extends Component {
 
     state = {
         deck: loadDeck(),
-        cardsOnPlay: [],
+        cardsOnBoard:
+            [
+                { card: undefined, index: 0 }, { card: undefined, index: 1 },
+                { card: undefined, index: 2 }, { card: undefined, index: 3 },
+                { card: undefined, index: 4 }, { card: undefined, index: 5 }
+            ],
         cardsRemovedFromPlay: [],
-        playerHand: [],
-        enemyHand: [], 
+        playerHand:
+            [
+                { card: undefined, index: 0 }, { card: undefined, index: 1 },
+                { card: undefined, index: 2 }, { card: undefined, index: 3 }, { card: undefined, index: 4 }
+            ],
+        enemyHand:
+            [
+                { card: undefined, index: 0 }, { card: undefined, index: 1 },
+                { card: undefined, index: 2 }, { card: undefined, index: 3 }, { card: undefined, index: 4 }
+            ],
         selectedCard: null,
+        isShowingCardChoices: false,
     }
 
     updateDeck = (deck) => this.setState({ deck })
@@ -24,34 +39,18 @@ export class Game extends Component {
 
     updateEnemyHand = (enemyHand) => this.setState({ enemyHand })
 
+    updateCardsOnBoard = (cardsOnBoard) => this.setState({ cardsOnBoard })
+
+    showCardChoices = () => this.setState({ isShowingCardChoices: true })
+
+    hideCardChoices = () => this.setState({ isShowingCardChoices: false })
+
     shuffleDeck = () => this.updateDeck(shuffle(this.state.deck))
 
-    putCardInHand(card, hand) {
-        var found = false;
-        if (!found && hand[0] === undefined) {
-            hand[0] = card
-            found = true
-        }
-        if (!found && hand[1] === undefined) {
-            hand[1] = card
-            found = true
-        }
-        if (!found && hand[2] === undefined) {
-            hand[2] = card
-            found = true
-        }
-        if (!found && hand[3] === undefined) {
-            hand[3] = card
-            found = true
-        }
-        if (!found && hand[4] === undefined) {
-            hand[4] = card
-            found = true
-        }
-    }
+    pickCardFromDeck = () => this.state.deck.pop()
 
     drawACardFromDeck(hand, owner) {
-        const card = this.state.deck.pop()
+        const card = this.pickCardFromDeck()
         card.owner = owner;
         this.putCardInHand(card, hand);
         this.updateDeck(this.state.deck)
@@ -60,20 +59,42 @@ export class Game extends Component {
 
     playerDrawACardFromDeck = () => this.drawACardFromDeck(this.state.playerHand, true)
 
+    enemyDrawACardFromDeck = () => this.drawACardFromDeck(this.state.enemyHand, false)
+
     playerDrawInitialsFiveCards() {
-        this.playerDrawACardFromDeck()
-        this.playerDrawACardFromDeck()
-        this.playerDrawACardFromDeck()
-        this.playerDrawACardFromDeck()
-        this.playerDrawACardFromDeck()
+        setTimeout(() => {
+            this.playerDrawACardFromDeck()
+        }, 300);
+        setTimeout(() => {
+            this.playerDrawACardFromDeck()
+        }, 900);
+        setTimeout(() => {
+            this.playerDrawACardFromDeck()
+        }, 1500);
+        setTimeout(() => {
+            this.playerDrawACardFromDeck()
+        }, 2100);
+        setTimeout(() => {
+            this.playerDrawACardFromDeck()
+        }, 2700);
     }
 
     enemyDrawInitialsFiveCards() {
-        this.enemyDrawACardFromDeck()
-        this.enemyDrawACardFromDeck()
-        this.enemyDrawACardFromDeck()
-        this.enemyDrawACardFromDeck()
-        this.enemyDrawACardFromDeck()
+        setTimeout(() => {
+            this.enemyDrawACardFromDeck()
+        }, 600);
+        setTimeout(() => {
+            this.enemyDrawACardFromDeck()
+        }, 1200);
+        setTimeout(() => {
+            this.enemyDrawACardFromDeck()
+        }, 1800);
+        setTimeout(() => {
+            this.enemyDrawACardFromDeck()
+        }, 2400);
+        setTimeout(() => {
+            this.enemyDrawACardFromDeck()
+        }, 3000);
     }
 
     playersDrawInitialFiveCards() {
@@ -82,49 +103,103 @@ export class Game extends Component {
     }
 
     selectedCard = (selectedCard) => this.setState({ selectedCard })
+
     cancelCardSelection = () => this.setState({ selectedCard: null })
 
-    enemyDrawACardFromDeck = () => this.drawACardFromDeck(this.state.enemyHand, false)
+    getSlotsWithCardsInHand = (hand) => hand.filter(slot => slot.card !== undefined)
 
     clearPreviuslySelectedCard() {
         if (this.state.selectedCard) {
             this.state.selectedCard.selected = false
         }
-        this.cancelCardSelection()
     }
 
-    selectCardOnHand(selectedCard) {
+    updateCardSelectionState(card, isSelected) {
         this.clearPreviuslySelectedCard()
-        this.state.playerHand.find(card => card.key === selectedCard.key).selected = true
-        this.selectedCard(selectedCard)
+        const updatedSlot = this.getSlotsWithCardsInHand(this.state.playerHand).find(slot => slot.card.key === card.key)
+        updatedSlot.card.selected = isSelected
+        this.updatePlayerHand(this.state.playerHand)
+        if (isSelected) {
+            this.selectedCard(card)
+        }
+        else {
+            this.cancelCardSelection()
+        }
+        this.hideCardChoices()
     }
 
-    cancelCardSelectionOnHand(selectedCard) {
-        this.state.playerHand.find(card => card.key === selectedCard.key).selected = false
-        this.cancelCardSelection()
+    selectCardOnHand = (card) => this.updateCardSelectionState(card, true)
+
+    cancelCardSelectionOnHand = (card) => this.updateCardSelectionState(card, false)
+
+    putCardInHand(card, hand) {
+        hand.find(slot => slot.card === undefined).card = card
     }
+
+    removeCardInHand(card, hand) {
+        const handSlot = this.getSlotsWithCardsInHand(hand).find(slot => slot.card.key === card.key)
+        if (handSlot) {
+            hand[handSlot.index].card = undefined
+        }
+    }
+
+    revealCard(card) {
+        setTimeout(() => {
+            card.flipped = true
+            this.updateCardsOnBoard(this.state.cardsOnBoard)
+        }, 1000);
+    }
+
+    playInitialCard() {
+        const card = this.pickCardFromDeck()
+        setTimeout(() => {
+            this.playCard(3, card, true)
+            this.updateDeck(this.state.deck)
+        }, 3300);
+    }
+
+    playCard(index, card, initial = false) {
+        if (initial || this.state.isShowingCardChoices) {
+            this.clearPreviuslySelectedCard()
+            this.state.cardsOnBoard[index] = { card, index }
+            this.updateCardsOnBoard(this.state.cardsOnBoard)
+            this.removeCardInHand(card, this.state.playerHand)
+            this.cancelCardSelection()
+            this.hideCardChoices()
+            this.revealCard(card)
+        }
+    }
+
+    playSelectedCard = (index) => this.playCard(index, this.state.selectedCard)
 
     componentDidMount() {
         this.shuffleDeck()
         this.playersDrawInitialFiveCards()
+        this.playInitialCard()
     }
 
     hand = (hand) =>
         <Hand
-            firstCard={hand[0]}
-            secondCard={hand[1]}
-            thirdCard={hand[2]}
-            fourthCard={hand[3]}
-            fifthCard={hand[4]}
+            firstCard={hand[0].card}
+            secondCard={hand[1].card}
+            thirdCard={hand[2].card}
+            fourthCard={hand[3].card}
+            fifthCard={hand[4].card}
             selectedCard={this.state.selectedCard}
-            selectCardHandler={this.selectCardOnHand.bind(this)}
-            cancelSelectionHandler={this.cancelCardSelectionOnHand.bind(this)}>
+            selectCardHandler={this.selectCardOnHand}
+            cancelSelectionHandler={this.cancelCardSelectionOnHand}
+            showPlacesChoicesHandler={this.showCardChoices}>
         </Hand>
 
-    board = () => <Board deck={this.state.deck} cardsOnPlay={this.state.cardsOnPlay}></Board>
+    board = () => <Board
+        deck={this.state.deck}
+        cardsOnPlay={this.state.cardsOnBoard}
+        isShowingCardChoices={this.state.isShowingCardChoices}
+        placeCardHandler={this.playSelectedCard}
+        selectedCard={this.state.selectedCard}>
+    </Board >
 
-
-    render = () => (
+    render = () =>
         <div className="game-container">
             <div className="game-body">
                 <section className="enemy-hand-container">
@@ -143,6 +218,5 @@ export class Game extends Component {
                 <source src="../assets/bgm/Background-Music.mp3" type="audio/ogg"></source>
             </audio>
         </div>
-    )
 
 }

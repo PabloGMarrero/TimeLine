@@ -9,4 +9,4 @@ import { Deck } from '../components/deck/Deck';
 
 const cardsOnDeck = cardsModule.cards()
 
-storiesOf('Deck', module).add('Draw a card from deck', () => (<Deck cards={cardsOnDeck}></Deck>))
+storiesOf('Deck', module).add('Deck view', () => (<Deck cards={cardsOnDeck}></Deck>))
