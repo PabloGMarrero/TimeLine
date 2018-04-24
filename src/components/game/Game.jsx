@@ -5,30 +5,20 @@ import { loadDeck } from '../../model/cards/cards'
 import { Board } from '../board/Board'
 import { Hand } from '../hand/Hand'
 import { Card } from '../card/Card';
-import shuffle from 'shuffle-array'
 import { setTimeout } from 'core-js';
+import {hand, getSlotsWithCardsInHand, putCardInHand, getCardOnHandWithIndex, removeCardInHand, getSlotWithCard} from '../../model/hands/hands'
+import {pickCardFromDeck, shuffleDeck} from '../../model/deck/deck'
+import {getCardFromSlot} from '../../model/slot/slot'
+import {cardsBoard, putCardInBoardAtIndex} from '../../model/board/board'
 
 export class Game extends Component {
 
     state = {
         deck: loadDeck(),
-        cardsOnBoard:
-            [
-                { card: undefined, index: 0 }, { card: undefined, index: 1 },
-                { card: undefined, index: 2 }, { card: undefined, index: 3 },
-                { card: undefined, index: 4 }, { card: undefined, index: 5 }
-            ],
+        cardsOnBoard: cardsBoard(6),
         cardsRemovedFromPlay: [],
-        playerHand:
-            [
-                { card: undefined, index: 0 }, { card: undefined, index: 1 },
-                { card: undefined, index: 2 }, { card: undefined, index: 3 }, { card: undefined, index: 4 }
-            ],
-        enemyHand:
-            [
-                { card: undefined, index: 0 }, { card: undefined, index: 1 },
-                { card: undefined, index: 2 }, { card: undefined, index: 3 }, { card: undefined, index: 4 }
-            ],
+        playerHand: hand(5),
+        enemyHand: hand(5),
         selectedCard: null,
         isShowingCardChoices: false,
     }
@@ -45,14 +35,12 @@ export class Game extends Component {
 
     hideCardChoices = () => this.setState({ isShowingCardChoices: false })
 
-    shuffleDeck = () => this.updateDeck(shuffle(this.state.deck))
-
-    pickCardFromDeck = () => this.state.deck.pop()
+    updateDeckAtShuffle =  () => this.updateDeck(shuffleDeck((this.state.deck)))
 
     drawACardFromDeck(hand, owner) {
-        const card = this.pickCardFromDeck()
+        const card = pickCardFromDeck(this.state.deck)
         card.owner = owner;
-        this.putCardInHand(card, hand);
+        putCardInHand(card, hand);
         this.updateDeck(this.state.deck)
         owner ? this.updatePlayerHand(hand) : this.updateEnemyHand(hand)
     }
@@ -106,8 +94,6 @@ export class Game extends Component {
 
     cancelCardSelection = () => this.setState({ selectedCard: null })
 
-    getSlotsWithCardsInHand = (hand) => hand.filter(slot => slot.card !== undefined)
-
     clearPreviuslySelectedCard() {
         if (this.state.selectedCard) {
             this.state.selectedCard.selected = false
@@ -116,8 +102,8 @@ export class Game extends Component {
 
     updateCardSelectionState(card, isSelected) {
         this.clearPreviuslySelectedCard()
-        const updatedSlot = this.getSlotsWithCardsInHand(this.state.playerHand).find(slot => slot.card.key === card.key)
-        updatedSlot.card.selected = isSelected
+        getCardFromSlot(getSlotWithCard(card, this.state.playerHand)).selected = isSelected
+
         this.updatePlayerHand(this.state.playerHand)
         if (isSelected) {
             this.selectedCard(card)
@@ -132,17 +118,6 @@ export class Game extends Component {
 
     cancelCardSelectionOnHand = (card) => this.updateCardSelectionState(card, false)
 
-    putCardInHand(card, hand) {
-        hand.find(slot => slot.card === undefined).card = card
-    }
-
-    removeCardInHand(card, hand) {
-        const handSlot = this.getSlotsWithCardsInHand(hand).find(slot => slot.card.key === card.key)
-        if (handSlot) {
-            hand[handSlot.index].card = undefined
-        }
-    }
-
     revealCard(card) {
         setTimeout(() => {
             card.flipped = true
@@ -151,7 +126,7 @@ export class Game extends Component {
     }
 
     playInitialCard() {
-        const card = this.pickCardFromDeck()
+        const card =  pickCardFromDeck(this.state.deck)
         setTimeout(() => {
             this.playCard(3, card, true)
             this.updateDeck(this.state.deck)
@@ -162,8 +137,9 @@ export class Game extends Component {
         if (initial || this.state.isShowingCardChoices) {
             this.clearPreviuslySelectedCard()
             this.state.cardsOnBoard[index] = { card, index }
+            //putCardInBoardAtIndex(this.state.cardsOnBoard, card, index)
             this.updateCardsOnBoard(this.state.cardsOnBoard)
-            this.removeCardInHand(card, this.state.playerHand)
+            removeCardInHand(card, this.state.playerHand) 
             this.cancelCardSelection()
             this.hideCardChoices()
             this.revealCard(card)
@@ -173,18 +149,18 @@ export class Game extends Component {
     playSelectedCard = (index) => this.playCard(index, this.state.selectedCard)
 
     componentDidMount() {
-        this.shuffleDeck()
+        this.updateDeckAtShuffle()
         this.playersDrawInitialFiveCards()
         this.playInitialCard()
     }
 
     hand = (hand) =>
         <Hand
-            firstCard={hand[0].card}
-            secondCard={hand[1].card}
-            thirdCard={hand[2].card}
-            fourthCard={hand[3].card}
-            fifthCard={hand[4].card}
+            firstCard=  {getCardOnHandWithIndex(hand, 0)} 
+            secondCard={getCardOnHandWithIndex(hand, 1)}
+            thirdCard={getCardOnHandWithIndex(hand, 2)} 
+            fourthCard={getCardOnHandWithIndex(hand, 3)} 
+            fifthCard={getCardOnHandWithIndex(hand, 4)} 
             selectedCard={this.state.selectedCard}
             selectCardHandler={this.selectCardOnHand}
             cancelSelectionHandler={this.cancelCardSelectionOnHand}
