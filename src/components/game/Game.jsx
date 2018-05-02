@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import './Game.css'
 
+import bgmMusic from "../../assets/bgm/Background-Music.mp3"
 import { loadDeck } from '../../model/cards/cards'
 import { Board } from '../board/Board'
 import { Hand } from '../hand/Hand'
-import { Card } from '../card/Card';
 import { setTimeout } from 'core-js';
-import {hand, getSlotsWithCardsInHand, putCardInHand, getCardOnHandWithIndex, removeCardInHand, getSlotWithCard} from '../../model/hands/hands'
-import {pickCardFromDeck, shuffleDeck} from '../../model/deck/deck'
-import {getCardFromSlot} from '../../model/slot/slot'
-import {cardsBoard, putCardInBoardAtIndex} from '../../model/board/board'
+import { hand, putCardInHand, getCardOnHandWithIndex, removeCardInHand, getSlotWithCard } from '../../model/hands/hands'
+import { pickCardFromDeck, shuffleDeck } from '../../model/deck/deck'
+import { getCardFromSlot } from '../../model/slot/slot'
+import { cardsBoard } from '../../model/board/board'
 
 export class Game extends Component {
 
@@ -35,7 +35,7 @@ export class Game extends Component {
 
     hideCardChoices = () => this.setState({ isShowingCardChoices: false })
 
-    updateDeckAtShuffle =  () => this.updateDeck(shuffleDeck((this.state.deck)))
+    updateDeckAtShuffle = () => this.updateDeck(shuffleDeck((this.state.deck)))
 
     drawACardFromDeck(hand, owner) {
         const card = pickCardFromDeck(this.state.deck)
@@ -126,7 +126,7 @@ export class Game extends Component {
     }
 
     playInitialCard() {
-        const card =  pickCardFromDeck(this.state.deck)
+        const card = pickCardFromDeck(this.state.deck)
         setTimeout(() => {
             this.playCard(3, card, true)
             this.updateDeck(this.state.deck)
@@ -138,7 +138,7 @@ export class Game extends Component {
             this.clearPreviuslySelectedCard()
             this.state.cardsOnBoard[index] = { card, index }
             this.updateCardsOnBoard(this.state.cardsOnBoard)
-            removeCardInHand(card, this.state.playerHand) 
+            removeCardInHand(card, this.state.playerHand)
             this.cancelCardSelection()
             this.hideCardChoices()
             this.revealCard(card)
@@ -155,11 +155,11 @@ export class Game extends Component {
 
     hand = (hand) =>
         <Hand
-            firstCard=  {getCardOnHandWithIndex(hand, 0)} 
+            firstCard={getCardOnHandWithIndex(hand, 0)}
             secondCard={getCardOnHandWithIndex(hand, 1)}
-            thirdCard={getCardOnHandWithIndex(hand, 2)} 
-            fourthCard={getCardOnHandWithIndex(hand, 3)} 
-            fifthCard={getCardOnHandWithIndex(hand, 4)} 
+            thirdCard={getCardOnHandWithIndex(hand, 2)}
+            fourthCard={getCardOnHandWithIndex(hand, 3)}
+            fifthCard={getCardOnHandWithIndex(hand, 4)}
             selectedCard={this.state.selectedCard}
             selectCardHandler={this.selectCardOnHand}
             cancelSelectionHandler={this.cancelCardSelectionOnHand}
@@ -190,7 +190,7 @@ export class Game extends Component {
                 </figure>
             </div>
             <audio className="bg-music" controls autoPlay loop>
-                <source src="../assets/bgm/Background-Music.mp3" type="audio/ogg"></source>
+                <source src={bgmMusic} type="audio/ogg"></source>
             </audio>
         </div>
 

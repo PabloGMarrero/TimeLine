@@ -14,7 +14,7 @@
     position: fixed;
     width: 172px;
     height: 240px;
-    background-image: url("../../../public/assets/images/place-card-here-indicator.png");
+    background-image: url("../../assets/images/place-card-here-indicator.png");
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0.5;
@@ -46,7 +46,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background-image: url("../../../public/assets/images/play-card-icon.png");
+    background-image: url("../../assets/images/play-card-icon.png");
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0.5;
@@ -67,7 +67,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background-image: url("../../../public/assets/images/play-card-icon.png");
+    background-image: url("../../assets/images/play-card-icon.png");
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0.5;

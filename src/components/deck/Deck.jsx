@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import './Deck.css'
 import { Card } from '../card/Card';
-import { loadDeck, deckSize } from '../../model/cards/cards'
+import { deckSize } from '../../model/cards/cards'
 
 const placeCardsOnDeck = (cards, deckSize) => cards.map(card =>
     <div style={{ transform: `translateX(${(deckSize++)}px)` }}>

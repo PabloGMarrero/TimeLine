@@ -1,9 +1,10 @@
-import React from 'react'
-const ramda = require('ramda');
+import * as ramda from 'ramda'
+import { generate as generateCardKey } from 'shortid'
 
 export const slot = (positionSlot) => ({
         card: undefined,
-        index: positionSlot
+        index: positionSlot,
+        key: generateCardKey()
 })
 
 export const addCard = (slot, card) => slot.card = card

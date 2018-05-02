@@ -3,7 +3,6 @@ import React from 'react'
 import './Board.css'
 import { Deck } from '../deck/Deck'
 import { BoardSlot } from '../board-slot/Board-Slot';
-import * as cardsModule from '../../model/cards/cards'
 
 const cardsOnBoard = (cardsOnPlay, isShowingCardChoices, placeCardHandler, selectedCard) =>
     cardsOnPlay.map(cardSlot =>

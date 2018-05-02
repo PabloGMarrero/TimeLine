@@ -1,5 +1,4 @@
-import React from 'react'
-import { slot, addCard, isEmpty, createSlots, getCardFromSlot, contains, removeCard } from "../slot/slot"
+import { addCard, isEmpty, createSlots, getCardFromSlot, contains, removeCard } from "../slot/slot"
 
 export const hand = (cantSlots) => createSlots(cantSlots)
 

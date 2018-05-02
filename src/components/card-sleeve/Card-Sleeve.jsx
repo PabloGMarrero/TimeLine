@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import './Card-Sleeve.css'
+import logo from '../../assets/images/cards/timeline.png'
 
 export class CardSleeve extends Component {
 
@@ -15,7 +16,7 @@ export class CardSleeve extends Component {
         <div className="sleeve-container">
             <div className='sleeve-view'>
                 <div className="sleeve">
-                    <img src="../assets/images/cards/timeline.png" className="logo" />
+                    <img src={logo} className="logo" alt="logo"/>
                 </div>
             </div>
         </div>
