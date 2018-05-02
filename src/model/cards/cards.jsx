@@ -251,7 +251,7 @@ export const cards = () => [
 ]
 
 const loadStateOnCard = (props) => (
-    {   
+    {
         key: generateCardKey(),
         ...props,
         flipped: false,
@@ -260,3 +260,5 @@ const loadStateOnCard = (props) => (
     })
 
 export const loadDeck = () => cards().map(card => loadStateOnCard(card))
+
+export const deckSize = () => cards().length

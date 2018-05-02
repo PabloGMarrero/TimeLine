@@ -2,28 +2,16 @@ import React, { Component } from 'react'
 
 import './Deck.css'
 import { Card } from '../card/Card';
-import { loadDeck } from '../../model/cards/cards'
+import { loadDeck, deckSize } from '../../model/cards/cards'
 
-export class Deck extends Component {
+const placeCardsOnDeck = (cards, deckSize) => cards.map(card =>
+    <div style={{ transform: `translateX(${(deckSize++)}px)` }}>
+        <Card {...card} flipped={true} visible={false}></Card>
+    </div>)
 
-    state = {
-        deckCardDisplacement: this.props.cards.length,
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-        nextState.deckCardDisplacement = loadDeck().length;
-    }
-
-    render = () => (
-        <div>
-            <div className="deck-container">
-                <section className="deck">
-                    {this.props.cards.map(card =>
-                        <div style={{ transform: `translateX(${(this.state.deckCardDisplacement++)}px)` }}>
-                            <Card {...card} flipped={true} visible={false}></Card>
-                        </div>)}
-                </section>
-            </div>
-        </div>
-    )
-}
+export const Deck = ({ cards }) =>
+    <div className="deck-container">
+        <section className="deck">
+            {placeCardsOnDeck(cards, deckSize())}
+        </section>
+    </div>
