@@ -137,7 +137,6 @@ export class Game extends Component {
         if (initial || this.state.isShowingCardChoices) {
             this.clearPreviuslySelectedCard()
             this.state.cardsOnBoard[index] = { card, index }
-            //putCardInBoardAtIndex(this.state.cardsOnBoard, card, index)
             this.updateCardsOnBoard(this.state.cardsOnBoard)
             removeCardInHand(card, this.state.playerHand) 
             this.cancelCardSelection()

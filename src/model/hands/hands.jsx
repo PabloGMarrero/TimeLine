@@ -1,43 +1,20 @@
 import React from 'react'
-import {slot, addCard, isEmpty, createSlots, getCardFromSlot, contains, removeCard} from "../slot/slot"
+import { slot, addCard, isEmpty, createSlots, getCardFromSlot, contains, removeCard } from "../slot/slot"
 
-const firstEmptySlot = (hand) =>{
-     hand.filter(slotWithoutCard)[0]
-}
+export const hand = (cantSlots) => createSlots(cantSlots)
 
-const slotWithoutCard = (aSlot) =>{
-    isEmpty(aSlot)
-}
+export const getSlotsWithCardsInHand = (hand) => hand.filter(slot => !isEmpty(slot))
 
-export const hand = (cantSlots) =>(
-   createSlots(cantSlots)
-)
+export const getSlotWithoutCardInHand = (hand) => hand.find(slot => isEmpty(slot))
 
-export const getSlotsWithCardsInHand = (hand) =>(
-    hand.filter(slot => !isEmpty(slot))
-)
+export const putCardInHand = (card, hand) => addCard(getSlotWithoutCardInHand(hand), card)
 
-export const getSlotWithoutCardInHand = (hand) =>(
-    hand.find(slot => isEmpty(slot))
-)
+export const getCardOnHandWithIndex = (hand, index) => getCardFromSlot(hand[index])
 
-export const putCardInHand = (card, hand) => {
-    addCard( getSlotWithoutCardInHand(hand) , card)
-}
-
-export const getCardOnHandWithIndex = (hand, index) => (
-    getCardFromSlot(hand[index])
-)
-
-export const getSlotWithCard = (card, hand) => (
+export const getSlotWithCard = (card, hand) =>
     getSlotsWithCardsInHand(hand).find(slot => contains(slot, card))
-    
-)
 
-const isEmptyHand = (hand) => (
-    hand.every(slot => isEmpty(slot))
-)
+const isEmptyHand = (hand) => hand.every(slot => isEmpty(slot))
 
-export const removeCardInHand = (card, hand) =>  (
-     !isEmptyHand(hand) && removeCard(getSlotWithCard(card, hand))
-)
+export const removeCardInHand = (card, hand) =>
+    !isEmptyHand(hand) && removeCard(getSlotWithCard(card, hand))
