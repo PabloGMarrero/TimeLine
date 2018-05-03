@@ -2,176 +2,178 @@ import React, { Component } from 'react'
 import './Game.css'
 
 import bgmMusic from "../../assets/bgm/Background-Music.mp3"
-import { loadDeck } from '../../model/cards/cards'
 import { Board } from '../board/Board'
 import { Hand } from '../hand/Hand'
-import { setTimeout } from 'core-js';
-import { hand, putCardInHand, getCardOnHandWithIndex, removeCardInHand, getSlotWithCard } from '../../model/hands/hands'
-import { pickCardFromDeck, shuffleDeck } from '../../model/deck/deck'
-import { getCardFromSlot } from '../../model/slot/slot'
-import { cardsBoard } from '../../model/board/board'
+import * as handModule from '../../model/hands/hands'
 
 export class Game extends Component {
 
     state = {
-        deck: loadDeck(),
-        cardsOnBoard: cardsBoard(6),
-        cardsRemovedFromPlay: [],
-        playerHand: hand(5),
-        enemyHand: hand(5),
-        selectedCard: null,
-        isShowingCardChoices: false,
+        isShowingCardChoices: false
     }
 
-    updateDeck = (deck) => this.setState({ deck })
+    // updatePlayerHand = (playerHand) => this.setState({ playerHand })
+    // updateEnemyHand = (enemyHand) => this.setState({ enemyHand })
+    // updateCardsOnBoard = (cardsOnBoard) => this.setState({ cardsOnBoard })
+    // showCardChoices = () => this.setState({ isShowingCardChoices: true })
+    // hideCardChoices = () => this.setState({ isShowingCardChoices: false })
+    // updateDeckAtShuffle = () => this.updateDeck(shuffleDeck((this.state.deck)))
 
-    updatePlayerHand = (playerHand) => this.setState({ playerHand })
 
-    updateEnemyHand = (enemyHand) => this.setState({ enemyHand })
+    // drawACardFromDeck(hand, owner) {
+    //     const card = pickCardFromDeck(this.state.deck)
+    //     card.owner = owner;
+    //     putCardInHand(card, hand);
+    //     this.updateDeck(this.state.deck)
+    //     owner ? this.updatePlayerHand(hand) : this.updateEnemyHand(hand)
+    // }
 
-    updateCardsOnBoard = (cardsOnBoard) => this.setState({ cardsOnBoard })
+    // playerDrawACardFromDeck = () => this.drawACardFromDeck(this.state.playerHand, true)
+    // enemyDrawACardFromDeck = () => this.drawACardFromDeck(this.state.enemyHand, false)
 
-    showCardChoices = () => this.setState({ isShowingCardChoices: true })
+    // playerDrawInitialsFiveCards() {
+    //     setTimeout(() => {
+    //         this.playerDrawACardFromDeck()
+    //     }, 300);
+    //     setTimeout(() => {
+    //         this.playerDrawACardFromDeck()
+    //     }, 900);
+    //     setTimeout(() => {
+    //         this.playerDrawACardFromDeck()
+    //     }, 1500);
+    //     setTimeout(() => {
+    //         this.playerDrawACardFromDeck()
+    //     }, 2100);
+    //     setTimeout(() => {
+    //         this.playerDrawACardFromDeck()
+    //     }, 2700);
+    // }
 
-    hideCardChoices = () => this.setState({ isShowingCardChoices: false })
+    // enemyDrawInitialsFiveCards() {
+    //     setTimeout(() => {
+    //         this.enemyDrawACardFromDeck()
+    //     }, 600);
+    //     setTimeout(() => {
+    //         this.enemyDrawACardFromDeck()
+    //     }, 1200);
+    //     setTimeout(() => {
+    //         this.enemyDrawACardFromDeck()
+    //     }, 1800);
+    //     setTimeout(() => {
+    //         this.enemyDrawACardFromDeck()
+    //     }, 2400);
+    //     setTimeout(() => {
+    //         this.enemyDrawACardFromDeck()
+    //     }, 3000);
+    // }
 
-    updateDeckAtShuffle = () => this.updateDeck(shuffleDeck((this.state.deck)))
+    // playersDrawInitialFiveCards() {
+    //     this.playerDrawInitialsFiveCards()
+    //     this.enemyDrawInitialsFiveCards()
+    // }
 
-    drawACardFromDeck(hand, owner) {
-        const card = pickCardFromDeck(this.state.deck)
-        card.owner = owner;
-        putCardInHand(card, hand);
-        this.updateDeck(this.state.deck)
-        owner ? this.updatePlayerHand(hand) : this.updateEnemyHand(hand)
-    }
+    // selectedCard = (selectedCard) => this.setState({ selectedCard })
 
-    playerDrawACardFromDeck = () => this.drawACardFromDeck(this.state.playerHand, true)
+    // cancelCardSelection = () => this.setState({ selectedCard: null })
 
-    enemyDrawACardFromDeck = () => this.drawACardFromDeck(this.state.enemyHand, false)
+    // clearPreviuslySelectedCard() {
+    //     if (this.state.selectedCard) {
+    //         this.state.selectedCard.selected = false
+    //     }
+    // }
 
-    playerDrawInitialsFiveCards() {
-        setTimeout(() => {
-            this.playerDrawACardFromDeck()
-        }, 300);
-        setTimeout(() => {
-            this.playerDrawACardFromDeck()
-        }, 900);
-        setTimeout(() => {
-            this.playerDrawACardFromDeck()
-        }, 1500);
-        setTimeout(() => {
-            this.playerDrawACardFromDeck()
-        }, 2100);
-        setTimeout(() => {
-            this.playerDrawACardFromDeck()
-        }, 2700);
-    }
+    // updateCardSelectionState(card, isSelected) {
+    //     this.clearPreviuslySelectedCard()
+    //     getCardFromSlot(getSlotWithCard(card, this.state.playerHand)).selected = isSelected
 
-    enemyDrawInitialsFiveCards() {
-        setTimeout(() => {
-            this.enemyDrawACardFromDeck()
-        }, 600);
-        setTimeout(() => {
-            this.enemyDrawACardFromDeck()
-        }, 1200);
-        setTimeout(() => {
-            this.enemyDrawACardFromDeck()
-        }, 1800);
-        setTimeout(() => {
-            this.enemyDrawACardFromDeck()
-        }, 2400);
-        setTimeout(() => {
-            this.enemyDrawACardFromDeck()
-        }, 3000);
-    }
+    //     this.updatePlayerHand(this.state.playerHand)
+    //     if (isSelected) {
+    //         this.selectedCard(card)
+    //     }
+    //     else {
+    //         this.cancelCardSelection()
+    //     }
+    //     this.hideCardChoices()
+    // }
 
-    playersDrawInitialFiveCards() {
-        this.playerDrawInitialsFiveCards()
-        this.enemyDrawInitialsFiveCards()
-    }
+    // selectCardOnHand = (card) => this.updateCardSelectionState(card, true)
 
-    selectedCard = (selectedCard) => this.setState({ selectedCard })
+    // cancelCardSelectionOnHand = (card) => this.updateCardSelectionState(card, false)
 
-    cancelCardSelection = () => this.setState({ selectedCard: null })
+    // revealCard(card) {
+    //     setTimeout(() => {
+    //         card.flipped = true
+    //         this.updateCardsOnBoard(this.state.cardsOnBoard)
+    //     }, 1000);
+    // }
 
-    clearPreviuslySelectedCard() {
-        if (this.state.selectedCard) {
-            this.state.selectedCard.selected = false
-        }
-    }
+    // playInitialCard() {
+    //     const card = pickCardFromDeck(this.state.deck)
+    //     setTimeout(() => {
+    //         this.playCard(3, card, true)
+    //         this.updateDeck(this.state.deck)
+    //     }, 3300);
+    // }
 
-    updateCardSelectionState(card, isSelected) {
-        this.clearPreviuslySelectedCard()
-        getCardFromSlot(getSlotWithCard(card, this.state.playerHand)).selected = isSelected
+    // playCard(index, card, initial = false) {
+    //     if (initial || this.state.isShowingCardChoices) {
+    //         this.clearPreviuslySelectedCard()
+    //         this.state.cardsOnBoard[index] = { card, index }
+    //         this.updateCardsOnBoard(this.state.cardsOnBoard)
+    //         removeCardInHand(card, this.state.playerHand)
+    //         this.cancelCardSelection()
+    //         this.hideCardChoices()
+    //         this.revealCard(card)
+    //     }
+    // }
 
-        this.updatePlayerHand(this.state.playerHand)
-        if (isSelected) {
-            this.selectedCard(card)
-        }
-        else {
-            this.cancelCardSelection()
-        }
-        this.hideCardChoices()
-    }
-
-    selectCardOnHand = (card) => this.updateCardSelectionState(card, true)
-
-    cancelCardSelectionOnHand = (card) => this.updateCardSelectionState(card, false)
-
-    revealCard(card) {
-        setTimeout(() => {
-            card.flipped = true
-            this.updateCardsOnBoard(this.state.cardsOnBoard)
-        }, 1000);
-    }
-
-    playInitialCard() {
-        const card = pickCardFromDeck(this.state.deck)
-        setTimeout(() => {
-            this.playCard(3, card, true)
-            this.updateDeck(this.state.deck)
-        }, 3300);
-    }
-
-    playCard(index, card, initial = false) {
-        if (initial || this.state.isShowingCardChoices) {
-            this.clearPreviuslySelectedCard()
-            this.state.cardsOnBoard[index] = { card, index }
-            this.updateCardsOnBoard(this.state.cardsOnBoard)
-            removeCardInHand(card, this.state.playerHand)
-            this.cancelCardSelection()
-            this.hideCardChoices()
-            this.revealCard(card)
-        }
-    }
-
-    playSelectedCard = (index) => this.playCard(index, this.state.selectedCard)
+    // playSelectedCard = (index) => this.playCard(index, this.state.selectedCard)
 
     componentDidMount() {
-        this.updateDeckAtShuffle()
-        this.playersDrawInitialFiveCards()
-        this.playInitialCard()
+        // this.props.startGame(this.props.deck)
+
+        this.props.shuffleDeck()
+        this.props.playerDrawCard()
+        this.props.playerDrawCard()
+        this.props.playerDrawCard()
+        this.props.playerDrawCard()
+        this.props.playerDrawCard()
+        this.props.enemyDrawCard()
+        this.props.enemyDrawCard()
+        this.props.enemyDrawCard()
+        this.props.enemyDrawCard()
+        this.props.enemyDrawCard()
+        this.props.playInitialCardFromDeck()
+
+        // this.updateDeckAtShuffle()
+        // this.playersDrawInitialFiveCards()
+        // this.playInitialCard()
     }
 
     hand = (hand) =>
         <Hand
-            firstCard={getCardOnHandWithIndex(hand, 0)}
-            secondCard={getCardOnHandWithIndex(hand, 1)}
-            thirdCard={getCardOnHandWithIndex(hand, 2)}
-            fourthCard={getCardOnHandWithIndex(hand, 3)}
-            fifthCard={getCardOnHandWithIndex(hand, 4)}
-            selectedCard={this.state.selectedCard}
-            selectCardHandler={this.selectCardOnHand}
-            cancelSelectionHandler={this.cancelCardSelectionOnHand}
-            showPlacesChoicesHandler={this.showCardChoices}>
+            firstCard={handModule.get(hand, 0)}
+            secondCard={handModule.get(hand, 1)}
+            thirdCard={handModule.get(hand, 2)}
+            fourthCard={handModule.get(hand, 3)}
+            fifthCard={handModule.get(hand, 4)}
+            owner={hand.owner}
+            selectedCard={this.props.selectedCard}
+            // selectCardHandler={this.selectCardOnHand}
+            // cancelSelectionHandler={this.cancelCardSelectionOnHand}
+            // showPlacesChoicesHandler={this.showCardChoices}>
+            selectCardHandler={() => { }}
+            cancelSelectionHandler={() => { }}
+            showPlacesChoicesHandler={() => { }}>
         </Hand>
 
     board = () => <Board
-        deck={this.state.deck}
-        cardsOnPlay={this.state.cardsOnBoard}
+        deck={this.props.deck}
+        cardsOnPlay={this.props.board}
+        selectedCard={this.props.selectedCard}
         isShowingCardChoices={this.state.isShowingCardChoices}
-        placeCardHandler={this.playSelectedCard}
-        selectedCard={this.state.selectedCard}>
+        // placeCardHandler={this.playSelectedCard}
+        placeCardHandler={() => { }}>
     </Board >
 
     render = () =>
@@ -179,14 +181,14 @@ export class Game extends Component {
             <div className="game-body">
                 <section className="enemy-hand-container">
                     <figure className='enemy-hand'>
-                        {this.hand(this.state.enemyHand)}
+                        {this.hand(this.props.enemyHand)}
                     </figure>
                 </section>
                 <div className="board-container">
                     {this.board()}
                 </div>
                 <figure className='player-hand'>
-                    {this.hand(this.state.playerHand)}
+                    {this.hand(this.props.playerHand)}
                 </figure>
             </div>
             <audio className="bg-music" controls autoPlay loop>

@@ -1,5 +1,3 @@
-import { generate as generateCardKey } from 'shortid'
-
 import beethovenImage from '../../assets/images/cards/beethoven.jpg'
 import monaLisaImage from '../../assets/images/cards/mona-lisa.jpg'
 import statueOfLibertyImage from '../../assets/images/cards/The-Statue-Of-Liberty.jpg'
@@ -276,15 +274,4 @@ export const cards = () => [
     television,
 ]
 
-const loadStateOnCard = (props) => (
-    {
-        key: generateCardKey(),
-        ...props,
-        flipped: false,
-        selected: false,
-        visible: true
-    })
-
-export const loadDeck = () => cards().map(card => loadStateOnCard(card))
-
-export const deckSize = () => cards().length
+export const length = () => cards().length

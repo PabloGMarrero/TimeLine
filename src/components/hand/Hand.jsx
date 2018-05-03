@@ -22,25 +22,25 @@ const handProps = () => ({
 })
 
 
-const cardOnHand = (card, { playerHandClass, enemyHandClass, selectedClass }, selectedCard, selectCardHandler) => (
+const cardOnHand = (card, owner, { playerHandClass, enemyHandClass, selectedClass }, selectedCard, selectCardHandler) => (
     card &&
-    <figure className={classNames('card-in-hand', `${{ ...card }.owner ? playerHandClass : enemyHandClass}`,
+    <figure className={classNames('card-in-hand', `${owner ? playerHandClass : enemyHandClass}`,
         `${card === selectedCard && selectedClass}`)} onClick={() => selectCardHandler(card)}>
-        <div className={classNames({ 'pickable': card !== selectedCard && { ...card }.owner })}>
+        <div className={classNames({ 'pickable': card !== selectedCard && owner })}>
             <Card {...card}></Card>
         </div>
     </figure>
 )
 
-export const Hand = ({ firstCard, secondCard, thirdCard, fourthCard, fifthCard,
+export const Hand = ({ firstCard, secondCard, thirdCard, fourthCard, fifthCard, owner,
     selectedCard, selectCardHandler, cancelSelectionHandler, showPlacesChoicesHandler }) =>
     <div className="hand-container">
         <section className="hand">
-            {cardOnHand(firstCard, handProps().firstCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(secondCard, handProps().secondCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(thirdCard, handProps().thirdCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(fourthCard, handProps().fourthCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(fifthCard, handProps().fifthCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(firstCard, owner, handProps().firstCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(secondCard, owner, handProps().secondCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(thirdCard, owner, handProps().thirdCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(fourthCard, owner, handProps().fourthCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(fifthCard, owner, handProps().fifthCardProps, selectedCard, selectCardHandler)}
         </section>
         {selectedCard &&
             <section className="card-options">

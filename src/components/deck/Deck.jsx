@@ -1,17 +1,21 @@
 import React from 'react'
+import { generate as generateCardKey } from 'shortid'
 
 import './Deck.css'
 import { Card } from '../card/Card';
-import { deckSize } from '../../model/cards/cards'
+import { length } from '../../model/cards/cards'
 
-const placeCardsOnDeck = (cards, deckSize) => cards.map(card =>
-    <div style={{ transform: `translateX(${(deckSize++)}px)` }}>
+const placeCardsOnDeck = (cards, length) => cards.map(card =>
+    <div style={{ transform: `translateX(${(length++)}px)` }}>
         <Card {...card} flipped={true} visible={false}></Card>
-    </div>)
+    </div>).map(div => ({
+        ...div,
+        key: generateCardKey()
+    }))
 
 export const Deck = ({ cards }) =>
     <div className="deck-container">
         <section className="deck">
-            {placeCardsOnDeck(cards, deckSize())}
+            {placeCardsOnDeck(cards, length())}
         </section>
     </div>

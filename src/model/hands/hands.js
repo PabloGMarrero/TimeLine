@@ -1,19 +1,18 @@
-import { addCard, isEmpty, createSlots, getCardFromSlot, contains, removeCard } from "../slot/slot"
+import * as ramda from 'ramda'
+import * as slotModule from "../slot/slot"
 
-export const hand = (cantSlots) => createSlots(cantSlots)
+export const hand = (size, owner) => ({
+    slots: slotModule.createEmptySlots(size),
+    owner
+})
 
-export const getSlotsWithCardsInHand = (hand) => hand.filter(slot => !isEmpty(slot))
+export const get = (hand, index) => slotModule.get(hand.slots[index])
 
-export const getSlotWithoutCardInHand = (hand) => hand.find(slot => isEmpty(slot))
+const getSlotsWithCardsInHand = (hand) => hand.slots.filter(slot => !slotModule.isEmpty(slot))
 
-export const putCardInHand = (card, hand) => addCard(getSlotWithoutCardInHand(hand), card)
+const getSlotWithoutCardInHand = (hand) => hand.slots.find(slot => slotModule.isEmpty(slot))
 
-export const getCardOnHandWithIndex = (hand, index) => getCardFromSlot(hand[index])
-
-export const getSlotWithCard = (card, hand) =>
-    getSlotsWithCardsInHand(hand).find(slot => contains(slot, card))
-
-const isEmptyHand = (hand) => hand.every(slot => isEmpty(slot))
-
-export const removeCardInHand = (card, hand) =>
-    !isEmptyHand(hand) && removeCard(getSlotWithCard(card, hand))
+export const put = (slot, hand) => ({
+    slots: ramda.update(getSlotWithoutCardInHand(hand).index, slotModule.update(slot[0].card, getSlotWithoutCardInHand(hand)), hand.slots),
+    owner: hand.owner
+})

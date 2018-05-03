@@ -1,4 +1,5 @@
 import React from 'react'
+import { generate as generateCardKey } from 'shortid'
 
 import './Board.css'
 import { Deck } from '../deck/Deck'
@@ -9,7 +10,10 @@ const cardsOnBoard = (cardsOnPlay, isShowingCardChoices, placeCardHandler, selec
         <figure className={`board-slot-${cardSlot.index}`}>
             <BoardSlot cardSlot={cardSlot} isShowingCardChoices={isShowingCardChoices}
                 placeCardHandler={placeCardHandler} selectedCard={selectedCard}></BoardSlot>
-        </figure>)
+        </figure>).map(figure => ({
+            ...figure,
+            key: generateCardKey()
+        }))
 
 export const Board = ({ deck, cardsOnPlay, isShowingCardChoices, placeCardHandler, selectedCard }) =>
     <div className="game-board">
