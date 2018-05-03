@@ -3,13 +3,12 @@ import { connect } from 'react-redux'
 import { startGame, shuffleDeck, playInitialCardFromDeck, playerDrawCard, enemyDrawCard } from '../actions/Game'
 import { Game } from '../components/game/Game'
 
-const mapStateToProps = ({ turn, deck, board, playerHand, enemyHand, selectedCard }) => ({
-    turn,
-    deck,
-    board,
-    playerHand,
-    enemyHand,
-    selectedCard
+const mapStateToProps = ({ game }) => ({
+    turn: game.turn,
+    deck: game.deck,
+    board: game.board,
+    hands: game.hands,
+    selectedCard: game.selectedCard,
 })
 
 const mapActionsToProps = dispatch => ({

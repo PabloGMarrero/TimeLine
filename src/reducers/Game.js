@@ -23,8 +23,10 @@ const initialState = {
     turn: Turn.PLAYER,
     deck: deckModule.loadDeckWithCards(loadInitialStateOnDeck(cardModule.cards())),
     board: boardModule.cardsBoard(6),
-    playerHand: handModule.hand(5, true),
-    enemyHand: handModule.hand(5, false),
+    hands: {
+        playerHand: handModule.hand(5, true),
+        enemyHand: handModule.hand(5, false)
+    },
     selectedCard: null
 }
 
@@ -50,7 +52,11 @@ export const Game = (state = initialState, action) => {
 
             return {
                 ...state,
-                playerHand: handModule.put(places.slot, state.playerHand),
+                hands: {
+                    playerHand: handModule.put(places.slot, state.hands.playerHand),
+                    enemyHand: state.hands.enemyHand
+
+                },
                 deck: places.deck
             }
 
@@ -58,7 +64,11 @@ export const Game = (state = initialState, action) => {
             places = deckModule.pick(state.deck)
             return {
                 ...state,
-                enemyHand: handModule.put(places.slot, state.enemyHand),
+                hands: {
+                    playerHand: state.hands.playerHand,
+                    enemyHand: handModule.put(places.slot, state.hands.enemyHand)
+
+                },
                 deck: places.deck
             }
 

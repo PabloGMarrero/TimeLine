@@ -29,12 +29,3 @@ export class BoardSlot extends Component {
         </div>
 
 }
-// export const BoardSlot = ({ cardSlot, isShowingCardChoices, placeCardHandler }) =>
-//     <div>
-//         {isShowingCardChoices && !cardSlot.card && <div className="free-slot-indicator"></div>}
-//         <div className={classNames({ 'selectable-slot': isShowingCardChoices })}
-//             onClick={() => placeCardHandler(cardSlot.index)} onMouseOver={()=>console.log("pum")}>
-//             {isShowingCardChoices && <div className="empty-slot"></div>}
-//             {cardSlot.card && <Card {...cardSlot.card} visible={true}></Card>}
-//         </div>
-//     </div>

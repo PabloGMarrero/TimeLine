@@ -3,6 +3,7 @@ import classNames from 'classnames'
 
 import "./Hand.css"
 import { Card } from '../card/Card';
+import * as handModule from '../../model/hands/hands'
 
 
 const cardProps = (playerHandClass, enemyHandClass, selectedClass) => (
@@ -32,15 +33,14 @@ const cardOnHand = (card, owner, { playerHandClass, enemyHandClass, selectedClas
     </figure>
 )
 
-export const Hand = ({ firstCard, secondCard, thirdCard, fourthCard, fifthCard, owner,
-    selectedCard, selectCardHandler, cancelSelectionHandler, showPlacesChoicesHandler }) =>
+export const Hand = ({ hand, selectedCard, selectCardHandler, cancelSelectionHandler, showPlacesChoicesHandler }) =>
     <div className="hand-container">
         <section className="hand">
-            {cardOnHand(firstCard, owner, handProps().firstCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(secondCard, owner, handProps().secondCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(thirdCard, owner, handProps().thirdCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(fourthCard, owner, handProps().fourthCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(fifthCard, owner, handProps().fifthCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 0), hand.owner, handProps().firstCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 1), hand.owner, handProps().secondCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 2), hand.owner, handProps().thirdCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 3), hand.owner, handProps().fourthCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 4), hand.owner, handProps().fifthCardProps, selectedCard, selectCardHandler)}
         </section>
         {selectedCard &&
             <section className="card-options">
