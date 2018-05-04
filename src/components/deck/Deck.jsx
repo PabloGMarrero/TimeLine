@@ -5,7 +5,7 @@ import './Deck.css'
 import { Card } from '../card/Card';
 import { length } from '../../model/cards/cards'
 
-const placeCardsOnDeck = (cards, length) => cards.map(card =>
+const placeCardsOnDeck = (deck, length) => deck.map(card =>
     <div style={{ transform: `translateX(${(length++)}px)` }}>
         <Card {...card} flipped={true} visible={false}></Card>
     </div>).map(div => ({
@@ -13,9 +13,9 @@ const placeCardsOnDeck = (cards, length) => cards.map(card =>
         key: generateCardKey()
     }))
 
-export const Deck = ({ cards }) =>
+export const Deck = ({ deck }) =>
     <div className="deck-container">
         <section className="deck">
-            {placeCardsOnDeck(cards, length())}
+            {placeCardsOnDeck(deck, length())}
         </section>
     </div>

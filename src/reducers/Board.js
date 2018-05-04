@@ -1,7 +1,5 @@
 
-const initialState = {
-    placeCardHandler: (() => { })
-}
+const initialState = {}
 
 
 export const Board = (state = initialState, action) => {

@@ -23,7 +23,7 @@ export class BoardSlot extends Component {
                 <div>
                     {this.state.isShowingCardPreview && !this.props.cardSlot.card && <div><Card {...this.props.selectedCard} visible={true}></Card></div>}
                     {this.props.isShowingCardChoices && <div className="empty-slot"></div>}
-                    {this.props.cardSlot.card && <Card {...this.props.cardSlot.card} visible={true}></Card>}
+                    {this.props.cardSlot.card && <Card {...this.props.cardSlot.card} visible={true} flipped={true}></Card>}
                 </div>
             </div>
         </div>

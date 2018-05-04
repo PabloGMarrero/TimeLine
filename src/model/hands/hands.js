@@ -12,7 +12,7 @@ const getSlotsWithCardsInHand = (hand) => hand.slots.filter(slot => !slotModule.
 
 const getSlotWithoutCardInHand = (hand) => hand.slots.find(slot => slotModule.isEmpty(slot))
 
-export const put = (slot, hand) => ({
+export const draw = (slot, hand) => ({
     slots: ramda.update(getSlotWithoutCardInHand(hand).index, slotModule.update(slot[0].card, getSlotWithoutCardInHand(hand)), hand.slots),
     owner: hand.owner
 })

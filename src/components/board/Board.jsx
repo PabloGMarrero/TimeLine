@@ -2,10 +2,10 @@ import React from 'react'
 import { generate as generateCardKey } from 'shortid'
 
 import './Board.css'
-import { Deck } from '../deck/Deck'
-import { BoardSlot } from '../board-slot/Board-Slot';
+import Deck from '../../containers/Deck'
+import BoardSlot from '../../containers/Board-Slot';
 
-export const Board = ({ deck, cardsOnPlay, isShowingCardChoices, placeCardHandler, selectedCard }) =>
+export const Board = ({ cardsOnPlay, isShowingCardChoices }) =>
     <div className="game-board">
         <div className="game-perspective">
             <div className="container">
@@ -14,12 +14,11 @@ export const Board = ({ deck, cardsOnPlay, isShowingCardChoices, placeCardHandle
                         <section className="in-game-cards">
                             {cardsOnPlay.map(cardSlot =>
                                 <figure className={`board-slot-${cardSlot.index}`}>
-                                    <BoardSlot cardSlot={cardSlot} isShowingCardChoices={isShowingCardChoices}
-                                        placeCardHandler={placeCardHandler} selectedCard={selectedCard}></BoardSlot>
+                                    <BoardSlot cardSlot={cardSlot} isShowingCardChoices={isShowingCardChoices}></BoardSlot>
                                 </figure>).map(figure => ({ ...figure, key: generateCardKey() }))}
                         </section>
                         <div className='deck'>
-                            <Deck cards={deck}></Deck>
+                            <Deck />
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { startGame, shuffleDeck, playInitialCardFromDeck, playerDrawCard, enemyDrawCard } from '../actions/Game'
+import { startNewGame } from '../actions/Game'
 import { Game } from '../components/game/Game'
 
 const mapStateToProps = ({ game }) => ({
@@ -12,12 +12,7 @@ const mapStateToProps = ({ game }) => ({
 })
 
 const mapActionsToProps = dispatch => ({
-    startGame: () => dispatch(startGame()),
-    shuffleDeck: () => dispatch(shuffleDeck()),
-    playerDrawCard: () => dispatch(playerDrawCard()),
-    enemyDrawCard: () => dispatch(enemyDrawCard()),
-    playInitialCardFromDeck: () => dispatch(playInitialCardFromDeck()),
+    startNewGame: () => startNewGame(dispatch),
 })
-
 
 export default connect(mapStateToProps, mapActionsToProps)(Game)

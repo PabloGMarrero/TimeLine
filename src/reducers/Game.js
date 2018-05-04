@@ -1,83 +1,61 @@
-import { generate as generateCardKey } from 'shortid'
+import {
+    INIT_GAME, SHUFFLE_DECK, PLAYER_DRAW_CARD, ENEMY_DRAW_CARD, PLAY_CARD_FROM_DECK
+} from '../actions/Game'
 
-import * as gameActions from '../actions/Game'
-
-import { Turn } from '../model/constants/constants'
-import * as cardModule from '../model/cards/cards'
-import * as handModule from '../model/hands/hands'
-import * as deckModule from '../model/deck/deck'
-import * as boardModule from '../model/board/board'
-
-
-const loadInitialStateOnDeck = (cards) => (
-    cards.map(card => ({
-        key: generateCardKey(),
-        ...card,
-        flipped: false,
-        selected: false,
-        visible: true
-    }))
-)
+import { draw } from '../model/hands/hands'
+import { pickCardFromDeck, shuffleDeck } from '../model/deck/deck'
+import { playCardOnBoard } from '../model/board/board'
 
 const initialState = {
-    turn: Turn.PLAYER,
-    deck: deckModule.loadDeckWithCards(loadInitialStateOnDeck(cardModule.cards())),
-    board: boardModule.cardsBoard(6),
-    hands: {
-        playerHand: handModule.hand(5, true),
-        enemyHand: handModule.hand(5, false)
-    },
     selectedCard: null
 }
 
 export const Game = (state = initialState, action) => {
-
-    var places = null
-
     switch (action.type) {
 
-        case gameActions.START_GAME:
+        case INIT_GAME:
             return {
                 ...state,
+                turn: action.turn,
+                deck: action.deck,
+                board: action.board,
+                hands: action.hands
             }
 
-        case gameActions.SHUFFLE_DECK:
+        case SHUFFLE_DECK:
             return {
                 ...state,
-                deck: deckModule.shuffleDeck(state.deck)
+                deck: shuffleDeck(state.deck)
             }
 
-        case gameActions.PLAYER_DRAW_CARD:
-            places = deckModule.pick(state.deck)
-
+        case PLAYER_DRAW_CARD:
+            var { slot: playerCardSlot, deck: postPlayerDrawDeck } = pickCardFromDeck(state.deck)
             return {
                 ...state,
                 hands: {
-                    playerHand: handModule.put(places.slot, state.hands.playerHand),
+                    playerHand: draw(playerCardSlot, state.hands.playerHand),
                     enemyHand: state.hands.enemyHand
-
                 },
-                deck: places.deck
+                deck: postPlayerDrawDeck
             }
 
-        case gameActions.ENEMY_DRAW_CARD:
-            places = deckModule.pick(state.deck)
+        case ENEMY_DRAW_CARD:
+            var { slot: enemyCardSlot, deck: postEnemyDrawDeck } = pickCardFromDeck(state.deck)
             return {
                 ...state,
                 hands: {
                     playerHand: state.hands.playerHand,
-                    enemyHand: handModule.put(places.slot, state.hands.enemyHand)
-
+                    enemyHand: draw(enemyCardSlot, state.hands.enemyHand)
                 },
-                deck: places.deck
+                deck: postEnemyDrawDeck
             }
 
-        case gameActions.PLAY_INITIAL_CARD_FROM_DECK:
-            places = deckModule.pick(state.deck)
+        case PLAY_CARD_FROM_DECK:
+            var { slot: initialCardSlot, deck: postPlayCardDeck } = pickCardFromDeck(state.deck)
             return {
                 ...state,
-                board: boardModule.playCard(places.slot, 3, state.board),
-                deck: places.deck
+                board: playCardOnBoard(initialCardSlot, 3, state.board),
+                deck: postPlayCardDeck
             }
 
         default:
