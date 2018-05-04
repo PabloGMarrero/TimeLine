@@ -20,9 +20,9 @@ export const draw = (slot, hand) => ({
 
 const findASlotWithCardInHand = (card, hand) => hand.slots.find(slot => slot.card.key === card.key)
 
-const selectSlot = (slot, slots) =>({
+const selectSlot = (slot, hand) =>({
     ...hand,
-    slots: ramda.update(slot.index, update(updatePropSelectedSlot(slot,true), slot), slots)
+    slots: ramda.update(slot.index, update(updatePropSelectedSlot(slot,true), slot), hand.slots)
 })
 
 const updatePropSelectedSlot = (slot,selected) => ({
@@ -30,6 +30,11 @@ const updatePropSelectedSlot = (slot,selected) => ({
     selected
 })
 
-const deselectAll = hand => hand.slots.map(slot => update(updatePropSelectedSlot(slot, false), slot))
+export const deselectAll = hand => ({
+    ...hand,
+    slots: hand.slots.map(slot => update(updatePropSelectedSlot(slot, false), slot))
+})
 
 export const selectACard = (card, hand) => selectSlot(findASlotWithCardInHand(card, hand), deselectAll(hand))
+
+export const isAnyCardSelected = (hand) => hand.slots.some(slot => getCardFromSlot(slot) !==undefined  && getCardFromSlot(slot).selected)

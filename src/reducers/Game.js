@@ -1,13 +1,12 @@
 import {
-    INIT_GAME, SHUFFLE_DECK, PLAYER_DRAW_CARD, ENEMY_DRAW_CARD, PLAY_CARD_FROM_DECK, SELECT_A_CARD
+    INIT_GAME, SHUFFLE_DECK, PLAYER_DRAW_CARD, ENEMY_DRAW_CARD, PLAY_CARD_FROM_DECK, SELECT_A_CARD, DESELECT_CARDS_IN_HAND
 } from '../actions/Game'
 
-import { draw, selectACard } from '../model/hands/hands'
+import { draw, selectACard, deselectAll } from '../model/hands/hands'
 import { pickCardFromDeck, shuffleDeck } from '../model/deck/deck'
 import { playCardOnBoard } from '../model/board/board'
 
 const initialState = {
-    selectedCard: null
 }
 
 export const Game = (state = initialState, action) => {
@@ -66,6 +65,15 @@ export const Game = (state = initialState, action) => {
                     enemyHand:state.hands.enemyHand
                 } 
             } 
+        case DESELECT_CARDS_IN_HAND:
+            return {
+                ...state,
+                hands: {
+                    playerHand:deselectAll(action.hand),
+                    enemyHand:state.hands.enemyHand
+                }
+            }
+
         default:
             return state
     }

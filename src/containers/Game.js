@@ -8,7 +8,6 @@ const mapStateToProps = ({ game }) => ({
     deck: game.deck,
     board: game.board,
     hands: game.hands,
-    selectedCard: game.selectedCard,
 })
 
 const mapActionsToProps = dispatch => ({

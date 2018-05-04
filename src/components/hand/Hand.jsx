@@ -23,29 +23,29 @@ const handProps = () => ({
 })
 
 
-const cardOnHand = (card, hand, { playerHandClass, enemyHandClass, selectedClass }, selectedCard, selectCardHandler) => (
+const cardOnHand = (card, hand, { playerHandClass, enemyHandClass, selectedClass }, selectCardHandler) => (
     card &&
     <figure className={classNames('card-in-hand', `${hand.owner ? playerHandClass : enemyHandClass}`,
         `${card.selected && selectedClass}`)} onClick={() => selectCardHandler(card,hand)}>
-        <div className={classNames({ 'pickable': card !== selectedCard && hand.owner })}>
+        <div className={classNames({ 'pickable': !card.selected && hand.owner })}>
             <Card {...card}></Card>
         </div>
     </figure>
 )
 
-export const Hand = ({ hand, selectedCard, selectCardHandler, cancelSelectionHandler, showPlacesChoicesHandler }) =>
+export const Hand = ({ hand, selectCardHandler, cancelSelectionHandler, showPlacesChoicesHandler }) =>
     <div className="hand-container">
         <section className="hand">
-            {cardOnHand(handModule.get(hand, 0), hand, handProps().firstCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 1), hand, handProps().secondCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 2), hand, handProps().thirdCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 3), hand, handProps().fourthCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 4), hand, handProps().fifthCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 0), hand, handProps().firstCardProps, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 1), hand, handProps().secondCardProps, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 2), hand, handProps().thirdCardProps, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 3), hand, handProps().fourthCardProps, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 4), hand, handProps().fifthCardProps, selectCardHandler)}
         </section>
-        {selectedCard &&
+        {handModule.isAnyCardSelected(hand) &&
             <section className="card-options">
                 <figure className="play-card-option" onClick={showPlacesChoicesHandler}></figure>
-                <figure className="cancel-option" onClick={() => cancelSelectionHandler(selectedCard)}></figure>
+                <figure className="cancel-option" onClick={() => cancelSelectionHandler(hand)}></figure>
             </section>}
     </div>
 

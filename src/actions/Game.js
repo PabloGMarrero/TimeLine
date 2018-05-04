@@ -61,4 +61,10 @@ export const selectACard = (card, hand) => ({
     card
 })
 
+export const DESELECT_CARDS_IN_HAND = "DESELECT_CARDS_IN_HAND"
+
+export const deselectCardsInHand = (hand) =>({
+    type: DESELECT_CARDS_IN_HAND,
+    hand
+})
 
