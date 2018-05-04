@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 
 import { BoardSlot } from '../components/board-slot/Board-Slot'
+import {playCardFromPlayerhand} from '../actions/Game'
 
-const mapStateToProps = ({ game, }) => ({
-    selectedCard: game.selectedCard,
-    placeCardHandler: (() => { })
+const mapActionsToProps = dispatch => ({
+    placeCardHandler: (slot) => dispatch(playCardFromPlayerhand(slot)),
 })
 
-export default connect(mapStateToProps)(BoardSlot)
+export default connect(null, mapActionsToProps)(BoardSlot)

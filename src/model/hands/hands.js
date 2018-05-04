@@ -1,5 +1,5 @@
 import * as ramda from 'ramda'
-import {get as getCardFromSlot, update, createEmptySlots, isEmpty} from "../slot/slot"
+import {get as getCardFromSlot, update, createEmptySlots, isEmpty, clear, isSelected} from "../slot/slot"
 
 export const hand = (size, owner) => ({
     slots: createEmptySlots(size),
@@ -38,3 +38,15 @@ export const deselectAll = hand => ({
 export const selectACard = (card, hand) => selectSlot(findASlotWithCardInHand(card, hand), deselectAll(hand))
 
 export const isAnyCardSelected = (hand) => hand.slots.some(slot => getCardFromSlot(slot) !==undefined  && getCardFromSlot(slot).selected)
+
+// const getSlotWithCard = (card, hand) =>
+//     hand.slots.find(slot => getCardFromSlot(slot).key === card.key)
+
+export const removeSelectedCard = (hand) => removeSlotFromHand( getSelectedSlot(hand) , hand)
+
+const getSelectedSlot = (hand) => hand.slots.find(slot => isSelected(slot))
+
+const removeSlotFromHand = (slot, hand) => ({
+    ...hand,
+    slots: ramda.update(slot.index, clear(slot), hand.slots)
+})

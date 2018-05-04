@@ -68,3 +68,10 @@ export const deselectCardsInHand = (hand) =>({
     hand
 })
 
+export const PLAY_CARD_FROM_PLAYERHAND = "PLAY_CARD_FROM_PLAYERHAND"
+
+export const playCardFromPlayerhand = (slot) => ({
+    type: PLAY_CARD_FROM_PLAYERHAND,
+    slot
+})
+

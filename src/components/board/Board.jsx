@@ -5,7 +5,7 @@ import './Board.css'
 import Deck from '../../containers/Deck'
 import BoardSlot from '../../containers/Board-Slot';
 
-export const Board = ({ cardsOnPlay, isShowingCardChoices }) =>
+export const Board = ({ cardsOnPlay }) =>
     <div className="game-board">
         <div className="game-perspective">
             <div className="container">
@@ -14,7 +14,7 @@ export const Board = ({ cardsOnPlay, isShowingCardChoices }) =>
                         <section className="in-game-cards">
                             {cardsOnPlay.map(cardSlot =>
                                 <figure className={`board-slot-${cardSlot.index}`}>
-                                    <BoardSlot cardSlot={cardSlot} isShowingCardChoices={isShowingCardChoices}></BoardSlot>
+                                    <BoardSlot cardSlot={cardSlot}></BoardSlot>
                                 </figure>).map(figure => ({ ...figure, key: generateCardKey() }))}
                         </section>
                         <div className='deck'>

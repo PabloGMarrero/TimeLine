@@ -9,7 +9,7 @@ const slot = (card, index, key = generateCardKey()) => ({
 
 export const empty = (index) => slot(undefined, index)
 
-export const clear = (slot) => slot(undefined, slot.index, slot.key)
+export const clear = (aSlot) => slot(undefined, aSlot.index, aSlot.key)
 
 export const add = (card, slot) => slot(card, slot.index, slot.key)
 
@@ -28,3 +28,5 @@ const slotsWith = (fn, cards) => ramda.times(() => slot(fn(cards), cards.length)
 export const createSlotsWithCards = (slots) => slotsWith((cards => cards.pop()), slots)
 
 export const updateSlots = (deck) => slotsWith((slots => slots.pop().card), deck)
+
+export const isSelected = (slot) => slot.card.selected

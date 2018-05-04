@@ -7,10 +7,6 @@ import Hand from '../../containers/Hand'
 
 export class Game extends Component {
 
-    state = {
-        isShowingCardChoices: false
-    }
-
     componentDidMount() {
         this.props.startNewGame()
     }
@@ -25,7 +21,7 @@ export class Game extends Component {
                         </figure>
                     </section>
                     <div className="board-container">
-                        <Board isShowingCardChoices={this.state.isShowingCardChoices}></Board>
+                        <Board />
                     </div>
                     <figure className='player-hand'>
                         <Hand hand={this.props.hands.playerHand}></Hand>

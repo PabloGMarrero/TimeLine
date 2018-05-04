@@ -6,6 +6,7 @@ import { Card } from '../card/Card';
 
 export class BoardSlot extends Component {
     state = {
+        isShowingCardChoices:true,
         isShowingCardPreview: false
     }
 
@@ -14,16 +15,16 @@ export class BoardSlot extends Component {
     hideCardPreview = () => this.setState({ isShowingCardPreview: false })
 
     render = () =>
-        <div>
-            {this.props.isShowingCardChoices && !this.props.cardSlot.card && <div className="free-slot-indicator"></div>}
+    <div>
+            {/*this.props.isShowingCardChoices && !this.props.cardSlot.card && <div className="free-slot-indicator"></div>*/}
             <div className={classNames({ 'selectable-slot': this.props.isShowingCardChoices })}
-                onClick={() => this.props.placeCardHandler(this.props.cardSlot.index)} onMouseOver={this.showCardPreview}
+                onClick={() => this.props.placeCardHandler(this.props.cardSlot)} onMouseOver={this.showCardPreview}
                 onMouseOut={this.hideCardPreview}>
 
                 <div>
-                    {this.state.isShowingCardPreview && !this.props.cardSlot.card && <div><Card {...this.props.selectedCard} visible={true}></Card></div>}
-                    {this.props.isShowingCardChoices && <div className="empty-slot"></div>}
-                    {this.props.cardSlot.card && <Card {...this.props.cardSlot.card} visible={true} flipped={true}></Card>}
+                   {/* {this.state.isShowingCardPreview && !this.props.cardSlot.card && <div><Card {...this.props.selectedCard} visible={true}></Card></div>} */}
+                    {/*{this.state.isShowingCardChoices && <div className="empty-slot"></div>}*/}
+                    {this.props.cardSlot.card && <Card {...this.props.cardSlot.card}></Card>}
                 </div>
             </div>
         </div>
