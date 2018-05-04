@@ -1,8 +1,8 @@
 import {
-    INIT_GAME, SHUFFLE_DECK, PLAYER_DRAW_CARD, ENEMY_DRAW_CARD, PLAY_CARD_FROM_DECK
+    INIT_GAME, SHUFFLE_DECK, PLAYER_DRAW_CARD, ENEMY_DRAW_CARD, PLAY_CARD_FROM_DECK, SELECT_A_CARD
 } from '../actions/Game'
 
-import { draw } from '../model/hands/hands'
+import { draw, selectACard } from '../model/hands/hands'
 import { pickCardFromDeck, shuffleDeck } from '../model/deck/deck'
 import { playCardOnBoard } from '../model/board/board'
 
@@ -58,6 +58,14 @@ export const Game = (state = initialState, action) => {
                 deck: postPlayCardDeck
             }
 
+        case SELECT_A_CARD :
+            return{
+                ...state,
+                hands: {
+                    playerHand:selectACard(action.card, action.hand),
+                    enemyHand:state.hands.enemyHand
+                } 
+            } 
         default:
             return state
     }

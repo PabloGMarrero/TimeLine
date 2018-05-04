@@ -52,3 +52,13 @@ export const PLAY_CARD_FROM_DECK = 'PLAY_CARD_FROM_DECK'
 export const playCardFromDeck = () => ({
     type: PLAY_CARD_FROM_DECK,
 })
+
+export const SELECT_A_CARD = "SELECT_A_CARD"
+
+export const selectACard = (card, hand) => ({
+    type: SELECT_A_CARD,
+    hand,
+    card
+})
+
+

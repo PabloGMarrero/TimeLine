@@ -23,11 +23,11 @@ const handProps = () => ({
 })
 
 
-const cardOnHand = (card, owner, { playerHandClass, enemyHandClass, selectedClass }, selectedCard, selectCardHandler) => (
+const cardOnHand = (card, hand, { playerHandClass, enemyHandClass, selectedClass }, selectedCard, selectCardHandler) => (
     card &&
-    <figure className={classNames('card-in-hand', `${owner ? playerHandClass : enemyHandClass}`,
-        `${card === selectedCard && selectedClass}`)} onClick={() => selectCardHandler(card)}>
-        <div className={classNames({ 'pickable': card !== selectedCard && owner })}>
+    <figure className={classNames('card-in-hand', `${hand.owner ? playerHandClass : enemyHandClass}`,
+        `${card.selected && selectedClass}`)} onClick={() => selectCardHandler(card,hand)}>
+        <div className={classNames({ 'pickable': card !== selectedCard && hand.owner })}>
             <Card {...card}></Card>
         </div>
     </figure>
@@ -36,11 +36,11 @@ const cardOnHand = (card, owner, { playerHandClass, enemyHandClass, selectedClas
 export const Hand = ({ hand, selectedCard, selectCardHandler, cancelSelectionHandler, showPlacesChoicesHandler }) =>
     <div className="hand-container">
         <section className="hand">
-            {cardOnHand(handModule.get(hand, 0), hand.owner, handProps().firstCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 1), hand.owner, handProps().secondCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 2), hand.owner, handProps().thirdCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 3), hand.owner, handProps().fourthCardProps, selectedCard, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 4), hand.owner, handProps().fifthCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 0), hand, handProps().firstCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 1), hand, handProps().secondCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 2), hand, handProps().thirdCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 3), hand, handProps().fourthCardProps, selectedCard, selectCardHandler)}
+            {cardOnHand(handModule.get(hand, 4), hand, handProps().fifthCardProps, selectedCard, selectCardHandler)}
         </section>
         {selectedCard &&
             <section className="card-options">
