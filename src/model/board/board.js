@@ -17,4 +17,5 @@ export const addSelectedCardOnBoard = (slot, board, hand) =>
 export const playCardFromHand = (slot, hand, board) =>({
     board: addSelectedCardOnBoard(slot, board, hand),
     hand:removeSelectedCard(hand)
-})    
+})
+    
