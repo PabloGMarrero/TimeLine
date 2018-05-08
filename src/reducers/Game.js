@@ -76,8 +76,7 @@ export const Game = (state = initialState, action) => {
             }
 
         case PLAY_CARD_FROM_PLAYERHAND:
-            console.log(state)
-
+            
             var{board : boardPostCardPlay, hand : handPostCardPlay} = playCardFromHand(action.slot, state.hands.playerHand, state.board)
             return {
                 ...state,
