@@ -1,14 +1,14 @@
-.content{
+.main-container-create-game{
     padding: 20px 0 0 40px;
     position: fixed;
     min-height: 40%;
     min-width: 20%;
 }
 
-.content > *{
+.main-container-create-game > *{
     margin: 0;
 }
 
-.set-cartas{
+.set-cartas-create-game{
     width: 200px;
 }

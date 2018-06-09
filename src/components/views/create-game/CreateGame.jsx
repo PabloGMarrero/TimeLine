@@ -14,7 +14,7 @@ export class CreateGame extends Component {
 
     render = ()=> {
         return (
-            <div className="content">
+            <div className="main-container-create-game">
                 <h2>Crear partida</h2>
                 <p>Nombre</p>
                 <input type="text" id="game" name="game" onChange={this.handleNameGame} />
@@ -23,12 +23,12 @@ export class CreateGame extends Component {
                 <input type="text" id="jugadores" name="jugadores" onChange={this.handlePlayers} />
 
                 <p>Set de cartas</p>
-                <select className="set-cartas">
+                <select className="set-cartas-create-game">
                     <option value="empty"></option>
                     <option value="basico">Básico</option>
                 </select>
 
-                <div className="button">
+                <div className="button-create-game">
                     <button type="submit" id="createGame" onClick={() => this.props.goToSection(Secciones.GAME)}>Crear</button>
                 </div>
 

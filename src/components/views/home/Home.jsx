@@ -15,12 +15,12 @@ export class Home extends Component {
     render = () =>
         <div className="container-home">
 
-            <header className="header"><h1>Hola {this.state.nombre}</h1></header>
+            <header className="header-home"><h1>Hola {this.state.nombre}</h1></header>
 
-            <div className="sidebars">
-                <div className="left-sidebar"><CreateGame goToSection={this.props.goToSection}></CreateGame></div>
-                <div className="center-sidebar"><JoinGame></JoinGame></div>
-                <div className="right-sidebar"><AdminGame></AdminGame></div>
+            <div className="sidebars-home">
+                <div className="left-sidebar-home"><CreateGame goToSection={this.props.goToSection}></CreateGame></div>
+                <div className="center-sidebar-home"><JoinGame></JoinGame></div>
+                <div className="right-sidebar-home"><AdminGame></AdminGame></div>
             </div>
         </div>
 }

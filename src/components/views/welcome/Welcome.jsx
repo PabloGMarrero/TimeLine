@@ -14,11 +14,11 @@ export class Welcome extends Component {
     
     render(){
         return(
-            <div className="main-container">
-                <div className="center-container">
+            <div className="main-container-welcome">
+                <div className="center-container-welcome">
                     <h1>Quién sos?</h1>
                     <input type="text" placeholder="Nombre" id="nombre" name="nombre" onChange={this.handleChange} />
-                    <div className="button-div">
+                    <div className="button-div-welcome">
                         <button type="submit" id="login" onClick={()=>this.props.goToSection(Secciones.HOME)} >Entrar</button>
                     </div>
                 </div>
