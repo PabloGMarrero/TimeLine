@@ -31,7 +31,29 @@
     100%  {transform: translateX(29px) translateY(-250px)}
 }
 
-.left-right-slot-indicator {
+.expand-slot-indicator {
+    position: fixed;
+    width: 172px;
+    height: 240px;
+    background-image: url("../../assets/images/expand-card-here-indicator.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.5;
+    animation-name: expand-slot-indicator-animation;
+    animation-duration: 0.4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes expand-slot-indicator-animation {
+    0%    {transform: translateX(3px) translateY(-350px) rotateZ(180deg)}
+    100%  {transform: translateX(3px) translateY(-250px) rotateZ(180deg)}
+}
+
+
+/* .left-right-slot-indicator {
     position: fixed;
     width: 172px;
     height: 240px;
@@ -82,4 +104,4 @@
 @keyframes right-slot-indicator-animation {
     0%    {transform: scaleY(1.3)}
     100%  {transform: scaleY(1.3) rotateZ(60deg)}
-}
+} */

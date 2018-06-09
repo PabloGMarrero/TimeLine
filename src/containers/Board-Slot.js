@@ -1,10 +1,18 @@
 import { connect } from 'react-redux'
 
 import { BoardSlot } from '../components/board-slot/Board-Slot'
-import {playCardFromPlayerhand} from '../actions/Game'
+import { playerPlayCardFromHand } from '../actions/Game'
 
-const mapActionsToProps = dispatch => ({
-    placeCardHandler: (slot) => dispatch(playCardFromPlayerhand(slot)),
+const mapStateToProps = ({ game }) => ({
+    turn: game.turn,
+    phase: game.phase,
+    cards: game.cards,
+    board: game.board,
+    isShowingCardChoices: game.showingCardChoices
 })
 
-export default connect(null, mapActionsToProps)(BoardSlot)
+const mapActionsToProps = dispatch => ({
+    placeCardHandler: (BoardIndex) => playerPlayCardFromHand(BoardIndex, dispatch),
+})
+
+export default connect(mapStateToProps, mapActionsToProps)(BoardSlot)

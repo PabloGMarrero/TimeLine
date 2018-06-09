@@ -1,33 +1,19 @@
-import * as ramda from 'ramda'
-import { generate as generateCardKey } from 'shortid'
+import { times } from 'ramda'
 
-
-const slot = (card, index, key = generateCardKey()) => ({
+const slot = (card, index) => ({
         card,
         index,
-        key
+        key: index
 })
 
-export const empty = (index) => slot(undefined, index)
+export const createEmptySlots = (size) => times(() => slot(undefined, --size), size).reverse()
 
-export const clear = (aSlot) => slot(undefined, aSlot.index, aSlot.key)
+export const clear = ({ index }) => slot(undefined, index)
 
-export const add = (card, aSlot) => slot(card, aSlot.index, aSlot.key)
+export const set = (card, { index }) => slot(card.key, index)
 
-export const get = (slot) => slot.card
+export const get = ({ card }, cards) => cards.find(_ => _.key === card)
 
-export const update = (card, oldSlot) => slot(card, oldSlot.index, oldSlot.key)
+export const isEmpty = ({ card }) => card === undefined
 
-export const isEmpty = (slot) => slot.card === undefined
-
-export const contains = (card, aSlot) => aSlot.card.key === card.key
-
-export const createEmptySlots = (size) => ramda.times(() => empty(--size), size).reverse()
-
-const slotsWith = (fn, cards) => ramda.times(() => slot(fn(cards), cards.length), cards.length).reverse()
-
-export const createSlotsWithCards = (slots) => slotsWith((cards => cards.pop()), slots)
-
-export const updateSlots = (deck) => slotsWith((slots => slots.pop().card), deck)
-
-export const isSelected = (slot) => slot.card.selected
+export const includes = ({ key }, { card }) => key === card

@@ -1,3 +1,6 @@
+import { generate as generateCardKey } from 'shortid'
+import { isEmpty, head, tail, length as size } from 'ramda'
+
 import beethovenImage from '../../assets/images/cards/beethoven.jpg'
 import monaLisaImage from '../../assets/images/cards/mona-lisa.jpg'
 import statueOfLibertyImage from '../../assets/images/cards/The-Statue-Of-Liberty.jpg'
@@ -272,6 +275,42 @@ export const cards = () => [
     zorro,
     titanic,
     television,
-]
+].map(card => ({
+    ...card,
+    key: generateCardKey(),
+    flipped: false,
+    selected: false,
+    visible: false,
+}))
+
+export const emptyCards = () => []
+
+export const revealCard = (card, cards) => cards.map(_ => (_.key === card.key ? ({ ..._, visible: true }) : _))
+
+export const selectCard = (card, cards) => cards.map(_ => (_.key === card.key ? ({ ..._, selected: true }) : ({ ..._, selected: false })))
+
+export const deselectCards = (cards) => cards.map(_ => ({ ..._, selected: false }))
+
+export const selectedCard = (cards) => cards.find(_ => _.selected === true)
+
+const setYearValidationState = (cards, lastCardPlayed, validationState) => cards.map(_ => _.key === lastCardPlayed.key ? ({ ..._, hasAValidYearOnTimeline: validationState }) : _)
+
+export function performWrongTurnAction(pickedCard, lastCardPlayed, cards) {
+    return setYearValidationState(revealCard(pickedCard, cards), lastCardPlayed, false)
+}
+
+export const performCorrectTurnAction = (lastCardPlayed, cards) => setYearValidationState(cards, lastCardPlayed, true)
+
+const isPendingFlipping = (card, flippedCards) => flippedCards.some(_ => _.card === card.key)
+
+export const flipCards = (flippedCards, cards) =>
+    cards.map(_ => (isPendingFlipping(_, flippedCards) ? ({ ..._, flipped: true }) : _))
+
+const evaluateCards = ({ year: left }, { year: right }) => left <= right
+
+export const evaluateTimeline = (cards) =>
+    isEmpty(cards) ? true :
+        size(cards) === 1 ? true :
+            evaluateCards(head(cards), head(tail(cards))) && evaluateTimeline(tail(cards))
 
 export const length = () => cards().length

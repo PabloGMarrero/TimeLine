@@ -1,21 +1,19 @@
-import { update, zipObj} from 'ramda'
-import {removeSelectedCard} from '../hands/hands'
-import {get, update as updateSlot, createEmptySlots, isEmpty, isSelected} from "../slot/slot"
-import { Places } from '../constants/constants'
+import { update, innerJoin } from 'ramda'
 
-export const cardsBoard = (size) => createEmptySlots(size)
+import { get as getCardFromSlot, set as setSlot, createEmptySlots, clear as clearSlot } from "../slot/slot"
 
-export const playCardOnBoard = (slot, index, board) =>
-    update(board[index].index, updateSlot(slot[0].card, board[index]), board)
+export const emptyBoard = (size) => createEmptySlots(size)
 
-export const revealCards = (board) =>  board.filter(slot => !isEmpty(slot)).map(slot => updateSlot({...get(slot), flipped:true}, slot))
+export const get = (slot, cards) => getCardFromSlot(slot, cards)
 
-export const addSelectedCardOnBoard = (slot, board, hand) => 
-    update(slot.index, updateSlot(get(hand.slots.find(aSlot => isSelected(aSlot))), slot), board)
+const clear = (slot, board) => update(slot.index, clearSlot(slot), board)
 
+export const slotsOnBoard = (board, cards) =>
+    innerJoin((slot, card) => slot.card === card.key, board, cards)
 
-export const playCardFromHand = (slot, hand, board) =>({
-    board: addSelectedCardOnBoard(slot, board, hand),
-    hand:removeSelectedCard(hand)
-})
-    
+export const playCardOnBoard = (card, index, board) =>
+    update(index, setSlot(card, board[index]), board)
+
+const findSlotFromCard = (card, board) => board.find(_ => _.card === card.key)
+
+export const removeLastPlayedCardOnBoard = (card, board) => clear(findSlotFromCard(card, board), board)

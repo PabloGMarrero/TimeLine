@@ -1,26 +1,21 @@
-import { generate as generateCardKey } from 'shortid'
 import shuffle from 'shuffle-array'
-import { tap, pipe, zipObj, splitAt } from 'ramda'
+import { tap, pipe, zipObj, splitAt, head } from 'ramda'
+import { Places } from '../constants/constants'
 
-import * as slotModule from "../slot/slot"
-import { Places } from '../constants/constants';
+export const emptyDeck = () => []
 
-const loadInitialStateOnDeck = (cards) => (
-    cards.map(card => ({
-        key: generateCardKey(),
-        ...card,
-        flipped: false,
-        selected: false,
-        visible: true
-    }))
-)
+export const loadDeckWithCards = (cards) => cards
 
-export const loadDeckWithCards = (cards) => slotModule.createSlotsWithCards(loadInitialStateOnDeck(cards))
-
-export const shuffleDeck = (deck) => slotModule.updateSlots(tap(shuffle, deck))
+export const shuffleDeck = (deck) => tap(shuffle, deck)
 
 export const pickCardFromDeck =
     pipe(
         splitAt(1),
-        zipObj([Places.SLOT, Places.DECK]),
+        zipObj([Places.CARD, Places.DECK]),
+        (_) => ({
+            ..._,
+            card: head(_.card)
+        })
     )
+
+export const size = (deck) => deck.length

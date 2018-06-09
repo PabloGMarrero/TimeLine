@@ -1,52 +1,35 @@
-import * as ramda from 'ramda'
-import {get as getCardFromSlot, update, createEmptySlots, isEmpty, clear, isSelected} from "../slot/slot"
+import { update } from 'ramda'
+import shuffle from 'shuffle-array'
 
-export const hand = (size, owner) => ({
+import { get as getCardFromSlot, set as setSlot, createEmptySlots, isEmpty, clear as clearSlot } from "../slot/slot"
+
+export const emptyHand = (size, owner) => ({
     slots: createEmptySlots(size),
     owner
 })
 
-export const get = (hand, index) => getCardFromSlot(hand.slots[index])
-
-const getSlotsWithCardsInHand = (hand) => hand.slots.filter(slot => !isEmpty(slot))
-
-const getSlotWithoutCardInHand = (hand) => hand.slots.find(slot => isEmpty(slot))
-
-export const draw = (slot, hand) => ({
-    slots: ramda.update(getSlotWithoutCardInHand(hand).index, update(slot[0].card, getSlotWithoutCardInHand(hand)), hand.slots),
-    owner: hand.owner
+const set = (card, slot, { slots, owner }) => ({
+    owner,
+    slots: update(slot.index, setSlot(card, slot), slots)
 })
 
-
-const findASlotWithCardInHand = (card, hand) => hand.slots.find(slot => slot.card.key === card.key)
-
-const selectSlot = (slot, hand) =>({
-    ...hand,
-    slots: ramda.update(slot.index, update(updatePropSelectedSlot(slot,true), slot), hand.slots)
+const clear = (slot, { slots, owner }) => ({
+    owner,
+    slots: update(slot.index, clearSlot(slot), slots)
 })
 
-const updatePropSelectedSlot = (slot,selected) => ({
-    ...getCardFromSlot(slot),
-    selected
-})
+const getFreeSlot = ({ slots }) => slots.find(slot => isEmpty(slot))
 
-export const deselectAll = hand => ({
-    ...hand,
-    slots: hand.slots.map(slot => update(updatePropSelectedSlot(slot, false), slot))
-})
+const getSlotFromCard = (card, { slots }) => slots.find(_ => _.card === card.key)
 
-export const selectACard = (card, hand) => selectSlot(findASlotWithCardInHand(card, hand), deselectAll(hand))
+const getSlotsWithCards = ({ slots }) => slots.filter(_ => _.card)
 
-export const isAnyCardSelected = (hand) => hand.slots.some(slot => getCardFromSlot(slot) !==undefined  && getCardFromSlot(slot).selected)
+export const get = (index, { slots }, cards) => getCardFromSlot(slots[index], cards)
 
-// const getSlotWithCard = (card, hand) =>
-//     hand.slots.find(slot => getCardFromSlot(slot).key === card.key)
+export const draw = (card, hand) => set(card, getFreeSlot(hand), hand)
 
-export const removeSelectedCard = (hand) => removeSlotFromHand( getSelectedSlot(hand) , hand)
+export const removeCardFromHand = (card, hand) => clear(getSlotFromCard(card, hand), hand)
 
-const getSelectedSlot = (hand) => hand.slots.find(slot => isSelected(slot))
+export const getRandomCardFromHand = (hand, cards) => getCardFromSlot(shuffle.pick(getSlotsWithCards(hand)), cards)
 
-const removeSlotFromHand = (slot, hand) => ({
-    ...hand,
-    slots: ramda.update(slot.index, clear(slot), hand.slots)
-})
+export const size = (hand) => getSlotsWithCards(hand).length

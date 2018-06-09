@@ -2,8 +2,9 @@ import React from 'react'
 import classNames from 'classnames'
 
 import "./Hand.css"
-import { Card } from '../card/Card';
-import * as handModule from '../../model/hands/hands'
+import Card from '../../containers/Card'
+import { get } from '../../model/hands/hands'
+import { Phase, Turn } from '../../model/constants/constants'
 
 
 const cardProps = (playerHandClass, enemyHandClass, selectedClass) => (
@@ -23,29 +24,29 @@ const handProps = () => ({
 })
 
 
-const cardOnHand = (card, hand, { playerHandClass, enemyHandClass, selectedClass }, selectCardHandler) => (
+const cardOnHand = (card, hand, turn, phase, { playerHandClass, enemyHandClass, selectedClass }, selectCardHandler) => (
     card &&
-    <figure className={classNames('card-in-hand', `${hand.owner ? playerHandClass : enemyHandClass}`,
-        `${card.selected && selectedClass}`)} onClick={() => selectCardHandler(card,hand)}>
-        <div className={classNames({ 'pickable': !card.selected && hand.owner })}>
+    <figure className={classNames('card-in-hand', `${hand.owner === Turn.PLAYER ? playerHandClass : enemyHandClass}`,
+        `${card.selected && turn === Turn.PLAYER && selectedClass}`)} onClick={() => (hand.owner === turn && phase === Phase.MAIN_PHASE ? selectCardHandler(card) : {})}>
+        <div className={classNames({ 'pickable': !card.selected && hand.owner === Turn.PLAYER })}>
             <Card {...card}></Card>
         </div>
     </figure>
 )
 
-export const Hand = ({ hand, selectCardHandler, cancelSelectionHandler, showPlacesChoicesHandler }) =>
+export const Hand = ({ hand, cards, turn, phase, selectCardHandler, cancelSelectionHandler, showPlacesChoicesHandler }) =>
     <div className="hand-container">
         <section className="hand">
-            {cardOnHand(handModule.get(hand, 0), hand, handProps().firstCardProps, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 1), hand, handProps().secondCardProps, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 2), hand, handProps().thirdCardProps, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 3), hand, handProps().fourthCardProps, selectCardHandler)}
-            {cardOnHand(handModule.get(hand, 4), hand, handProps().fifthCardProps, selectCardHandler)}
+            {cardOnHand(get(0, hand, cards), hand, turn, phase, handProps().firstCardProps, selectCardHandler)}
+            {cardOnHand(get(1, hand, cards), hand, turn, phase, handProps().secondCardProps, selectCardHandler)}
+            {cardOnHand(get(2, hand, cards), hand, turn, phase, handProps().thirdCardProps, selectCardHandler)}
+            {cardOnHand(get(3, hand, cards), hand, turn, phase, handProps().fourthCardProps, selectCardHandler)}
+            {cardOnHand(get(4, hand, cards), hand, turn, phase, handProps().fifthCardProps, selectCardHandler)}
         </section>
-        {handModule.isAnyCardSelected(hand) &&
+        {cards.some(_ => _.selected) &&
             <section className="card-options">
                 <figure className="play-card-option" onClick={showPlacesChoicesHandler}></figure>
-                <figure className="cancel-option" onClick={() => cancelSelectionHandler(hand)}></figure>
+                <figure className="cancel-option" onClick={() => cancelSelectionHandler()}></figure>
             </section>}
     </div>
 
