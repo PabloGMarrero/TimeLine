@@ -1,3 +1,6 @@
+import {Welcome} from './../../components/views/welcome/Welcome'
+import {Home} from './../../components/views/home/Home'
+import Game from './../../containers/Game'
 
 export const GameMode = {
     OFFLINE_PLAYER_VERSUS_BOT: 'offline player versus bot',
@@ -31,6 +34,29 @@ export const Places = {
     HAND: 'Hand',
     BOARD: 'board',
     DECK: 'deck'
+}
+
+export const Secciones = {
+    WELCOME: 'Welcome',
+    HOME: 'Home',
+    GAME: 'Game'
+  }
+
+export function goToSection(section) {
+    switch (section) {
+
+        case Secciones.WELCOME:
+            return Welcome
+
+        case Secciones.HOME:
+            return Home
+
+        case Secciones.GAME:
+            return Game
+
+        default:
+            return Welcome
+    }
 }
 
 export function nextTurn(turn) {

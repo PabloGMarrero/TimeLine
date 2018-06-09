@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff');
+h1, h2, p{
+    font-family: 'Herr Von Muellerhoff', Arial, Helvetica, sans-serif, cursive;
+}
+
+h1,h2{
+    font-size: 2.6em;
+}
+
+h1, h2, p{
+    color: rgb(204, 10, 108);
+    text-shadow: 0 1px 0 rgb(12, 180, 204);
+    font-weight: bold;
+}
+p{
+    font-size: 1.9em;
+}
+
+.container-home{
+    background: rgb(85, 145, 153);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.header{
+    padding: 2% 0 0 5%;
+}
+
+.sidebars{
+    display: flex;  
+    padding: 2% 5% 0 5%;
+    min-height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.left-sidebar{
+    border-radius: 15px;
+    border: 3px dashed rgb(40,40, 40);
+    width: 30%;
+}
+
+
+.center-sidebar{
+    border-radius: 15px;
+    border: 3px dashed rgb(40, 40, 40);
+    width: 30%;
+}
+
+.right-sidebar{
+    border-radius: 15px;
+    border: 3px dashed rgb(40, 40, 40);
+    width: 30%;
+
+}
