@@ -1,5 +1,5 @@
-import {Welcome} from './../../components/views/welcome/Welcome'
-import {Home} from './../../components/views/home/Home'
+import { Welcome } from './../../components/views/welcome/Welcome'
+import { Home } from './../../components/views/home/Home'
 import Game from './../../containers/Game'
 
 export const GameMode = {
@@ -40,61 +40,61 @@ export const Secciones = {
     WELCOME: 'Welcome',
     HOME: 'Home',
     GAME: 'Game'
-  }
+}
 
 export function goToSection(section) {
     switch (section) {
 
-        case Secciones.WELCOME:
-            return Welcome
+    case Secciones.WELCOME:
+        return Welcome
 
-        case Secciones.HOME:
-            return Home
+    case Secciones.HOME:
+        return Home
 
-        case Secciones.GAME:
-            return Game
+    case Secciones.GAME:
+        return Game
 
-        default:
-            return Welcome
+    default:
+        return Welcome
     }
 }
 
 export function nextTurn(turn) {
     switch (turn) {
 
-        case Turn.PLAYER:
-            return Turn.ENEMY
+    case Turn.PLAYER:
+        return Turn.ENEMY
 
-        case Turn.ENEMY:
-            return Turn.PLAYER
+    case Turn.ENEMY:
+        return Turn.PLAYER
 
-        default:
-            return Turn.NOT_ESTABLISHED
+    default:
+        return Turn.NOT_ESTABLISHED
     }
 }
 
 export function nextPhase(phase) {
     switch (phase) {
 
-        case Phase.NOT_ESTABLISHED:
-            return Phase.INITIAL_SETUP_PHASE
+    case Phase.NOT_ESTABLISHED:
+        return Phase.INITIAL_SETUP_PHASE
 
-        case Phase.TURN_ASSIGNMENT_PHASE:
-            return Phase.MAIN_PHASE
+    case Phase.TURN_ASSIGNMENT_PHASE:
+        return Phase.MAIN_PHASE
 
-        case Phase.INITIAL_SETUP_PHASE:
-            return Phase.TURN_ASSIGNMENT_PHASE
+    case Phase.INITIAL_SETUP_PHASE:
+        return Phase.TURN_ASSIGNMENT_PHASE
 
-        case Phase.MAIN_PHASE:
-            return Phase.YEAR_RESOLUTION_PHASE
+    case Phase.MAIN_PHASE:
+        return Phase.YEAR_RESOLUTION_PHASE
 
-        case Phase.YEAR_RESOLUTION_PHASE:
-            return Phase.END_TURN_PHASE
+    case Phase.YEAR_RESOLUTION_PHASE:
+        return Phase.END_TURN_PHASE
 
-        case Phase.END_TURN_PHASE:
-            return Phase.MAIN_PHASE
+    case Phase.END_TURN_PHASE:
+        return Phase.MAIN_PHASE
 
-        default:
-            return Phase.NOT_ESTABLISHED
+    default:
+        return Phase.NOT_ESTABLISHED
     }
 }

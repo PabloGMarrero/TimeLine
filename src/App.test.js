@@ -1,22 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { Provider } from 'react-redux'
-import { combineReducers } from 'redux';
-import storeCreator from './storeCreator'
-import { Game as gameReducer } from './reducers/Game'
-import { Board as boardReducer } from './reducers/Board'
+import React from "react"
+import ReactDOM from "react-dom"
+import App from "./App"
 
-it('renders without crashing', () => {
-
-  const store = storeCreator(combineReducers(
-    {
-        game: gameReducer,
-        board: boardReducer
-    }
-  ))
-
-  const div = document.createElement('div');
-  //ReactDOM.render(<Provider />, div);
-  //ReactDOM.unmountComponentAtNode(div);
-});
+it.skip("renders without crashing", () => {
+    const div = document.createElement("div")
+    ReactDOM.render(<App />, div)
+})

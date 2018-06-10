@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import { CardSleeve } from '../card-sleeve/Card-Sleeve'
-import "./Card.css"
+import './Card.css'
 
 const view = {
     front: false,

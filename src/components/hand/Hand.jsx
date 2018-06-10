@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import "./Hand.css"
+import './Hand.css'
 import Card from '../../containers/Card'
 import { get } from '../../model/hands/hands'
 import { Phase, Turn } from '../../model/constants/constants'

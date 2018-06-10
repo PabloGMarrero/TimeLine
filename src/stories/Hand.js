@@ -1,11 +1,8 @@
 import React from 'react'
-
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { linkTo } from '@storybook/addon-links'
+import { Hand } from '../components/hand/Hand'
 
 import * as cardsModule from '../model/cards/cards'
-import { Hand } from '../components/hand/Hand';
 
 const playerHandExample = [
     { ...cardsModule.beethoven, visible: true, owner: true },

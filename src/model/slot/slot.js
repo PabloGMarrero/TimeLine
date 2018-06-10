@@ -1,9 +1,9 @@
 import { times } from 'ramda'
 
 const slot = (card, index) => ({
-        card,
-        index,
-        key: index
+    card,
+    index,
+    key: index
 })
 
 export const createEmptySlots = (size) => times(() => slot(undefined, --size), size).reverse()

@@ -1,6 +1,6 @@
 import { update, innerJoin } from 'ramda'
 
-import { get as getCardFromSlot, set as setSlot, createEmptySlots, clear as clearSlot } from "../slot/slot"
+import { get as getCardFromSlot, set as setSlot, createEmptySlots, clear as clearSlot } from '../slot/slot'
 
 export const emptyBoard = (size) => createEmptySlots(size)
 

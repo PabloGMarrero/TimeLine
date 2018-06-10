@@ -13,9 +13,9 @@ export const Board = ({ cardsOnPlay }) =>
                     <div className="cards">
                         <section className="in-game-cards">
                             {cardsOnPlay.map(cardSlot =>
-                                <figure className={`board-slot-${cardSlot.index}`}>
+                                <figure className={`board-slot-${cardSlot.index}`} key={generateCardKey()}>
                                     <BoardSlot cardSlot={cardSlot}></BoardSlot>
-                                </figure>).map(figure => ({ ...figure, key: generateCardKey() }))}
+                                </figure>)}
                         </section>
                         <div className='deck'>
                             <Deck />

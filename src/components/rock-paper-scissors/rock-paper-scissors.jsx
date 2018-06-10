@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import "./rock-paper-scissors.css"
+import './rock-paper-scissors.css'
 
 export class RockPaperScissors extends Component {
 
@@ -8,12 +8,12 @@ export class RockPaperScissors extends Component {
         super(props)
         this.state = {
         }
-        this.handleClick = this.handleClick.bind(this);
+        this.handleClick = this.handleClick.bind(this)
     }
 
     handleClick() {
         if (this.state.canBeFlipped) {
-            this.setState({ flipped: !this.state.flipped });
+            this.setState({ flipped: !this.state.flipped })
         }
     }
 
@@ -22,21 +22,21 @@ export class RockPaperScissors extends Component {
             <div className="selection">
                 <div className="rock">
                     <div className="name">
-                        <p>{"Rock"}</p>
+                        <p>{'Rock'}</p>
                     </div>
                 </div>
             </div>
             <div className="selection">
                 <div className="paper">
                     <div className="name">
-                        <p>{"Paper"}</p>
+                        <p>{'Paper'}</p>
                     </div>
                 </div>
             </div>
             <div className="selection">
                 <div className="scissors">
                     <div className="name">
-                        <p>{"Scissors"}</p>
+                        <p>{'Scissors'}</p>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Game.css'
 
-import bgmMusic from "../../assets/bgm/Background-Music.mp3"
+import bgmMusic from '../../assets/bgm/Background-Music.mp3'
 import Board from '../../containers/Board'
 import Hand from '../../containers/Hand'
 import { Turn, Phase } from '../../model/constants/constants'
@@ -9,17 +9,17 @@ import { Turn, Phase } from '../../model/constants/constants'
 export class Game extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
 
-        };
+        }
     }
 
     componentDidMount() {
         this.props.startNewGame()
     }
 
-    static getDerivedStateFromProps(props, state) {
+    static getDerivedStateFromProps(props) {
         if (props.turn === Turn.ENEMY && props.phase === Phase.MAIN_PHASE) {
             props.simulateTurn()
         }

@@ -1,7 +1,7 @@
 import { update } from 'ramda'
 import shuffle from 'shuffle-array'
 
-import { get as getCardFromSlot, set as setSlot, createEmptySlots, isEmpty, clear as clearSlot } from "../slot/slot"
+import { get as getCardFromSlot, set as setSlot, createEmptySlots, isEmpty, clear as clearSlot } from '../slot/slot'
 
 export const emptyHand = (size, owner) => ({
     slots: createEmptySlots(size),

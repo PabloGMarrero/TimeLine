@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 
-import './Card-Sleeve.css'
-import logo from '../../assets/images/cards/timeline.png'
+import "./Card-Sleeve.css"
+import logo from "../../assets/images/cards/timeline.png"
 
 export const CardSleeve = () =>
     <div className="sleeve-container">
