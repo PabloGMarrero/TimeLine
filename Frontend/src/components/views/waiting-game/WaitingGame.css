@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff');
+
+.main-container-waiting-game{
+    margin: 0 auto;
+    width: 30%;
+    height: 30%;
+    background: rgb(240, 240, 240);
+    padding: 10px;
+}
+.text-waitin-game{
+    font-family: 'Herr Von Muellerhoff', Arial, Helvetica, sans-serif, cursive;
+    font-size: 2.6em;
+    color: rgb(40, 40, 40);
+}

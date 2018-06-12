@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+- "9"
+
+install:
+  - cd Frontend
+  - yarn install
+  - cd ..
+  - cd Backend
+  - yarn install
+  - cd ..
+
+script:
+- cd Backend
+- yarn linter
+- yarn test:ci
+- cd ..
+- cd Frontend
+- yarn build
+- yarn test

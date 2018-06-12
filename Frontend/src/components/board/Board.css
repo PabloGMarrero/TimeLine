@@ -1,0 +1,90 @@
+.game-board {
+    position: absolute;
+    width: 1080px;
+    height: 720px;
+}
+
+.game-board .game-perspective {
+    position: inherit;
+    width: 100%;
+    height: 100%;
+    perspective: 500px;
+    z-index: 0;
+}
+
+.game-board .game-perspective .container {
+    position: inherit;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row ;
+    flex-wrap: nowrap;
+    justify-content: center;
+    transform: rotate3d(-10,0,0,-30deg);
+    z-index: 1;
+}
+
+.game-board .game-perspective .container .board {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-left: 22%;
+    bottom: 20%;
+    transform-style: preserve-3d;
+    background-image: url("../../assets/images/background.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.game-board .game-perspective .container .board .cards {
+    transform: scale(0.6);
+}
+
+.game-board .game-perspective .container .board .cards .in-game-cards {
+    z-index: 2;
+}
+
+.game-board .game-perspective .container .board .cards .in-game-cards .board-slot-0 {
+    transform: translateX(-290px) translateY(450px);
+}
+
+.game-board .game-perspective .container .board .cards .in-game-cards .board-slot-1 {
+    transform: translateX(-90px) translateY(450px);
+}
+
+.game-board .game-perspective .container .board .cards .in-game-cards .board-slot-2 {
+    transform: translateX(110px) translateY(450px);
+}
+
+.game-board .game-perspective .container .board .cards .in-game-cards .board-slot-3 {
+    transform: translateX(310px) translateY(450px);
+}
+
+.game-board .game-perspective .container .board .cards .in-game-cards .board-slot-4 {
+    transform: translateX(510px) translateY(450px);
+}
+
+.game-board .game-perspective .container .board .cards .in-game-cards .board-slot-5 {
+    transform: translateX(710px) translateY(450px);
+}
+
+.game-board .game-perspective .container .board .cards .deck {
+    transform: translateY(400px) translateX(360px);
+    z-index: 3;
+}
+
+.game-board .face {
+    perspective: 500px;
+    z-index: 0;
+}
+
+.game-board .face .bottom-face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: url("../../assets/images/table.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+    transform: translateY(562px) translateX(489px) rotate3d(-10,0,0,30deg) scaleX(10.19);
+    box-shadow: inset 0 0 0 1000px rgba(29, 12, 2, 0.74);
+}

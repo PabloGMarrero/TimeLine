@@ -1,0 +1,254 @@
+.hand-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.hand-container section {
+    position: inherit;
+    transition: all ease-in-out;
+    user-select: none;
+    margin-left: 20%;
+}
+
+.card-options {
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    user-select: none;
+    transform: translateY(-230px) translateX(420px) scale(0.9);
+    cursor: pointer;
+}
+
+.play-card-option {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    transform: translateX(-60px) translateY(-50px);
+    background-image: url("../../assets/images/play-card-icon.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid green;
+    border-style: outset;
+    border-radius: 3px;
+    user-select: none;
+    background-color: green;
+    box-shadow: 5px 7px 0px 0px rgba(0, 0, 0, 0.507);
+}
+
+.cancel-option {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    transform: translateX(-60px);
+    background-image: url("../../assets/images/cancel-icon.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid rgb(201, 0, 0);
+    border-style: outset;
+    border-radius: 3px;
+    background-color: rgb(201, 0, 0);
+    box-shadow: 5px 7px 0px 0px rgba(0, 0, 0, 0.507);
+}
+
+.hand .first {
+    order: 0;
+    z-index: 0;
+    transform: translateX(-160px) translateY(70px) rotateZ(-15deg);
+    cursor: pointer;
+}
+
+.hand .second {
+    order: 1;
+    z-index: 1;
+    transform: translateX(0px) translateY(30px) rotateZ(-10deg);
+    cursor: pointer;
+}
+
+.hand .third {
+    order: 2;
+    z-index: 2;
+    transform: translateX(160px) translateY(0px) rotateZ(0deg);
+    cursor: pointer;
+}
+
+.hand .fourth {
+    order: 3;
+    z-index: 3;
+    transform: translateX(320px) translateY(0px) rotateZ(10deg);
+    cursor: pointer;
+}
+
+.hand .fifth {
+    order: 4;
+    z-index: 4;
+    transform: translateX(480px) translateY(30px) rotateZ(15deg);
+    cursor: pointer;
+}
+
+.hand .enemy-first {
+    order: 0;
+    z-index: 0;
+    transform: translateX(-242px);
+}
+
+.hand .enemy-second {
+    order: 1;
+    z-index: 1;
+    transform: translateX(-40px);
+}
+
+.hand .enemy-third {
+    order: 2;
+    z-index: 2;
+    transform: translateX(162px);
+}
+
+.hand .enemy-fourth {
+    order: 3;
+    z-index: 3;
+    transform: translateX(366px);
+}
+
+.hand .enemy-fifth {
+    order: 4;
+    z-index: 4;
+    transform: translateX(570px);
+}
+
+
+@keyframes hover-animation {
+    0%    {top:0px;}
+    10%   {top:-5px;}
+    20%   {top:-10px;}
+    30%   {top:-15px;}
+    40%   {top:-20px;}
+    50%   {top:-25px;}
+    60%   {top:-30px;}
+    70%   {top:-35px;}
+    80%   {top:-40px;}
+    90%   {top:-45px;}
+    100%  {top:-50px;}
+}
+
+.hand .first-picking {
+    animation-name: first-picking-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes first-picking-animation {
+    0%    {transform: translateX(-160px) translateY(0px)}
+    10%   {transform: translateX(-128px) translateY(-30px)}
+    20%   {transform: translateX(-96px) translateY(-60px);}
+    30%   {transform: translateX(-64px) translateY(-90px);}
+    40%   {transform: translateX(-32px) translateY(-120px);}
+    50%   {transform: translateX(0px) translateY(-150px);}
+    60%   {transform: translateX(32px) translateY(-180px);}
+    70%   {transform: translateX(63px) translateY(-210px);}
+    80%   {transform: translateX(96px) translateY(-240px);}
+    90%   {transform: translateX(128px) translateY(-270px);}
+    100%  {transform: translateX(160px) translateY(-300px);}
+}
+
+.hand .second-picking {
+    animation-name: second-picking-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes second-picking-animation {
+    0%    {transform: translateX(0px) translateY(0px)}
+    10%   {transform: translateX(16px) translateY(-30px)}
+    20%   {transform: translateX(32px) translateY(-60px);}
+    30%   {transform: translateX(48px) translateY(-90px);}
+    40%   {transform: translateX(64px) translateY(-120px);}
+    50%   {transform: translateX(80px) translateY(-150px);}
+    60%   {transform: translateX(96px) translateY(-180px);}
+    70%   {transform: translateX(112px) translateY(-210px);}
+    80%   {transform: translateX(128px) translateY(-240px);}
+    90%   {transform: translateX(144px) translateY(-270px);}
+    100%  {transform: translateX(160px) translateY(-300px);}
+}
+
+.hand .third-picking {
+    animation-name: third-picking-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes third-picking-animation {
+    0%    {transform: translateX(160px) translateY(0px)}
+    10%   {transform: translateX(160px) translateY(-30px)}
+    20%   {transform: translateX(160px) translateY(-60px);}
+    30%   {transform: translateX(160px) translateY(-90px);}
+    40%   {transform: translateX(160px) translateY(-120px);}
+    50%   {transform: translateX(160px) translateY(-150px);}
+    60%   {transform: translateX(160px) translateY(-180px);}
+    70%   {transform: translateX(160px) translateY(-210px);}
+    80%   {transform: translateX(160px) translateY(-240px);}
+    90%   {transform: translateX(160px) translateY(-270px);}
+    100%  {transform: translateX(160px) translateY(-300px);}
+}
+
+.hand .fourth-picking {
+    animation-name: fourth-picking-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fourth-picking-animation {
+    0%    {transform: translateX(320px) translateY(0px)}
+    10%   {transform: translateX(304px) translateY(-30px)}
+    20%   {transform: translateX(288px) translateY(-60px);}
+    30%   {transform: translateX(272px) translateY(-90px);}
+    40%   {transform: translateX(256px) translateY(-120px);}
+    50%   {transform: translateX(240px) translateY(-150px);}
+    60%   {transform: translateX(224px) translateY(-180px);}
+    70%   {transform: translateX(208px) translateY(-210px);}
+    80%   {transform: translateX(192px) translateY(-240px);}
+    90%   {transform: translateX(176px) translateY(-275px);}
+    100%  {transform: translateX(160px) translateY(-300px);}
+}
+
+.hand .fifth-picking {
+    animation-name: fifth-picking-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes fifth-picking-animation {
+    0%    {transform: translateX(480px) translateY(0px)}
+    10%   {transform: translateX(448px) translateY(-30px)}
+    20%   {transform: translateX(416px) translateY(-60px);}
+    30%   {transform: translateX(384px) translateY(-90px);}
+    40%   {transform: translateX(352px) translateY(-120px);}
+    50%   {transform: translateX(320px) translateY(-150px);}
+    60%   {transform: translateX(288px) translateY(-180px);}
+    70%   {transform: translateX(256px) translateY(-210px);}
+    80%   {transform: translateX(224px) translateY(-240px);}
+    90%   {transform: translateX(192px) translateY(-270px);}
+    100%  {transform: translateX(160px) translateY(-300px);}
+}
+
+.hand .card-in-hand .pickable > :hover {
+    animation-name: hover-animation;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.hand .card-in-hand :not(.pickable) > :hover {
+    animation-name: hover-no;
+}

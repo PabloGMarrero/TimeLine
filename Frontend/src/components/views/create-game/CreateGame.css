@@ -1,0 +1,15 @@
+.main-container-create-game{
+    padding: 20px 0 0 40px;
+    position: fixed;
+    height: 20%;
+    width:40%;
+
+}
+
+.main-container-create-game > *{
+    margin: 0;
+}
+
+.set-cartas-create-game{
+    width: 200px;
+}
