@@ -1,0 +1,43 @@
+.main-container-card-list{
+    margin: 0 auto;
+    width: 90%;
+    min-height: 50%;
+}
+
+.content-admin-card-list{
+    height: 800px;
+    width: 90%;
+    display: flex;
+}
+
+.cardslist-sidebar{
+    flex-wrap: wrap;
+    background: red;
+    width: 95%;
+    min-height: 80%;
+}
+
+.panel-admin-sidebar{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background: blue;
+}
+
+.create-card-panel{
+    padding: 5%;
+    height: 65%;
+    background: green;
+}
+
+.filter-cards-panel{
+    padding: 5%;
+    height: 20%;
+    background:yellow;
+}
+
+.return-home{
+    padding: 5%;
+    height: 15%;
+    background:brown;
+}

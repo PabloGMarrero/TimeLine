@@ -1,5 +1,7 @@
 import { Welcome } from './../../components/views/welcome/Welcome'
 import { Home } from './../../components/views/home/Home'
+import {WaitingGame} from './../../components/views/waiting-game/WaitingGame'
+import {AdminCardList} from './../../components/views/admin-cards-list/AdminCardList'
 import Game from './../../containers/Game'
 
 export const GameMode = {
@@ -39,7 +41,9 @@ export const Places = {
 export const Secciones = {
     WELCOME: 'Welcome',
     HOME: 'Home',
-    GAME: 'Game'
+    GAME: 'Game',
+    WAITINGGAME: 'Waiting',
+    ADMINCARDSLIST: 'AdminCardsList'
 }
 
 export function goToSection(section) {
@@ -54,6 +58,12 @@ export function goToSection(section) {
     case Secciones.GAME:
         return Game
 
+    case Secciones.WAITINGGAME:
+        return WaitingGame
+    
+    case Secciones.ADMINCARDSLIST:
+        return AdminCardList
+        
     default:
         return Welcome
     }

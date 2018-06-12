@@ -1,8 +1,9 @@
 .main-container-create-game{
     padding: 20px 0 0 40px;
     position: fixed;
-    min-height: 40%;
-    min-width: 20%;
+    height: 20%;
+    width:40%;
+
 }
 
 .main-container-create-game > *{

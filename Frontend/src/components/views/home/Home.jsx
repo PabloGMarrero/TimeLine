@@ -20,7 +20,7 @@ export class Home extends Component {
             <div className="sidebars-home">
                 <div className="left-sidebar-home"><CreateGame goToSection={this.props.goToSection}></CreateGame></div>
                 <div className="center-sidebar-home"><JoinGame></JoinGame></div>
-                <div className="right-sidebar-home"><AdminGame></AdminGame></div>
+                <div className="right-sidebar-home"><AdminGame goToSection={this.props.goToSection}></AdminGame></div>
             </div>
         </div>
 }

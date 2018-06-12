@@ -1,0 +1,24 @@
+.main-container-header{
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 500px
+}
+
+.letters{
+	font-family: Helvetica, sans-serif, cursive;
+	font-size: 2.6em;
+	width: 30px;
+    padding: 10px;
+    position: inherit;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    /*border: 3px solid gray;*/
+    border: 1px solid #a7a7a7;
+    border-style: outset;
+    border-radius: 3px;
+}

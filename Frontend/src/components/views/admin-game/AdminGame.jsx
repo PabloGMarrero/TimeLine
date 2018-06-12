@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './AdminGame.css'
+import {Secciones} from './../../../model/constants/constants'
 
 export class AdminGame extends Component {
     render = () => 
@@ -10,7 +11,7 @@ export class AdminGame extends Component {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <div className="button-admin-game">
-                <button type="button">Admin</button>
+                <button type="submit" id="createGame" onClick={() => this.props.goToSection(Secciones.ADMINCARDSLIST)}>Crear</button>
             </div>
 
         </div>

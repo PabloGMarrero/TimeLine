@@ -15,23 +15,25 @@ export class CreateGame extends Component {
     render = ()=> {
         return (
             <div className="main-container-create-game">
-                <h2>Crear partida</h2>
-                <p>Nombre</p>
-                <input type="text" id="game" name="game" onChange={this.handleNameGame} />
+                <div className="content-create-game">
+                    
+                    <h2>Crear partida</h2>
+                    <p>Nombre</p>
+                    <input type="text" id="game" name="game" onChange={this.handleNameGame} />
 
-                <p># jugadores</p>
-                <input type="text" id="jugadores" name="jugadores" onChange={this.handlePlayers} />
+                    <p># jugadores</p>
+                    <input type="text" id="jugadores" name="jugadores" onChange={this.handlePlayers} />
 
-                <p>Set de cartas</p>
-                <select className="set-cartas-create-game">
-                    <option value="empty"></option>
-                    <option value="basico">Básico</option>
-                </select>
+                    <p>Set de cartas</p>
+                    <select className="set-cartas-create-game">
+                        <option value="empty"></option>
+                        <option value="basico">Básico</option>
+                    </select>
 
-                <div className="button-create-game">
-                    <button type="submit" id="createGame" onClick={() => this.props.goToSection(Secciones.GAME)}>Crear</button>
-                </div>
-
+                    <div className="button-create-game">
+                        <button type="submit" id="createGame" onClick={() => this.props.goToSection(Secciones.WAITINGGAME)}>Crear</button>
+                    </div>
+                    </div>
             </div>
         )
     }
