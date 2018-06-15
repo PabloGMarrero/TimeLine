@@ -2,8 +2,10 @@ language: node_js
 node_js:
 - "9"
 
-install:
+before_install:
   - npm install -g codecov
+
+install:
   - cd Frontend
   - yarn install
   - cd ..
@@ -23,3 +25,4 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
+  - codecov --file coverage/lcov.info --disable search
