@@ -31,7 +31,7 @@ export class CreateGame extends Component {
                     </select>
 
                     <div className="button-create-game">
-                        <button type="submit" id="createGame" onClick={() => this.props.goToSection(Secciones.WAITINGGAME)}>Crear</button>
+                        <button type="submit" id="createGame" onClick={() => this.props.goToSection(Secciones.WAITINGGAME, { players: this.state.players, name: this.state.name})}>Crear</button>
                     </div>
                     </div>
             </div>
@@ -39,6 +39,6 @@ export class CreateGame extends Component {
     }
 
 
-    handleNameGame = (event) => this.setState({ name: event.event.value })
-    handlePlayers = (event) => this.setState({ players: event.event.value })
+    handleNameGame = (event) => this.setState({ name: event.target.value })
+    handlePlayers = (event) => this.setState({ players: event.target.value })
 }

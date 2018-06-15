@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import './App.css'
 import { Welcome } from './components/views/welcome/Welcome'
-import { goToSection } from './model/constants/constants'
+import { returnComponentForSection } from './model/constants/constants'
 
 class App extends Component {
 
@@ -14,16 +14,16 @@ class App extends Component {
     }
 
     render() {
-        const Componente = this.state.seccion
+        //const Componente = this.state.seccion
+        const { seccion: Componente, optionalProp = {} } = this.state
 
-        return (
-            <Componente goToSection={this.goToSection} />
-        )
+        return <Componente goToSection={this.goToSection} {...optionalProp} />
     }
 
-    goToSection = (section) => {
+    goToSection = (section, optionalProp) => {
         this.setState({
-            seccion: goToSection(section)
+            seccion: returnComponentForSection(section),
+            optionalProp
         })
     }
 }

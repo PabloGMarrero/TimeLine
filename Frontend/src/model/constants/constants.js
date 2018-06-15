@@ -46,7 +46,7 @@ export const Secciones = {
     ADMINCARDSLIST: 'AdminCardsList'
 }
 
-export function goToSection(section) {
+export function returnComponentForSection(section) {
     switch (section) {
 
     case Secciones.WELCOME:
