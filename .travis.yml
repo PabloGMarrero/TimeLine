@@ -2,6 +2,9 @@ language: node_js
 node_js:
 - "9"
 
+before_install:
+  - npm install -g codecov
+
 install:
   - cd Frontend
   - yarn install
@@ -11,10 +14,15 @@ install:
   - cd ..
 
 script:
-- cd Backend
-- yarn linter
-# - yarn test:ci
-- cd ..
-- cd Frontend
-- yarn build
-- yarn test
+  - cd Backend
+  - yarn linter
+  # - yarn test:ci
+  - cd ..
+  - cd Frontend
+  - yarn build
+  - yarn test
+  - yarn test-coverage
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
+  - codecov --file coverage/lcov.info --disable search
