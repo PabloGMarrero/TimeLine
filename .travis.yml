@@ -3,6 +3,7 @@ node_js:
 - "9"
 
 install:
+  - npm install -g codecov
   - cd Frontend
   - yarn install
   - cd ..
@@ -11,10 +12,14 @@ install:
   - cd ..
 
 script:
-- cd Backend
-- yarn linter
-# - yarn test:ci
-- cd ..
-- cd Frontend
-- yarn build
-- yarn test
+  - codecov
+  - cd Backend
+  - yarn linter
+  # - yarn test:ci
+  - cd ..
+  - cd Frontend
+  - yarn build
+  - yarn test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
