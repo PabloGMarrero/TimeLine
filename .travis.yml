@@ -12,7 +12,6 @@ install:
   - cd ..
 
 script:
-  - codecov
   - cd Backend
   - yarn linter
   # - yarn test:ci
@@ -20,6 +19,7 @@ script:
   - cd Frontend
   - yarn build
   - yarn test
+  - yarn test-coverage
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
