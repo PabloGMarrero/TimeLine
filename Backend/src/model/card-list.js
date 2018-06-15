@@ -1,17 +1,22 @@
-var mongoose = require('mongoose')
+// var mongoose = require('mongoose')
 
-var ObjectId = mongoose.Schema.Types.ObjectId
+import { Schema, model, } from 'mongoose'
 
-var CardListSchema = new mongoose.Schema({
-    cards: [{ Objectid, ref: 'card' }]
+
+const { Types } = Schema
+
+const { ObjectId } = Types
+
+const CardListSchema = new Schema({
+    cards: [{ ObjectId, ref: 'card' }]
 })
 
-var cardListModel = mongoose.model('cardList', CardListSchema)
+const cardListModel = model('cardList', CardListSchema)
 
 export const fetchCards = () => cardListModel.find({});
 
-export const fetchCardsByName = (name) => find({ name: name })
+export const fetchCardsByName = name => cardListModel.find({ name })
 
-export const fetchCardsByCategory = (category) => find({ category: category })
+export const fetchCardsByCategory = category => cardListModel.find({ category })
 
-export const fetchCardsByYear = (year) => find({ year: year })
+export const fetchCardsByYear = year => cardListModel.find({ year })

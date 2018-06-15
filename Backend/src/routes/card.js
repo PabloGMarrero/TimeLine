@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import { createCard } from '../model/card'
-// import mongoose from 'mongoose'
 
 // const Card = mongoose.model('card')
 
