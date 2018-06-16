@@ -150,3 +150,21 @@ it('start next turn from end turn phase player to main phase enemy', () =>{
     expect(afterReducerState).toEqual(expectedState)
 })
 
+it('start next turn from main phase enemy to main phase player', () =>{
+
+    const beforeReducerState ={
+        turn: Turn.ENEMY,
+        phase: Phase.MAIN_PHASE
+    }
+
+    const afterReducerState = reducer(beforeReducerState, startNextTurn())
+
+    const expectedState ={
+        turn: Turn.PLAYER,
+        phase: Phase.MAIN_PHASE
+        
+    }
+
+    expect(afterReducerState).toEqual(expectedState)
+})
+
