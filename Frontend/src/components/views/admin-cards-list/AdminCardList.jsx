@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import './AdminCardList.css'
 import {Secciones} from './../../../model/constants/constants'
+import {CreateCard} from './../create-card/CreateCard'
+import {CardList} from './../cards-list/CardList'
+import {FilterCards} from './../filter-cards/FilterCards'
 
 const cardslist = {
         
@@ -23,19 +26,18 @@ export class AdminCardList extends Component {
                 <div className="content-admin-card-list">
                     <div className="cardslist-sidebar">
                         <p>acá hay un montón de cartas re piolas</p>
+                        <CardList/>
                     </div>
 
                     <div className="panel-admin-sidebar">
                         
                         <div className="create-card-panel">
-                            <p>Sección donde podrás crear tus propias cartas!</p>
-                            <div className="button-admin-game">
-                                <button type="submit" id="createGame">Crear carta</button>
-                            </div>
+                            <CreateCard/>
                         </div>
 
                         <div className="filter-cards-panel">
                             <p>Sección filtros para realizar la búsqueda de la carta que desees rápidamente.</p>
+                            <FilterCards/>
                         </div>
 
                         <div className="return-home">
