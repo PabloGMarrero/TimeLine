@@ -111,3 +111,23 @@ it('select card', () => {
 
     expect(afterReducerState).toEqual(expectedState)
 })
+
+it('deselect card', () => {
+
+    const dummyCard = {
+        key: 'test',
+        selected: true
+    }
+    const beforeReducerState = {
+        cards: [dummyCard]
+    }
+
+    const afterReducerState = reducer(beforeReducerState, deselectCard(dummyCard))
+
+    const expectedState = {
+        cards: [{ key: 'test', selected: false }],
+        showingCardChoices:false
+    }
+
+    expect(afterReducerState).toEqual(expectedState)
+})
