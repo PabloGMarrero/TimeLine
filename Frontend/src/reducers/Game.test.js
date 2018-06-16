@@ -58,3 +58,35 @@ it('Test reducer on startNextTurn action dispath', () => {
 
     expect(reducer(initialState, action)).toEqual(expectedPayload)
 })
+
+it('remove card', ()=>{
+
+    const beforeReducerState={
+        cards: [{key:'test', visible:false}],
+        board:[{cardkey: undefined, index: 0, key:0 }, 
+                {cardkey: undefined, index: 1, key:1 },
+                {cardkey: undefined, index: 2, key:2 },
+                {cardkey: 'test', index: 3, key:3}, 
+                {cardkey: undefined, index: 4, key:4 }  ],
+        deck: [],
+        lastCardPlayed:{
+            key:'test', 
+            visible: false
+        }
+    }
+
+    const afterReducerState = reducer(beforeReducerState, removeCard())
+
+    const expectedState = {
+        cards: [{key:'test', visible:false}],
+        board:[{cardkey: undefined, index: 0, key:0 }, 
+                {cardkey: undefined, index: 1, key:1 },
+                {cardkey: undefined, index: 2, key:2 },
+                {cardkey: undefined, index: 3, key:3 }, 
+                {cardkey: undefined, index: 4, key:4 }  ],
+        deck: [],
+        lastCardPlayed: undefined
+    }
+
+    expect(afterReducerState).toEqual(expectedState)
+})
