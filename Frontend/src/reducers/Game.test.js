@@ -132,7 +132,7 @@ it('deselect card', () => {
     expect(afterReducerState).toEqual(expectedState)
 })
 
-it('start next turn from end turn phase to main phase', () =>{
+it('start next turn from end turn phase player to main phase enemy', () =>{
 
     const beforeReducerState ={
         turn: Turn.PLAYER,
@@ -144,7 +144,9 @@ it('start next turn from end turn phase to main phase', () =>{
     const expectedState ={
         turn: Turn.ENEMY,
         phase: Phase.MAIN_PHASE
+        
     }
 
     expect(afterReducerState).toEqual(expectedState)
 })
+
