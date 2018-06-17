@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import { Mockgoose } from 'mockgoose'
-import './card.js'
+import './card'
 
 const { ObjectId } = mongoose.Types
 
@@ -21,7 +21,7 @@ describe('CardModel', () => {
             year: 2001,
             description: 'Television',
             category: 'Inventions',
-            url: ''//'https://i.imgur.com/mlgIA8P.jpg'
+            url: ''
         }
 
         const cardSaved = await new Card(dummyCard).save()
@@ -32,7 +32,7 @@ describe('CardModel', () => {
             year: 2001,
             description: 'Television',
             category: 'Inventions',
-            url: ''// 'https://i.imgur.com/mlgIA8P.jpg'
+            url: ''
         })
         expect(await Card.count()).toEqual(1)
     })
