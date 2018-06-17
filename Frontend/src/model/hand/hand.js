@@ -1,6 +1,7 @@
 import { pick } from 'shuffle-array'
 import { partial, nth, complement, update, any, all, find, filter } from 'ramda'
-import { get as getS, set as setS, empty as emptyS, isEmpty as isEmptyS, clear as clearS, includes as includesS, indexOf } from '../slot/slot'
+import { get as getS, set as setS, empty as emptyS, isEmpty as isEmptyS, clear as clearS, includes as includesS, indexOf } 
+    from '../slot/slot'
 
 export const empty = (size, owner) => ({
     owner,

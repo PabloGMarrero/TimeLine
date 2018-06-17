@@ -78,7 +78,6 @@ export const Game = (state = initialState, action) => {
 
     case DRAW_CARD:
         var { card: pickedCard, deck: postDrawDeck } = pickCardFromDeck(state.deck, state.cards)
-
         return {
             ...state,
             cards: reveal(pickedCard, state.cards),
@@ -92,7 +91,8 @@ export const Game = (state = initialState, action) => {
     case REMOVE_CARD:
         return {
             ...state,
-            board: removeB(state.lastCardPlayed, state.board)
+            board: removeB(state.lastCardPlayed, state.board),
+            lastCardPlayed: undefined
         }
 
     case SELECT_A_CARD:
@@ -119,7 +119,7 @@ export const Game = (state = initialState, action) => {
 
     case PLAY_CARD_FROM_DECK:
         var { card: initialCard, deck: postPlayCardDeck } = pickCardFromDeck(state.deck, state.cards)
-
+        
         return {
             ...state,
             cards: reveal(initialCard, state.cards),
