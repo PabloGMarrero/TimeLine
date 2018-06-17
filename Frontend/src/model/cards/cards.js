@@ -288,7 +288,7 @@ const updateProps = (card, props) => ({ ...card, ...props })
 const updateCard = (card, props, cards) =>
     update(indexOf(card, cards), updateProps(card, props), cards)
 
-const keyOf = ({ key }) => key
+export const keyOf = ({ key }) => key
 
 export const isSelected = ({ selected }) => selected
 
@@ -302,7 +302,7 @@ export const selectCard = (card, cards) => updateCard(card, { selected: true }, 
 
 export const selectedCard = (cards) => find(_ => isSelected(_), cards)
 
-const findCard = (cardkey, cards) => find(_ => equals(keyOf(_), cardkey), cards)
+export const findCard = (cardkey, cards) => find(_ => equals(keyOf(_), cardkey), cards)
 
 export const flipCard = (card, cards) => updateCard(findCard(keyOf(card), cards), { flipped: true }, cards)
 
