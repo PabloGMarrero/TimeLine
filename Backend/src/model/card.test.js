@@ -36,4 +36,20 @@ describe('CardModel', () => {
         })
         expect(await Card.count()).toEqual(1)
     })
+
+    it('should raise an url exception', async () => {
+        const dummyCardWithoutUrl = {
+            year: 2001,
+            description: 'TV',
+            category: 'Inventions'
+        }
+
+        try {
+            await new Card(dummyCardWithoutUrl).save()
+            throw new Error('Missing image url')
+        } catch (error) {
+            expect(error.message).toEqual('Missing image url')
+        }
+
+    })
 })
