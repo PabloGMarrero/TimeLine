@@ -5,8 +5,8 @@ import bgmMusic from '../../assets/bgm/Background-Music.mp3'
 import Board from '../../containers/Board'
 import Hand from '../../containers/Hand'
 import { Turn, Phase } from '../../model/constants/constants'
-import { cards, timelineHasAValidPeriod } from '../../model/cards/cards'
-import { cards as cardsOnBoard } from '../../model/board/board'
+import { cards/*, timelineHasAValidPeriod*/ } from '../../model/cards/cards'
+//import { cards as cardsOnBoard } from '../../model/board/board'
 
 export class Game extends Component {
 
