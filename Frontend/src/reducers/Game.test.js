@@ -106,7 +106,7 @@ it('select card', () => {
 
     const expectedState = {
         cards: [{ key: 'test', selected: true }],
-        showingCardChoices:false
+        showingCardChoices: false
     }
 
     expect(afterReducerState).toEqual(expectedState)
@@ -126,45 +126,151 @@ it('deselect card', () => {
 
     const expectedState = {
         cards: [{ key: 'test', selected: false }],
-        showingCardChoices:false
+        showingCardChoices: false
     }
 
     expect(afterReducerState).toEqual(expectedState)
 })
 
-it('start next turn from end turn phase player to main phase enemy', () =>{
+it('start next turn from end turn phase player to main phase enemy', () => {
 
-    const beforeReducerState ={
+    const beforeReducerState = {
         turn: Turn.PLAYER,
         phase: Phase.END_TURN_PHASE
     }
 
     const afterReducerState = reducer(beforeReducerState, startNextTurn())
 
-    const expectedState ={
+    const expectedState = {
         turn: Turn.ENEMY,
         phase: Phase.MAIN_PHASE
-        
+
     }
 
     expect(afterReducerState).toEqual(expectedState)
 })
 
-it('start next turn from main phase enemy to main phase player', () =>{
+it('start next turn from main phase enemy to main phase player', () => {
 
-    const beforeReducerState ={
+    const beforeReducerState = {
         turn: Turn.ENEMY,
         phase: Phase.MAIN_PHASE
     }
 
     const afterReducerState = reducer(beforeReducerState, startNextTurn())
 
-    const expectedState ={
+    const expectedState = {
         turn: Turn.PLAYER,
         phase: Phase.MAIN_PHASE
-        
+
     }
 
     expect(afterReducerState).toEqual(expectedState)
 })
 
+it('draw a card', () => {
+
+    const dummyCard = {
+        key: 'test',
+        visible: false
+    }
+
+    const dummySlotsCard =
+        [
+            { cardkey: undefined, index: 0, key: 0 },
+            { cardkey: undefined, index: 1, key: 1 },
+            { cardkey: undefined, index: 2, key: 2 },
+            { cardkey: undefined, index: 3, key: 3 },
+            { cardkey: undefined, index: 4, key: 4 }
+        ]
+
+    const beforeReducerState = {
+        turn: Turn.PLAYER,
+        cards: [dummyCard],
+        deck: [dummyCard.key],
+        hands: {
+            playerHand: {
+                owner: Turn.PLAYER,
+                slots: dummySlotsCard
+            },
+            enemyHand: {
+                owner: Turn.ENEMY,
+                slots: dummySlotsCard
+            }
+        }
+    }
+
+    const afterReducerState = reducer(beforeReducerState, drawCard(beforeReducerState.turn))
+
+    const expectedState = {
+        turn: Turn.PLAYER,
+        cards: [{
+            key: 'test',
+            visible: true}],
+        deck: [],
+        hands: {
+            playerHand: {
+                slots: [
+                    { cardkey: 'test', index: 0, key: 0 },
+                    { cardkey: undefined, index: 1, key: 1 },
+                    { cardkey: undefined, index: 2, key: 2 },
+                    { cardkey: undefined, index: 3, key: 3 },
+                    { cardkey: undefined, index: 4, key: 4 }
+                ],
+                owner: Turn.PLAYER
+            },
+            enemyHand: {
+                slots: dummySlotsCard,
+                owner: Turn.ENEMY
+            }
+        }
+    }
+
+    expect(afterReducerState).toEqual(expectedState)
+})
+
+it('playCardFromDeck', () => {
+    const dummyCard = {
+        key: 'test',
+        visible: false
+    }
+
+    const dummySlotsCard =
+        [
+            { cardkey: undefined, index: 0, key: 0 },
+            { cardkey: undefined, index: 1, key: 1 },
+            { cardkey: undefined, index: 2, key: 2 },
+            { cardkey: undefined, index: 3, key: 3 },
+            { cardkey: undefined, index: 4, key: 4 }
+        ]
+
+    const beforeReducerState = {
+        board: dummySlotsCard,
+        cards: [dummyCard],
+        deck: [dummyCard.key],
+        lastCardPlayed: undefined
+    }
+
+    const afterReducerState = reducer(beforeReducerState, playCardFromDeck())
+
+    const expectedState = {
+        board: [
+            { cardkey: undefined, index: 0, key: 0 },
+            { cardkey: undefined, index: 1, key: 1 },
+            { cardkey: undefined, index: 2, key: 2 },
+            { cardkey: 'test', index: 3, key: 3 },
+            { cardkey: undefined, index: 4, key: 4 }
+        ],
+        cards: [ {
+            key: 'test',
+            visible: true
+        }],
+        deck: [],
+        lastCardPlayed: {
+            key: 'test',
+            visible: false
+        }
+    }
+
+    expect(afterReducerState).toEqual(expectedState)
+})
