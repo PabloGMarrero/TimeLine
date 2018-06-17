@@ -362,3 +362,25 @@ it('show card choices', ()=>{
 
     expect(afterReducerState).toEqual(expectedState)
 })
+
+it('flip card in ' , ()=>{
+    const dummyCard = {
+        cardkey: 'test',
+        visible:false,
+        selected: true
+    }
+
+    const beforeReducerState = {
+        cards: [dummyCard],
+        lastCardPlayed: {cardkey: 'test', visible:true, selected: true}
+    }
+
+    const afterReducerState = reducer(beforeReducerState, flipCard())
+
+    const expectedState = {
+        cards: [{cardkey: 'test', flipped:true, visible:false, selected: true}],
+        lastCardPlayed:  {cardkey: 'test', visible:true, selected: true}
+    }
+    expect(afterReducerState).toEqual(expectedState)
+})
+
