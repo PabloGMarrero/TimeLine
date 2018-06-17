@@ -25,3 +25,4 @@ export const indexOf = ({ index }) => index
 export const keyOf = ({ key }) => key
 
 export const replace = (cardkey, { index, key }) => slot(cardkey, index, key)
+
