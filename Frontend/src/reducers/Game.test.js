@@ -347,3 +347,18 @@ it('play card from hand', () => {
 
     expect(afterReducerState).toEqual(expectedState)
 })
+
+it('show card choices', ()=>{
+
+    const beforeReducerState = {
+        showingCardChoices: false
+    }
+
+    const afterReducerState = reducer(beforeReducerState, showCardChoices())
+
+    const expectedState = {
+        showingCardChoices:true
+    }
+
+    expect(afterReducerState).toEqual(expectedState)
+})
