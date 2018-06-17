@@ -384,3 +384,14 @@ it('flip card in ' , ()=>{
     expect(afterReducerState).toEqual(expectedState)
 })
 
+it('SELECT_RANDOM_CARD_FROM_HAND', ()=>{
+
+})
+
+it('PLAY_RANDOM_CARD_FROM_HAND', ()=>{
+
+})
+
+it('UPDATE_CURRENT_GAME_STATE', ()=>{
+
+})
