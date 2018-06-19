@@ -84,4 +84,21 @@ describe('CardModel', () => {
         }
 
     })
+
+    it('remove card by id', async () => {
+        const dummyCard = {
+            year: 2001,
+            description: 'Television',
+            category: 'Inventions',
+            url: 'url'
+        }
+
+        await new Card(dummyCard).save()
+
+        const cardInDb = await Card.findOne({ description: 'Television' })
+
+        await Card.remove({ _id: cardInDb.id })
+
+        expect(await Card.count()).toEqual(0)
+    })
 })
