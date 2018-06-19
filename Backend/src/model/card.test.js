@@ -85,7 +85,7 @@ describe('CardModel', () => {
 
     })
 
-    it('find card by name', async () => {
+    it('find card by year', async () => {
 
         const dummyCard = {
             year: 2001,
@@ -97,6 +97,21 @@ describe('CardModel', () => {
         await new Card(dummyCard).save()
 
         expect(await Card.find({ year: dummyCard.year }).count()).toEqual(1)
+
+    })
+
+    it('find card by description', async () => {
+
+        const dummyCard = {
+            year: 2001,
+            description: 'Television',
+            category: 'Inventions',
+            url: 'url'
+        }
+
+        await new Card(dummyCard).save()
+
+        expect(await Card.find({ description: dummyCard.description }).count()).toEqual(1)
 
     })
 
