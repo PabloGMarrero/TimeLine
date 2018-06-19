@@ -21,7 +21,7 @@ describe('CardModel', () => {
             year: 2001,
             description: 'Television',
             category: 'Inventions',
-            url: ''
+            url: 'url'
         }
 
         const cardSaved = await new Card(dummyCard).save()
@@ -32,7 +32,7 @@ describe('CardModel', () => {
             year: 2001,
             description: 'Television',
             category: 'Inventions',
-            url: ''
+            url: 'url'
         })
         expect(await Card.count()).toEqual(1)
     })
@@ -46,9 +46,9 @@ describe('CardModel', () => {
 
         try {
             await new Card(dummyCardWithoutUrl).save()
-            throw new Error('Missing image url')
+            throw new Error('Should fail.')
         } catch (error) {
-            expect(error.message).toEqual('Missing image url')
+            expect(error.message).toEqual('Card validation failed: url: Path `url` is required.')
         }
 
     })
