@@ -68,4 +68,20 @@ describe('CardModel', () => {
         }
 
     })
+
+    it('should raise a category exception', async () => {
+        const dummyCardWithoutUrl = {
+            year: 2001,
+            description: 'TV',
+            url: 'url'
+        }
+
+        try {
+            await new Card(dummyCardWithoutUrl).save()
+            throw new Error('Should fail.')
+        } catch (error) {
+            expect(error.message).toEqual('Card validation failed: category: Path `category` is required.')
+        }
+
+    })
 })
