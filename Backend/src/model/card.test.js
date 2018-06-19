@@ -85,6 +85,21 @@ describe('CardModel', () => {
 
     })
 
+    it('find card by name', async () => {
+
+        const dummyCard = {
+            year: 2001,
+            description: 'Television',
+            category: 'Inventions',
+            url: 'url'
+        }
+
+        await new Card(dummyCard).save()
+
+        expect(await Card.find({ year: dummyCard.year }).count()).toEqual(1)
+
+    })
+
     it('remove card by id', async () => {
         const dummyCard = {
             year: 2001,
