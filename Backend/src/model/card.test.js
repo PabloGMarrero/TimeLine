@@ -52,4 +52,20 @@ describe('CardModel', () => {
         }
 
     })
+
+    it('should raise a year exception', async () => {
+        const dummyCardWithoutUrl = {
+            description: 'TV',
+            category: 'Inventions',
+            url: 'url'
+        }
+
+        try {
+            await new Card(dummyCardWithoutUrl).save()
+            throw new Error('Should fail.')
+        } catch (error) {
+            expect(error.message).toEqual('Card validation failed: year: Path `year` is required.')
+        }
+
+    })
 })
