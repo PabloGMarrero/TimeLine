@@ -16,134 +16,145 @@ describe('CardModel', () => {
         await mockgoose.helper.reset()
     })
 
-    it('card created', async () => {
-        const dummyCard = {
-            year: 2001,
-            description: 'Television',
-            category: 'Inventions',
-            url: 'url'
-        }
+    describe('Created card', () => {
+        it('card created', async () => {
+            const dummyCard = {
+                year: 2001,
+                description: 'Television',
+                category: 'Inventions',
+                url: 'url'
+            }
 
-        const cardSaved = await new Card(dummyCard).save()
+            const cardSaved = await new Card(dummyCard).save()
 
-        expect(cardSaved).toMatchObject({
-            _id: expect.any(ObjectId),
-            __v: 0,
-            year: 2001,
-            description: 'Television',
-            category: 'Inventions',
-            url: 'url'
+            expect(cardSaved).toMatchObject({
+                _id: expect.any(ObjectId),
+                __v: 0,
+                year: 2001,
+                description: 'Television',
+                category: 'Inventions',
+                url: 'url'
+            })
+            expect(await Card.count()).toEqual(1)
         })
-        expect(await Card.count()).toEqual(1)
     })
 
-    it('should raise an url exception', async () => {
-        const dummyCardWithoutUrl = {
-            year: 2001,
-            description: 'TV',
-            category: 'Inventions'
-        }
+    describe('Errors / exception', () => {
+        it('should raise an url exception', async () => {
+            const dummyCardWithoutUrl = {
+                year: 2001,
+                description: 'TV',
+                category: 'Inventions'
+            }
 
-        try {
-            await new Card(dummyCardWithoutUrl).save()
-            throw new Error('Should fail.')
-        } catch (error) {
-            expect(error.message).toEqual('Card validation failed: url: Path `url` is required.')
-        }
+            try {
+                await new Card(dummyCardWithoutUrl).save()
+                throw new Error('Should fail.')
+            } catch (error) {
+                expect(error.message).toEqual('Card validation failed: url: Path `url` is required.')
+            }
+
+        })
+
+        it('should raise a year exception', async () => {
+            const dummyCardWithoutUrl = {
+                description: 'TV',
+                category: 'Inventions',
+                url: 'url'
+            }
+
+            try {
+                await new Card(dummyCardWithoutUrl).save()
+                throw new Error('Should fail.')
+            } catch (error) {
+                expect(error.message).toEqual('Card validation failed: year: Path `year` is required.')
+            }
+
+        })
+
+        it('should raise a category exception', async () => {
+            const dummyCardWithoutUrl = {
+                year: 2001,
+                description: 'TV',
+                url: 'url'
+            }
+
+            try {
+                await new Card(dummyCardWithoutUrl).save()
+                throw new Error('Should fail.')
+            } catch (error) {
+                expect(error.message).toEqual('Card validation failed: category: Path `category` is required.')
+            }
+
+        })
+    })
+
+
+    describe('Find card methods', () => {
+        it('find card by year', async () => {
+
+            const dummyCard = {
+                year: 2001,
+                description: 'Television',
+                category: 'Inventions',
+                url: 'url'
+            }
+
+            await new Card(dummyCard).save()
+
+            expect(await Card.find({ year: dummyCard.year }).count()).toEqual(1)
+
+        })
+
+        it('find card by description', async () => {
+
+            const dummyCard = {
+                year: 2001,
+                description: 'Television',
+                category: 'Inventions',
+                url: 'url'
+            }
+
+            await new Card(dummyCard).save()
+
+            expect(await Card.find({ description: dummyCard.description }).count()).toEqual(1)
+
+        })
+
+        it('find card by category', async () => {
+
+            const dummyCard = {
+                year: 2001,
+                description: 'Television',
+                category: 'Inventions',
+                url: 'url'
+            }
+
+            await new Card(dummyCard).save()
+
+            expect(await Card.find({ category: dummyCard.category }).count()).toEqual(1)
+
+        })
 
     })
 
-    it('should raise a year exception', async () => {
-        const dummyCardWithoutUrl = {
-            description: 'TV',
-            category: 'Inventions',
-            url: 'url'
-        }
+    describe('Remove card methods', () => {
+        it('remove card by id', async () => {
+            const dummyCard = {
+                year: 2001,
+                description: 'Television',
+                category: 'Inventions',
+                url: 'url'
+            }
 
-        try {
-            await new Card(dummyCardWithoutUrl).save()
-            throw new Error('Should fail.')
-        } catch (error) {
-            expect(error.message).toEqual('Card validation failed: year: Path `year` is required.')
-        }
+            await new Card(dummyCard).save()
 
+            const cardInDb = await Card.findOne({ description: 'Television' })
+
+            await Card.remove({ _id: cardInDb.id })
+
+            expect(await Card.count()).toEqual(0)
+        })
     })
 
-    it('should raise a category exception', async () => {
-        const dummyCardWithoutUrl = {
-            year: 2001,
-            description: 'TV',
-            url: 'url'
-        }
-
-        try {
-            await new Card(dummyCardWithoutUrl).save()
-            throw new Error('Should fail.')
-        } catch (error) {
-            expect(error.message).toEqual('Card validation failed: category: Path `category` is required.')
-        }
-
-    })
-
-    it('find card by year', async () => {
-
-        const dummyCard = {
-            year: 2001,
-            description: 'Television',
-            category: 'Inventions',
-            url: 'url'
-        }
-
-        await new Card(dummyCard).save()
-
-        expect(await Card.find({ year: dummyCard.year }).count()).toEqual(1)
-
-    })
-
-    it('find card by description', async () => {
-
-        const dummyCard = {
-            year: 2001,
-            description: 'Television',
-            category: 'Inventions',
-            url: 'url'
-        }
-
-        await new Card(dummyCard).save()
-
-        expect(await Card.find({ description: dummyCard.description }).count()).toEqual(1)
-
-    })
-
-    it('find card by category', async () => {
-
-        const dummyCard = {
-            year: 2001,
-            description: 'Television',
-            category: 'Inventions',
-            url: 'url'
-        }
-
-        await new Card(dummyCard).save()
-
-        expect(await Card.find({ category: dummyCard.category }).count()).toEqual(1)
-
-    })
-
-    it('remove card by id', async () => {
-        const dummyCard = {
-            year: 2001,
-            description: 'Television',
-            category: 'Inventions',
-            url: 'url'
-        }
-
-        await new Card(dummyCard).save()
-
-        const cardInDb = await Card.findOne({ description: 'Television' })
-
-        await Card.remove({ _id: cardInDb.id })
-
-        expect(await Card.count()).toEqual(0)
-    })
 })
