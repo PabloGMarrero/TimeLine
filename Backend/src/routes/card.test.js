@@ -5,6 +5,8 @@ import start from '../server/server'
 
 const mockgoose = new Mockgoose(mongoose)
 
+const Cardmodel = mongoose.model('Card')
+
 describe('Routes - Card', () => {
     let app
 
@@ -21,6 +23,35 @@ describe('Routes - Card', () => {
         mockgoose.helper.reset()
     })
 
+    describe('POST /cards', () => {
+        const dummyCard = {
+            year: 2001,
+            description: 'Television',
+            category: 'Inventions',
+            url: 'url'
+        }
+        it('debe guardar en base', async () => {
+            await request(app)
+                .post('/cards')
+                .send(dummyCard)
+                .expect(200)
+                .expect(res =>
+                    expect(res.body).toEqual({
+                        status: 'ok',
+                        data: [{
+                            __v: 0,
+                            _id: expect.any(String),
+                            year: 2001,
+                            description: 'Television',
+                            category: 'Inventions',
+                            url: 'url'
+                        }]
+
+                    })
+                )
+            expect(await Cardmodel.count()).toEqual(1)
+        })
+    })
     describe('GET /cards', () => {
 
         it('obtener todos sin datos en mongo da array vacio', async () => {
