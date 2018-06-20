@@ -1,19 +1,10 @@
 import { Router } from 'express'
-import { createCard } from '../model/card'
-
-// const Card = mongoose.model('card')
+import mongoose from 'mongoose'
+import './../model/card'
 
 const router = Router()
+const Cardmodel = mongoose.model('Card')
 
-const ok = { status: 'ok' }
-
-router.post('/create', async (req, res) => {
-    const item = req.body
-    const data = await createCard([item])
-    res.send({
-        ...ok,
-        data,
-    })
-})
+router.get('/cards', async (req, res) => res.send(await Cardmodel.find({})))
 
 export default router
