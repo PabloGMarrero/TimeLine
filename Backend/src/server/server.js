@@ -4,9 +4,10 @@ import morgan from 'morgan'
 import mongoose from 'mongoose'
 
 import card from '../routes/card'
+import './../model/card'
 
 const start = () => {
-    mongoose.connect('mongodb://ds139970.mlab.com:39970/time-line')
+    mongoose.connect('mongodb://timeline-ps:timeline-ps1@ds263670.mlab.com:63670/timeline-ps')
 
     const app = express()
     app.use(morgan('combined'))

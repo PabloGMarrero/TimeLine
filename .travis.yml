@@ -16,7 +16,7 @@ install:
 script:
   - cd Backend
   - yarn linter
-  # - yarn test:ci
+  - yarn test:ci
   - cd ..
   - cd Frontend
   - yarn build
