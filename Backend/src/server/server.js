@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import mongoose from 'mongoose'
 
 import card from '../routes/card'
+import './../model/card'
 
 const start = () => {
     mongoose.connect('mongodb://timeline-ps:timeline-ps1@ds263670.mlab.com:63670/timeline-ps')
