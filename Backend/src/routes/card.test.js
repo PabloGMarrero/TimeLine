@@ -7,7 +7,14 @@ const mockgoose = new Mockgoose(mongoose)
 
 const Cardmodel = mongoose.model('Card')
 
-describe('Routes - Card', () => {
+const dummyCard = {
+    year: 2001,
+    description: 'Television',
+    category: 'Inventions',
+    url: 'url'
+}
+
+describe('Routes', () => {
     let app
 
     beforeEach(() => {
@@ -23,13 +30,41 @@ describe('Routes - Card', () => {
         mockgoose.helper.reset()
     })
 
+    afterAll(async () => {
+        await mongoose.disconnect()
+    })
+
+    describe('GET /cards', () => {
+
+        it('obtener todos sin datos en mongo da array vacio', async () => {
+            await request(app)
+                .get('/cards')
+                .expect(200)
+                .expect(res =>
+                    expect(res.body).toEqual([])
+                )
+        })
+
+        it('guardo uno y lo obtengo', async () => {
+            await Cardmodel.create(dummyCard)
+
+            await request(app)
+                .get('/cards')
+                .expect(200)
+                .expect(res =>
+                    expect(res.body).toEqual([{
+                        __v: 0,
+                        _id: expect.any(String),
+                        description: 'Television',
+                        category: 'Inventions',
+                        year: 2001,
+                        url: 'url'
+                    }])
+                )
+        })
+    })
+
     describe('POST /cards', () => {
-        const dummyCard = {
-            year: 2001,
-            description: 'Television',
-            category: 'Inventions',
-            url: 'url'
-        }
         it('debe guardar en base', async () => {
             await request(app)
                 .post('/cards')
@@ -52,15 +87,5 @@ describe('Routes - Card', () => {
             expect(await Cardmodel.count()).toEqual(1)
         })
     })
-    describe('GET /cards', () => {
 
-        it('obtener todos sin datos en mongo da array vacio', async () => {
-            await request(app)
-                .get('/cards')
-                .expect(200)
-                .expect(res =>
-                    expect(res.body).toEqual([])
-                )
-        })
-    })
 })
