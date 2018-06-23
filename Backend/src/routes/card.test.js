@@ -2,7 +2,6 @@ import mongoose from 'mongoose'
 import { Mockgoose } from 'mockgoose'
 import request from 'supertest'
 import start from '../server/server'
-import { AsyncResource } from 'async_hooks';
 
 const mockgoose = new Mockgoose(mongoose)
 
@@ -88,33 +87,13 @@ describe('Routes', () => {
 
     describe('PUT /cards/:id', () => {
         it('actualizar card de la base', async () => {
-            const updatableCard = {
-                year: 2001,
-                description: 'Television',
-                category: 'Inventions',
-                url: 'url'
-            }
 
-            const response = await request(app)
-                .post('/cards')
-                .send(updatableCard)
-
-            //const id = response.body.data[0]['_id']
-            // await request(app)
-            //     .put('/cards/' + id)
-            //     .send({ _id: id, description: 'TV' })
-            //     .expect(200)
         })
     })
 
     describe('DELETE /cards/:id', () => {
         it('debe borrar una luego de agregarla', async () => {
-            const response = await Cardmodel.create(dummyCard)
-            const id = response['_id']
 
-            // await request(app)
-            //     .delete('/cards/' + id)
-            //     .expect(200)
         })
     })
 })
