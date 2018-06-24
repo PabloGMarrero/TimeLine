@@ -5,7 +5,6 @@ import { Welcome } from './components/views/welcome/Welcome'
 import { returnComponentForSection } from './model/constants/constants'
 
 class App extends Component {
-
     constructor(props) {
         super(props)
         this.state = {

@@ -9,11 +9,13 @@ const mapStateToProps = ({ game }) => ({
     cards: game.cards
 })
 
-
 const mapActionsToProps = dispatch => ({
-    selectCardHandler: (card) => dispatch(selectACard(card)),
+    selectCardHandler: card => dispatch(selectACard(card)),
     cancelSelectionHandler: () => dispatch(deselectCard()),
     showPlacesChoicesHandler: () => dispatch(showCardChoices())
 })
 
-export default connect(mapStateToProps, mapActionsToProps)(Hand)
+export default connect(
+    mapStateToProps,
+    mapActionsToProps
+)(Hand)

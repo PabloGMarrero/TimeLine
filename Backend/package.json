@@ -29,10 +29,11 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jest": "^21.17.0",
     "jest": "^23.1.0",
-    "nodemon": "^1.17.5",
-    "supertest": "^3.1.0",
     "lint-staged": "^7.2.0",
-    "mockgoose": "^7.3.5"
+    "mockgoose": "^7.3.5",
+    "nodemon": "^1.17.5",
+    "prettier": "1.13.5",
+    "supertest": "^3.1.0"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./jest.setup.js"

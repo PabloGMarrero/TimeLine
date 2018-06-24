@@ -6,7 +6,7 @@ export const slot = (cardkey, index, key) => ({
     key: key ? key : index
 })
 
-export const empty = (size) => reverse(times(() => slot(undefined, --size), size))
+export const empty = size => reverse(times(() => slot(undefined, --size), size))
 
 export const get = (slot, cards) => find(partial(flip(includes), [slot]), cards)
 
@@ -25,4 +25,3 @@ export const indexOf = ({ index }) => index
 export const keyOf = ({ key }) => key
 
 export const replace = (cardkey, { index, key }) => slot(cardkey, index, key)
-

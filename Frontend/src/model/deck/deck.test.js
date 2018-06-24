@@ -12,13 +12,16 @@ it('dada una mazo recien cargado,  pregunto si contiene todo un cardSet dado', (
     const cardSet = cards()
     const deck = loadDeck(cardSet)
 
-    expect(all((_ => (includes(_, deck))), cardSet)).toBeTruthy()
+    expect(all(_ => includes(_, deck), cardSet)).toBeTruthy()
 })
 
 it('dada una mazo recien cargado, robo una carta, luego pregunto si el mazo ya no contiene esa carta', () => {
     const cardSet = cards()
     const deck = loadDeck(cardSet)
-    const { card: pickedCard, deck: deckPostPick } = pickCardFromDeck(deck, cardSet)
+    const { card: pickedCard, deck: deckPostPick } = pickCardFromDeck(
+        deck,
+        cardSet
+    )
 
     expect(not(includes(pickedCard, deckPostPick))).toBeTruthy()
 })

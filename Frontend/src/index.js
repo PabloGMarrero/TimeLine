@@ -8,15 +8,16 @@ import registerServiceWorker from './registerServiceWorker'
 import { Game as gameReducer } from './reducers/Game'
 import storeCreator from './storeCreator'
 
-const store = storeCreator(combineReducers(
-    {
+const store = storeCreator(
+    combineReducers({
         game: gameReducer
-    }
-))
+    })
+)
 
 ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
-    document.getElementById('root'))
+    document.getElementById('root')
+)
 registerServiceWorker()

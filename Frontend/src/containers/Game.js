@@ -1,8 +1,11 @@
 import { connect } from 'react-redux'
 
 import {
-    startNewGame, playerPlayRandomCardFromHand, performWrongPlayEvent,
-    moveToNextTurn, startEndTurnPhase
+    startNewGame,
+    playerPlayRandomCardFromHand,
+    performWrongPlayEvent,
+    moveToNextTurn,
+    startEndTurnPhase
 } from '../actions/Game'
 import { Game } from '../components/game/Game'
 
@@ -16,11 +19,14 @@ const mapStateToProps = ({ game }) => ({
 })
 
 const mapActionsToProps = dispatch => ({
-    startNewGame: (deck) => startNewGame(deck, dispatch),
+    startNewGame: deck => startNewGame(deck, dispatch),
     simulateTurn: () => playerPlayRandomCardFromHand(dispatch),
     performWrongPlayEvent: () => performWrongPlayEvent(dispatch),
     moveToEndPhase: () => dispatch(startEndTurnPhase()),
     startNextTurn: () => moveToNextTurn(dispatch)
 })
 
-export default connect(mapStateToProps, mapActionsToProps)(Game)
+export default connect(
+    mapStateToProps,
+    mapActionsToProps
+)(Game)
