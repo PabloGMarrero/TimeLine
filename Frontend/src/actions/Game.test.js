@@ -279,16 +279,18 @@ it('should dispatch update game current state actioooon', () => {
 
 describe('FETCH TESTS', () => {
     it('load cards sin error recibe cartas del server', async () => {
+
+        const dummyCard = { description: 'TV', category: 'Inventions', year: 2001, url: 'url' }
         nock(TEST_URL)
             .get('/cards')
-            .reply(200, [{ description: 'TV', category: 'Inventions', year: 2001, url: 'url' }])
+            .reply(200, [dummyCard])
 
         const store = mockStore()
         await store.dispatch(fetchCards())
 
-        // expect(store.getActions()).toEqual([
-        //     { type: 'LOAD_CARDS', cards: [] }
-        // ])
+        expect(store.getActions()).toEqual([
+            { type: 'LOAD_CARDS', cards: [dummyCard] }
+        ])
     })
 
     it('load cards con error', async () => {
@@ -300,7 +302,7 @@ describe('FETCH TESTS', () => {
         await store.dispatch(fetchCards())
 
         expect(store.getActions()).toEqual([
-            { type: 'ERROR_LOADING_CARDS', error: 'Server error 404' }
+            { type: 'ERROR_LOADING_CARDS', error: 'Server error 500' }
         ])
     })
 })
