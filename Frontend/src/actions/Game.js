@@ -179,7 +179,7 @@ export const FETCH_CARDS = 'FETCH_CARDS'
 export const fetchCards = () => async dispatch => {
     try {
         const response = await isoFetch('/cards')
-        if (response.status != 200) {
+        if (response.status !== 200) {
             dispatch(errorLoading(`Server error ${response.status}`))
         } else {
             const rjson = await response.json()
