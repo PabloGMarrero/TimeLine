@@ -400,7 +400,7 @@ it('PLAY_RANDOM_CARD_FROM_HAND', () => {
 it('UPDATE_CURRENT_GAME_STATE without cards is tie', () => {
     const beforeReducerState = {
         cards: [],
-        lastCardPlayed: undefined, 
+        lastCardPlayed: undefined,
         turn: Turn.PLAYER,
         status: GameResult.PLAYING
     }
@@ -409,9 +409,32 @@ it('UPDATE_CURRENT_GAME_STATE without cards is tie', () => {
 
     const expectedState = {
         cards: [],
-        lastCardPlayed: undefined, 
+        lastCardPlayed: undefined,
         turn: Turn.PLAYER,
         status: GameResult.TIE
+    }
+
+    expect(afterReducerState).toEqual(expectedState)
+})
+
+it('should load deck', () => {
+    const dummyCard = {
+        key: 'test',
+        selected: true,
+        visible: false
+    }
+
+    const dummyDeck = [dummyCard]
+    const beforeReducerState = {
+        deck: [],
+        cards: [dummyCard]
+    }
+
+    const afterReducerState = reducer(beforeReducerState, loadDeck(dummyDeck))
+
+    const expectedState = {
+        deck: [dummyCard.key],
+        cards: [dummyCard]
     }
 
     expect(afterReducerState).toEqual(expectedState)
