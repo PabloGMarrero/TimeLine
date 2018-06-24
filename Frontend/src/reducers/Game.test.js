@@ -439,3 +439,20 @@ it('should load deck', () => {
 
     expect(afterReducerState).toEqual(expectedState)
 })
+
+it('shuffle deck', () => {
+    const dummyCard = {
+        key: 'test'
+    }
+    const beforeReducerState = {
+        deck: [dummyCard]
+    }
+
+    const afterReducerState = reducer(beforeReducerState, shuffleDeck())
+
+    const expectedState = {
+        deck:[dummyCard]
+    }
+
+    expect(afterReducerState).toEqual(expectedState)
+})
