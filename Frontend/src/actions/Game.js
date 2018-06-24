@@ -1,5 +1,6 @@
 import { forEach } from 'ramda'
 import { Turn } from '../model/constants/constants'
+import { isoFetch } from './fetch-utils'
 
 const timesOnInterval = (fn, interval) => forEach((delay) => setTimeout(fn, delay), interval)
 
@@ -165,3 +166,26 @@ export const UPDATE_CURRENT_GAME_STATE = 'UPDATE_CURRENT_GAME_STATE'
 export const updateCurrentGameState = () => ({
     type: UPDATE_CURRENT_GAME_STATE
 })
+
+export const LOAD_CARDS = 'LOAD_CARDS'
+export const loadCardsInDB = cards => ({
+    type: LOAD_CARDS,
+    cards
+})
+export const ERROR_LOADING_CARDS = 'ERROR_LOADING_CARDS'
+const errorLoading = error => ({ type: ERROR_LOADING_CARDS, error })
+
+export const FETCH_CARDS = 'FETCH_CARDS'
+export const fetchCards = () => async dispatch => {
+    try {
+        const response = await isoFetch('/cards')
+        if (response.status != 200) {
+            dispatch(errorLoading(`Server error ${response.status}`))
+        } else {
+            const rjson = await response.json()
+            dispatch(loadCardsInDB(rjson))
+        }
+    } catch (err) {
+        dispatch(errorLoading(err))
+    }
+}
