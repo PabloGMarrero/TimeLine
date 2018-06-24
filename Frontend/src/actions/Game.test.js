@@ -15,7 +15,7 @@ import {
     selectRandomCardFromHand, deselectCard, playCardFromDeck, playCardFromHand,
     playRandomCardFromHand, flipCard, showCardChoices, updateCurrentGameState,
     moveToNextTurn,
-    fetchCards
+    fetchCards, addCard
 } from './Game'
 import { cards } from '../model/cards/cards'
 import { empty } from '../model/deck/deck'
@@ -278,6 +278,9 @@ it('should dispatch update game current state actioooon', () => {
 })
 
 describe('FETCH TESTS', () => {
+    afterEach(()=>{
+        nock.cleanAll()
+    })
     it('load cards sin error recibe cartas del server', async () => {
 
         const dummyCard = { description: 'TV', category: 'Inventions', year: 2001, url: 'url' }
@@ -303,6 +306,20 @@ describe('FETCH TESTS', () => {
 
         expect(store.getActions()).toEqual([
             { type: 'ERROR_LOADING_CARDS', error: 'Server error 500' }
+        ])
+    })
+
+    it('add card', async() =>{
+        const dummyCard = { description: 'TV', category: 'Inventions', year: 2001, url: 'url' }
+        nock(TEST_URL)
+            .post('/cards')
+            .reply(200, [dummyCard])
+
+        const store = mockStore()
+        await store.dispatch(addCard(dummyCard))
+
+        expect(store.getActions()).toEqual([
+            {type: 'ADD_CARD', undefined}
         ])
     })
 })

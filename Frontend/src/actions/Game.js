@@ -1,6 +1,6 @@
 import { forEach } from 'ramda'
 import { Turn } from '../model/constants/constants'
-import { isoFetch } from './fetch-utils'
+import { isoFetch, postWithJSONBody } from './fetch-utils'
 
 const timesOnInterval = (fn, interval) => forEach((delay) => setTimeout(fn, delay), interval)
 
@@ -188,4 +188,16 @@ export const fetchCards = () => async dispatch => {
     } catch (err) {
         dispatch(errorLoading(err))
     }
+}
+
+export const ADD_CARD = 'ADD_CARD'
+export const localAddCard = card => ({
+    type: ADD_CARD,
+    card
+})
+
+export const addCard = card => async dispatch => {
+    const response = await isoFetch('/cards', postWithJSONBody(card))
+    const rjson = response.json()
+    dispatch(localAddCard(rjson.data))
 }
