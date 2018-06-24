@@ -1,4 +1,6 @@
 import configureStore from 'redux-mock-store'
+import nock from 'nock'
+import { TEST_URL } from './fetch-utils'
 import thunk from 'redux-thunk'
 import { head } from 'ramda'
 
@@ -12,7 +14,8 @@ import {
     startEndTurnPhase, startNextTurn, drawCard, removeCard, selectACard,
     selectRandomCardFromHand, deselectCard, playCardFromDeck, playCardFromHand,
     playRandomCardFromHand, flipCard, showCardChoices, updateCurrentGameState,
-    moveToNextTurn
+    moveToNextTurn,
+    fetchCards
 } from './Game'
 import { cards } from '../model/cards/cards'
 import { empty } from '../model/deck/deck'
@@ -272,4 +275,32 @@ it('should dispatch update game current state actioooon', () => {
     ]
 
     expect(actions).toEqual(expectedPayload)
+})
+
+describe('FETCH TESTS', () => {
+    it('load cards sin error recibe cartas del server', async () => {
+        nock(TEST_URL)
+            .get('/cards')
+            .reply(200, [{ description: 'TV', category: 'Inventions', year: 2001, url: 'url' }])
+
+        const store = mockStore()
+        await store.dispatch(fetchCards())
+
+        // expect(store.getActions()).toEqual([
+        //     { type: 'LOAD_CARDS', cards: [] }
+        // ])
+    })
+
+    it('load cards con error', async () => {
+        nock(TEST_URL)
+            .get('/cards')
+            .reply(500, { status: 'Error', error: 'Check connection' })
+
+        const store = mockStore()
+        await store.dispatch(fetchCards())
+
+        expect(store.getActions()).toEqual([
+            { type: 'ERROR_LOADING_CARDS', error: 'Server error 404' }
+        ])
+    })
 })
