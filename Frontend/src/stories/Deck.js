@@ -7,12 +7,12 @@ import storeCreator from '../storeCreator'
 import { Game as reducer } from '../reducers/Game'
 import Deck from '../containers/Deck'
 
-const store = storeCreator(combineReducers(
-    {
+const store = storeCreator(
+    combineReducers({
         game: reducer
-    }
-))
+    })
+)
 
 storiesOf('Deck', module)
     .addDecorator(story => <Provider store={store}>{story()}</Provider>)
-    .add('Regular view', () => (<Deck />))
+    .add('Regular view', () => <Deck />)

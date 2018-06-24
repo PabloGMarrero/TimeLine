@@ -2,7 +2,8 @@ import { forEach } from 'ramda'
 import { Turn } from '../model/constants/constants'
 import { isoFetch, postWithJSONBody } from './fetch-utils'
 
-const timesOnInterval = (fn, interval) => forEach((delay) => setTimeout(fn, delay), interval)
+const timesOnInterval = (fn, interval) =>
+    forEach(delay => setTimeout(fn, delay), interval)
 
 export function startNewGame(deck, dispatch) {
     initDeck(deck, dispatch)
@@ -16,8 +17,20 @@ function initDeck(deck, dispatch) {
 }
 
 function initHands(dispatch) {
-    timesOnInterval(() => dispatch(drawCard(Turn.PLAYER)), [300, 600, 900, 1200, 1500])
-    timesOnInterval(() => dispatch(drawCard(Turn.ENEMY)), [1800, 2100, 2400, 2700, 3000])
+    timesOnInterval(() => dispatch(drawCard(Turn.PLAYER)), [
+        300,
+        600,
+        900,
+        1200,
+        1500
+    ])
+    timesOnInterval(() => dispatch(drawCard(Turn.ENEMY)), [
+        1800,
+        2100,
+        2400,
+        2700,
+        3000
+    ])
 }
 
 function playInitialCard(dispatch) {
@@ -56,7 +69,7 @@ export function moveToNextTurn(dispatch) {
 
 export const LOAD_DECK = 'LOAD_DECK'
 
-export const loadDeck = (deck) => ({
+export const loadDeck = deck => ({
     type: LOAD_DECK,
     deck
 })
@@ -69,7 +82,7 @@ export const shuffleDeck = () => ({
 
 export const ASSIGN_TURN = 'ASSIGN_TURN'
 
-export const assignTurn = (turn) => ({
+export const assignTurn = turn => ({
     type: ASSIGN_TURN,
     turn
 })
@@ -95,12 +108,12 @@ export const startEndTurnPhase = () => ({
 export const START_NEXT_TURN = 'START_NEXT_TURN'
 
 export const startNextTurn = () => ({
-    type: START_NEXT_TURN,
+    type: START_NEXT_TURN
 })
 
 export const DRAW_CARD = 'DRAW_CARD'
 
-export const drawCard = (turn) => ({
+export const drawCard = turn => ({
     type: DRAW_CARD,
     turn
 })
@@ -113,7 +126,7 @@ export const removeCard = () => ({
 
 export const SELECT_A_CARD = 'SELECT_A_CARD'
 
-export const selectACard = (card) => ({
+export const selectACard = card => ({
     type: SELECT_A_CARD,
     card
 })
@@ -121,7 +134,7 @@ export const selectACard = (card) => ({
 export const SELECT_RANDOM_CARD_FROM_HAND = 'SELECT_RANDOM_CARD_FROM_HAND'
 
 export const selectRandomCardFromHand = () => ({
-    type: SELECT_RANDOM_CARD_FROM_HAND,
+    type: SELECT_RANDOM_CARD_FROM_HAND
 })
 
 export const DESELECT_CARD = 'DESELECT_CARD'
@@ -138,7 +151,7 @@ export const playCardFromDeck = () => ({
 
 export const PLAY_CARD_FROM_HAND = 'PLAY_CARD_FROM_PLAYERHAND'
 
-export const playCardFromHand = (boardIndex) => ({
+export const playCardFromHand = boardIndex => ({
     type: PLAY_CARD_FROM_HAND,
     boardIndex
 })

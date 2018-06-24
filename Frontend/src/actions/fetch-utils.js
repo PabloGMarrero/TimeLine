@@ -4,7 +4,8 @@ export const TEST_URL = 'http://localhost:3001'
 
 // const isBrowser = () => typeof window !== 'undefined'
 // const getBrowserUrl = url => `${location.protocol}//${location.host}${url}` // eslint-disable-line no-restricted-globals
-const pathToURL = url => /*isBrowser() ? getBrowserUrl(url) :*/ `${TEST_URL}${url}`
+const pathToURL = url =>
+    /*isBrowser() ? getBrowserUrl(url) :*/ `${TEST_URL}${url}`
 
 export const isoFetch = (path, options) => _isoFetch(pathToURL(path), options)
 

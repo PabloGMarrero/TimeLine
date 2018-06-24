@@ -19,6 +19,8 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.9.1",
     "eslint-plugin-standard": "^3.1.0",
+    "jest": "^23.1.0",
+    "lint-staged": "^7.2.0",
     "ramda": "^0.25.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -37,10 +39,14 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "pretty": "prettier --write --tab-width 4 \"src/**/*.js\""
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --write", "git add"]
+    "*.{js,json,css,md}": [
+      "yarn pretty",
+      "git add"
+    ]
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.6",
@@ -66,7 +72,7 @@
     "istanbul": "^0.3.18",
     "jest-enzyme": "^6.0.1",
     "nock": "^9.2.5",
-    "prettier": "1.13.5",
+    "prettier": "^1.13.5",
     "redux-devtools": "^3.4.1",
     "redux-mock-store": "^1.5.1",
     "xmlhttprequest": "^1.8.0"

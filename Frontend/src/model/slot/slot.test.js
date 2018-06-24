@@ -1,6 +1,18 @@
 import { head } from 'ramda'
 import { cards } from '../cards/cards'
-import { slot, empty, get, set, clear, isEmpty, cardkeyOf, includes, indexOf, keyOf, replace } from './slot'
+import {
+    slot,
+    empty,
+    get,
+    set,
+    clear,
+    isEmpty,
+    cardkeyOf,
+    includes,
+    indexOf,
+    keyOf,
+    replace
+} from './slot'
 
 it('dado un slot al cual seteo una carta, pruebo si el slot continene la carta', () => {
     const cardSet = cards()
