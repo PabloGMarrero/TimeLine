@@ -1,7 +1,7 @@
 sudo: required
 language: node_js
 node_js:
-- "9"
+  - "9"
 
 services:
   - docker
@@ -22,16 +22,16 @@ script:
   - cd Backend
   - yarn linter
   - yarn test:ci
-  - docker build -t pablogmarrero/timeline-back .
+  - yarn build:docker
   - cd ..
   - cd Frontend
   - yarn build
   - yarn test
   - yarn test-coverage
-  - docker build -t pablogmarrero/timeline-front .
+  - yarn build:docker
 
 deploy:
-  - provider: script
+  provider: script
   script:
     docker push pablogmarrero/timeline-back;
     docker push pablogmarrero/timeline-front;
