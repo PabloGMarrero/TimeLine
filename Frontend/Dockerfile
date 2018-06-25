@@ -3,7 +3,8 @@ FROM node:9-alpine
 COPY package.json .
 COPY yarn.lock .
 
-RUN yarn install;  \ yarn global add serve 
+RUN yarn install; \ 
+    yarn global add serve 
 
 COPY . .
 
