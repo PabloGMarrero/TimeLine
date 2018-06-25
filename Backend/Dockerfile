@@ -1,6 +1,6 @@
 FROM node:9-alpine
 
-copy package.json .
+COPY package.json .
 COPY yarn.lock .
 
 RUN yarn install
