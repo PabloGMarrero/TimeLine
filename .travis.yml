@@ -24,6 +24,7 @@ script:
   - cd Backend
   - yarn linter
   - yarn test:ci
+  - yarn build
   - yarn build:docker
   - docker tag pablogmarrero/timeline-back registry.heroku.com/$HEROKU_APP_BACK/web
   - cd ..
