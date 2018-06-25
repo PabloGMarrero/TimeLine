@@ -28,11 +28,11 @@ script:
   - docker tag pablogmarrero/timeline-back registry.heroku.com/$HEROKU_APP_BACK/web
   - cd ..
   - cd Frontend
-  - yarn build
-  - yarn test
-  - yarn test-coverage
-  - yarn build:docker
-  - docker tag pablogmarrero/timeline-front registry.heroku.com/$HEROKU_APP_FRONT/web
+  #- yarn build
+  #- yarn test
+  #- yarn test-coverage
+  #- yarn build:docker
+  #- docker tag pablogmarrero/timeline-front registry.heroku.com/$HEROKU_APP_FRONT/web
 
 deploy:
   provider: script
@@ -40,9 +40,9 @@ deploy:
     docker push pablogmarrero/timeline-back;
     docker push registry.heroku.com/$HEROKU_APP_BACK/web;
     heroku container:release web --app $HEROKU_APP_BACK;
-    docker push pablogmarrero/timeline-front;
-    docker push registry.heroku.com/$HEROKU_APP_FRONT/web;
-    heroku container:release web --app $HEROKU_APP_FRONT;
+    #docker push pablogmarrero/timeline-front;
+    #docker push registry.heroku.com/$HEROKU_APP_FRONT/web;
+    #heroku container:release web --app $HEROKU_APP_FRONT;
   on:
     branch: docker
 
