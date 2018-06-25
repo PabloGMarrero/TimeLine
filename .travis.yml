@@ -39,7 +39,7 @@ deploy:
   script:
     docker push pablogmarrero/timeline-back;
     docker push registry.heroku.com/$HEROKU_APP_BACK/web;
-    heroku container:release web --app $HEROKU_APP_BACK;
+    heroku container:release web --app $HEROKU_APP_BACK
     #docker push pablogmarrero/timeline-front;
     #docker push registry.heroku.com/$HEROKU_APP_FRONT/web;
     #heroku container:release web --app $HEROKU_APP_FRONT;
