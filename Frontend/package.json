@@ -40,7 +40,8 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "precommit": "lint-staged",
-    "pretty": "prettier --write --tab-width 4 \"src/**/*.js\""
+    "pretty": "prettier --write --tab-width 4 \"src/**/*.js\"",
+    "build:docker": "docker build -t pablogmarrero/timeline-front ."
   },
   "lint-staged": {
     "*.{js,json,css,md}": [
