@@ -1,9 +1,14 @@
+sudo: required
 language: node_js
 node_js:
 - "9"
 
+services:
+  - docker
+
 before_install:
   - npm install -g codecov
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 install:
   - cd Frontend
@@ -17,11 +22,20 @@ script:
   - cd Backend
   - yarn linter
   - yarn test:ci
+  - docker build -t pablogmarrero/timeline-back .
   - cd ..
   - cd Frontend
   - yarn build
   - yarn test
   - yarn test-coverage
+  - docker build -t pablogmarrero/timeline-front .
+
+deploy:
+  - provider: script
+  script:
+    docker push pablogmarrero/timeline-back;
+    docker push pablogmarrero/timeline-front;
+  branch: dev
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
