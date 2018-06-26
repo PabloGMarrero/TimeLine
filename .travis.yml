@@ -28,8 +28,8 @@ script:
   - docker tag pablogmarrero/timeline-back registry.heroku.com/$HEROKU_APP_BACK/web
   - cd ..
   - cd Frontend
-  #- yarn build
   #- yarn test
+  #- yarn build
   #- yarn test-coverage
   #- yarn build:docker
   #- docker tag pablogmarrero/timeline-front registry.heroku.com/$HEROKU_APP_FRONT/web
