@@ -14,7 +14,6 @@ const start = () => {
     app.use(bodyParser.urlencoded({ extended: false }))
     app.use(bodyParser.json())
 
-
     app.use(card)
 
     app.use((err, req, res) => {
