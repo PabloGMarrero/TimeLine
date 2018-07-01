@@ -33,6 +33,7 @@ script:
   - yarn test-coverage
   - yarn build:docker
   - docker tag pablogmarrero/timeline-front registry.heroku.com/$HEROKU_APP_FRONT/web
+  - cd ..
   - cd proxy
   - docker build -t pablogmarrero/timeline-proxy .
   - docker tag pablogmarrero/timeline-proxy registry.heroku.com/$HEROKU_APP_PROXY/web
