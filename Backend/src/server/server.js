@@ -7,7 +7,12 @@ import card from '../routes/card'
 import './../model/card'
 
 const start = () => {
-    mongoose.connect('mongodb://timeline-ps:timeline-ps1@ds263670.mlab.com:63670/timeline-ps')
+
+    if (!process.env.MONGO_URL) {
+        throw new Error('No mongo url configured, set MONGO_URL env var')
+    }
+
+    mongoose.connect(process.env.MONGO_URL)
 
     const app = express()
     app.use(morgan('combined'))
@@ -16,9 +21,12 @@ const start = () => {
 
     app.use(card)
 
-    app.use((err, req, res) => {
-        const { message, stack } = err
-        res.status(500).send({ status: 'error', message, stack })
+    // app.use((err, req, res) => {
+    //     const { message, stack } = err
+    //     res.status(500).send({ status: 'error', message, stack })
+    // })
+    app.get('/', (req, res) => {
+        res.send('Welcome to Timeline API REST')
     })
     return app
 }
