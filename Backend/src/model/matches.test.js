@@ -1,0 +1,37 @@
+import mongoose from 'mongoose'
+import { Mockgoose } from 'mockgoose'
+import './matches'
+
+const { ObjectId } = mongoose.Types
+
+const mockgoose = new Mockgoose(mongoose)
+const Match = mongoose.model('Match')
+
+describe('Matchmodel', () => {
+
+    beforeAll(async () => {
+        await mockgoose.prepareStorage()
+        await mongoose.connect('mongodb://timeline-ps:timeline-ps1@ds263670.mlab.com:63670/timeline-ps')
+    })
+
+    afterEach(async () => {
+        await mockgoose.helper.reset()
+    })
+
+    describe('Errors test', () => {
+        it('should raise a name exception', async () => {
+            const dummyMatchWithoutName = {
+                size: 2,
+                players: [{}, {}],
+                cards: [{}]
+            }
+
+            try {
+                await new Match(dummyMatchWithoutName).save()
+                throw new Error('Should fail')
+            } catch (error) {
+                expect(error.message).toEqual('Match validation failed: name: Path `name` is required.')
+            }
+        })
+    })
+})
