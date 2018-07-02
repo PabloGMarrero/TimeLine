@@ -1,9 +1,16 @@
+sudo: required
 language: node_js
 node_js:
-- "9"
+  - "9"
+
+services:
+  - docker
 
 before_install:
   - npm install -g codecov
+  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
 
 install:
   - cd Frontend
@@ -17,11 +24,34 @@ script:
   - cd Backend
   - yarn linter
   - yarn test:ci
+  - yarn build:docker
+  - docker tag pablogmarrero/timeline-back registry.heroku.com/$HEROKU_APP_BACK/web
   - cd ..
   - cd Frontend
-  - yarn build
   - yarn test
+  - yarn build
   - yarn test-coverage
+  - yarn build:docker
+  - docker tag pablogmarrero/timeline-front registry.heroku.com/$HEROKU_APP_FRONT/web
+  - cd ..
+  - cd proxy
+  - docker build -t pablogmarrero/proxy-timeline .
+  - docker tag pablogmarrero/proxy-timeline registry.heroku.com/$HEROKU_APP_PROXY/web
+
+deploy:
+  provider: script
+  script:
+    docker push pablogmarrero/timeline-back;
+    docker push registry.heroku.com/$HEROKU_APP_BACK/web;
+    heroku container:release web --app $HEROKU_APP_BACK;
+    docker push pablogmarrero/timeline-front;
+    docker push registry.heroku.com/$HEROKU_APP_FRONT/web;
+    heroku container:release web --app $HEROKU_APP_FRONT;
+    docker push pablogmarrero/proxy-timeline;
+    docker push registry.heroku.com/$HEROKU_APP_PROXY/web;
+    heroku container:release web --app $HEROKU_APP_PROXY;
+  on:
+    branch: docker
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION

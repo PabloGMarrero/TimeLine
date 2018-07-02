@@ -23,7 +23,8 @@ describe('Routes', () => {
 
     beforeAll(async () => {
         await mockgoose.prepareStorage()
-        await mongoose.connect('mongodb://timeline-ps:timeline-ps1@ds263670.mlab.com:63670/timeline-ps')
+        process.env.MONGO_URL = 'mongodb://timeline-ps:timeline-ps1@ds263670.mlab.com:63670/timeline-ps'
+        await mongoose.connect(process.env.MONGO_URL)
     })
 
     afterEach(async () => {
