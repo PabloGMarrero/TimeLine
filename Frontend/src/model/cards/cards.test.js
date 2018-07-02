@@ -1,8 +1,17 @@
 import { length, head, any } from 'ramda'
-import { cards, size, reveal, isRevelated, selectCard, isSelected, deselectCards, timelineHasAValidPeriod } from './cards'
+import {
+    cards,
+    size,
+    reveal,
+    isRevelated,
+    selectCard,
+    isSelected,
+    deselectCards,
+    timelineHasAValidPeriod
+} from './cards'
 
 it('dada una timeline valida, pregunto si la timeline es valida', () => {
-    const cardSet = [{ year: 1653, }, { year: 1912, }, { year: 1957, }]
+    const cardSet = [{ year: 1653 }, { year: 1912 }, { year: 1957 }]
 
     expect(timelineHasAValidPeriod(cardSet)).toBeTruthy()
 })

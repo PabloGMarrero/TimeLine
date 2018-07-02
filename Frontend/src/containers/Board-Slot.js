@@ -12,7 +12,10 @@ const mapStateToProps = ({ game }) => ({
 })
 
 const mapActionsToProps = dispatch => ({
-    placeCardHandler: (BoardIndex) => playerPlayCardFromHand(BoardIndex, dispatch),
+    placeCardHandler: BoardIndex => playerPlayCardFromHand(BoardIndex, dispatch)
 })
 
-export default connect(mapStateToProps, mapActionsToProps)(BoardSlot)
+export default connect(
+    mapStateToProps,
+    mapActionsToProps
+)(BoardSlot)

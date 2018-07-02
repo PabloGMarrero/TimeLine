@@ -1,18 +1,49 @@
 import configureStore from 'redux-mock-store'
+import nock from 'nock'
+import { TEST_URL } from './fetch-utils'
 import thunk from 'redux-thunk'
 import { head } from 'ramda'
 
 import {
-    LOAD_DECK, SHUFFLE_DECK, ASSIGN_TURN, START_MAIN_PHASE, START_YEAR_RESOLUTION_PHASE,
-    START_END_TURN_PHASE, START_NEXT_TURN, DRAW_CARD, REMOVE_CARD, SELECT_A_CARD,
-    SELECT_RANDOM_CARD_FROM_HAND, DESELECT_CARD, PLAY_CARD_FROM_DECK, PLAY_CARD_FROM_HAND,
-    PLAY_RANDOM_CARD_FROM_HAND, FLIP_CARD, SHOW_CARD_CHOICES, UPDATE_CURRENT_GAME_STATE,
-
-    loadDeck, shuffleDeck, assignTurn, startMainPhase, startYearResolutionPhase,
-    startEndTurnPhase, startNextTurn, drawCard, removeCard, selectACard,
-    selectRandomCardFromHand, deselectCard, playCardFromDeck, playCardFromHand,
-    playRandomCardFromHand, flipCard, showCardChoices, updateCurrentGameState,
-    moveToNextTurn
+    LOAD_DECK,
+    SHUFFLE_DECK,
+    ASSIGN_TURN,
+    START_MAIN_PHASE,
+    START_YEAR_RESOLUTION_PHASE,
+    START_END_TURN_PHASE,
+    START_NEXT_TURN,
+    DRAW_CARD,
+    REMOVE_CARD,
+    SELECT_A_CARD,
+    SELECT_RANDOM_CARD_FROM_HAND,
+    DESELECT_CARD,
+    PLAY_CARD_FROM_DECK,
+    PLAY_CARD_FROM_HAND,
+    PLAY_RANDOM_CARD_FROM_HAND,
+    FLIP_CARD,
+    SHOW_CARD_CHOICES,
+    UPDATE_CURRENT_GAME_STATE,
+    loadDeck,
+    shuffleDeck,
+    assignTurn,
+    startMainPhase,
+    startYearResolutionPhase,
+    startEndTurnPhase,
+    startNextTurn,
+    drawCard,
+    removeCard,
+    selectACard,
+    selectRandomCardFromHand,
+    deselectCard,
+    playCardFromDeck,
+    playCardFromHand,
+    playRandomCardFromHand,
+    flipCard,
+    showCardChoices,
+    updateCurrentGameState,
+    moveToNextTurn,
+    fetchCards,
+    addCard
 } from './Game'
 import { cards } from '../model/cards/cards'
 import { empty } from '../model/deck/deck'
@@ -64,7 +95,6 @@ it('should dispatch assing turn action', () => {
 
     expect(actions).toEqual([expectedPayload])
 })
-
 
 it('should dispatch start main phase action', () => {
     const initialState = {}
@@ -272,4 +302,58 @@ it('should dispatch update game current state actioooon', () => {
     ]
 
     expect(actions).toEqual(expectedPayload)
+})
+
+describe('FETCH TESTS', () => {
+    afterEach(() => {
+        nock.cleanAll()
+    })
+    it('load cards sin error recibe cartas del server', async () => {
+        const dummyCard = {
+            description: 'TV',
+            category: 'Inventions',
+            year: 2001,
+            url: 'url'
+        }
+        nock(TEST_URL)
+            .get('/cards')
+            .reply(200, [dummyCard])
+
+        const store = mockStore()
+        await store.dispatch(fetchCards())
+
+        expect(store.getActions()).toEqual([
+            { type: 'LOAD_CARDS', cards: [dummyCard] }
+        ])
+    })
+
+    it('load cards con error', async () => {
+        nock(TEST_URL)
+            .get('/cards')
+            .reply(500, { status: 'Error', error: 'Check connection' })
+
+        const store = mockStore()
+        await store.dispatch(fetchCards())
+
+        expect(store.getActions()).toEqual([
+            { type: 'ERROR_LOADING_CARDS', error: 'Server error 500' }
+        ])
+    })
+
+    it('add card', async () => {
+        const dummyCard = {
+            description: 'TV',
+            category: 'Inventions',
+            year: 2001,
+            url: 'url'
+        }
+        nock(TEST_URL)
+            .post('/cards')
+            .reply(200, [dummyCard])
+
+        const store = mockStore()
+        await store.dispatch(addCard(dummyCard))
+
+        expect(store.getActions()).toEqual([{ type: 'ADD_CARD', undefined }])
+    })
 })

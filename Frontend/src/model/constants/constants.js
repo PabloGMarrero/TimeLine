@@ -1,7 +1,7 @@
 import { Welcome } from './../../components/views/welcome/Welcome'
 import { Home } from './../../components/views/home/Home'
-import {WaitingGame} from './../../components/views/waiting-game/WaitingGame'
-import {AdminCardList} from './../../components/views/admin-cards-list/AdminCardList'
+import { WaitingGame } from './../../components/views/waiting-game/WaitingGame'
+import { AdminCardList } from './../../components/views/admin-cards-list/AdminCardList'
 import Game from './../../containers/Game'
 
 export const GameMode = {
@@ -46,39 +46,37 @@ export const Secciones = {
     ADMINCARDSLIST: 'AdminCardsList'
 }
 
-export function goToSection(section) {
+export function returnComponentForSection(section) {
     switch (section) {
+        case Secciones.WELCOME:
+            return Welcome
 
-    case Secciones.WELCOME:
-        return Welcome
+        case Secciones.HOME:
+            return Home
 
-    case Secciones.HOME:
-        return Home
+        case Secciones.GAME:
+            return Game
 
-    case Secciones.GAME:
-        return Game
+        case Secciones.WAITINGGAME:
+            return WaitingGame
 
-    case Secciones.WAITINGGAME:
-        return WaitingGame
-    
-    case Secciones.ADMINCARDSLIST:
-        return AdminCardList
-        
-    default:
-        return Welcome
+        case Secciones.ADMINCARDSLIST:
+            return AdminCardList
+
+        default:
+            return Welcome
     }
 }
 
 export function nextTurn(turn) {
     switch (turn) {
+        case Turn.PLAYER:
+            return Turn.ENEMY
 
-    case Turn.PLAYER:
-        return Turn.ENEMY
+        case Turn.ENEMY:
+            return Turn.PLAYER
 
-    case Turn.ENEMY:
-        return Turn.PLAYER
-
-    default:
-        return Turn.NOT_ESTABLISHED
+        default:
+            return Turn.NOT_ESTABLISHED
     }
 }

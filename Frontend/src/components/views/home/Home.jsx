@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import './Home.css'
-import {CreateGame} from '../create-game/CreateGame.jsx'
-import {JoinGame} from '../join-game/JoinGame.jsx'
-import {AdminGame} from '../admin-game/AdminGame.jsx'
+import { CreateGame } from '../create-game/CreateGame.jsx'
+import { JoinGame } from '../join-game/JoinGame.jsx'
+import { AdminGame } from '../admin-game/AdminGame.jsx'
 
 export class Home extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            nombre: "Pablo"
+            nombre: this.props.nombre//"Pablo"
         }
     }
     render = () =>

@@ -1,7 +1,7 @@
 import start from './src/server/server'
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 3001
 
 start().listen(port, () => {
-    console.log(`TODO list backend listening on port ${port}!`)
+    console.log(`Timeline backend listening on port ${port}!`)
 })
