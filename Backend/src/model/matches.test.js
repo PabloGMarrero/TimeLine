@@ -49,4 +49,24 @@ describe('Matchmodel', () => {
             }
         })
     })
+
+    describe('Functional test', () => {
+        it('Update match', async () => {
+            const dummyMatch = {
+                name: 'Match',
+                size: 2,
+                players: [{}],
+                cards: [{}]
+            }
+
+            const saved = await new Match(dummyMatch).save()
+            expect(await Match.findOne({ name: dummyMatch.name }).count()).toEqual(1)
+
+            saved.name = 'Match piola'
+            await saved.save()
+
+            const matchInDB = await Match.findOne({ name: saved.name })
+            expect(matchInDB.name).toEqual('Match piola')
+        })
+    })
 })
