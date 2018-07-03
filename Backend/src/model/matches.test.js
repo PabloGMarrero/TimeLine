@@ -33,5 +33,20 @@ describe('Matchmodel', () => {
                 expect(error.message).toEqual('Match validation failed: name: Path `name` is required.')
             }
         })
+
+        it('should raise a size exception', async () => {
+            const dummyMatchWithoutName = {
+                name: 'Match',
+                players: [{}, {}],
+                cards: [{}]
+            }
+
+            try {
+                await new Match(dummyMatchWithoutName).save()
+                throw new Error('Should fail')
+            } catch (error) {
+                expect(error.message).toEqual('Match validation failed: size: Path `size` is required.')
+            }
+        })
     })
 })
